@@ -5,7 +5,11 @@
       "mcp__plugin_figma_figma__get_design_context",
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)",
       "Bash(mv floux-black.svg /tmp/)",
-      "Bash(mv floux-white.svg /tmp/)"
+      "Bash(mv floux-white.svg /tmp/)",
+      "Bash(cp /tmp/floux-black.svg /home/jeff/floux/web/public/)",
+      "Bash(cp /tmp/floux-white.svg /home/jeff/floux/web/public/)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
     ]
   }
 }

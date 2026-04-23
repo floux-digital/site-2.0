@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
+@theme {
+  --font-poppins: var(--font-poppins);
+
+  --color-accent: #00ffb2;
+  --color-muted: #8e8e8e;
+  --color-card: #e2e2e2;
+  --color-card-dark: #e8e8e8;
+
+  --font-size-display: 8rem;
+  --line-height-display: 1;
+  --letter-spacing-display: -0.05em;
+
+  --font-size-h2: 4.75rem;
+  --line-height-h2: 1;
+  --letter-spacing-h2: -0.05em;
+
+  --font-size-h3: 2.5rem;
+  --line-height-h3: 1.1;
+
+  --font-size-body-lg: 1.25rem;
+  --line-height-body-lg: 2rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --sidebar-width: 240px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #000000;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+p {
+  line-height: 2;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+}
+
+/* Scrollbar utilities */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Logo marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 20s linear infinite;
 }
