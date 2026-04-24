@@ -17,25 +17,25 @@ export default function DesktopSidebar() {
   return (
     <aside
       id="main-sidebar"
-      className="hidden lg:flex flex-col w-[240px] shrink-0 px-6 pt-20 pb-10 self-start"
+      className="hidden lg:flex flex-col w-[335px] shrink-0 py-[22px] gap-[44px] self-start"
     >
-      <Link href="/" aria-label="Floux — página inicial" className="mb-10 inline-block">
+      <Link href="/" aria-label="Floux — página inicial" className="inline-block">
         <Image
           src="/floux-black.svg"
           alt="Floux"
-          width={140}
-          height={58}
+          width={160}
+          height={40}
           priority
         />
       </Link>
 
       <nav aria-label="Navegação principal">
-        <ul className="flex flex-col gap-0.5">
+        <ul className="flex flex-col gap-[5px]">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`block text-[15px] font-medium leading-9 transition-colors ${
+                className={`block !text-[16px] font-medium leading-8 transition-colors ${
                   isActive(link.href) ? 'text-black' : 'text-[#8e8e8e] hover:text-black'
                 }`}
               >

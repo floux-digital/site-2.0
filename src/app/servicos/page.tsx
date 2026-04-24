@@ -42,9 +42,7 @@ export default function ServicosPage() {
 
       {/* ── Hero ── */}
       <section className="min-h-[70vh] flex flex-col justify-center px-4 lg:px-6 py-20 lg:py-32">
-        <h1 className="text-[3rem] sm:text-[5rem] lg:text-display font-light leading-display tracking-display text-black max-w-[1100px]">
-          Conheça nossos serviços
-        </h1>
+        <h1 className="max-w-[1100px]">Conheça nossos serviços</h1>
 
         {/* Quick nav */}
         <div className="mt-12 max-w-xs">
@@ -54,7 +52,7 @@ export default function ServicosPage() {
               <li key={s.slug}>
                 <a
                   href={`#${s.slug}`}
-                  className="text-[18px] font-light hover:opacity-60 transition-opacity"
+                  className="text-[18px] hover:opacity-60 transition-opacity"
                 >
                   {s.number} {s.title}
                 </a>
@@ -74,11 +72,9 @@ export default function ServicosPage() {
           <div className="flex flex-col lg:flex-row lg:gap-16">
             {/* Left: Title + sub-list */}
             <div className="lg:w-[480px] shrink-0">
-              <h2 className="text-[2.5rem] lg:text-h2 font-light tracking-h2 leading-h2 mb-10">
-                {service.number} {service.title}
-              </h2>
+              <h2 className="mb-10">{service.number} {service.title}</h2>
 
-              {/* Subservices accordion-style list */}
+              {/* Subservices list */}
               {service.subservices && service.subservices.length > 0 && (
                 <div className="flex flex-col">
                   {service.subservices.map((sub, i) => (
@@ -86,7 +82,7 @@ export default function ServicosPage() {
                       <div className={`border-b border-black/10 ${i === 0 ? 'border-t border-black/10' : ''}`}>
                         <Link
                           href={`/servicos/${sub.slug}`}
-                          className="group flex items-center justify-between py-4 text-[1.25rem] lg:text-[1.5rem] font-light hover:opacity-60 transition-opacity"
+                          className="group flex items-center justify-between py-4 text-[1.25rem] lg:text-[1.5rem] hover:opacity-60 transition-opacity"
                         >
                           <span>{sub.title}</span>
                           <ArrowUpRight
@@ -115,7 +111,7 @@ export default function ServicosPage() {
             {/* Right: Image placeholder + description + CTA */}
             <div className="flex-1 mt-10 lg:mt-0">
               <div className="w-full aspect-[16/9] rounded-3xl bg-card mb-8" />
-              <p className="text-[18px] lg:text-body-lg font-light leading-body-lg text-black/80 mb-8 max-w-[600px]">
+              <p className="text-[18px] text-black/80 mb-8 max-w-[600px]">
                 {service.description}
               </p>
               {service.subservices && service.subservices.length > 0 && (

@@ -32,9 +32,7 @@ export default function CasesPage() {
 
       {/* ── Hero ── */}
       <section className="min-h-[60vh] flex flex-col justify-center px-4 lg:px-6 py-20 lg:py-32">
-        <h1 className="text-[3rem] sm:text-[5rem] lg:text-display font-light leading-display tracking-display text-black max-w-[1100px]">
-          Foi alguém de nós que fez
-        </h1>
+        <h1 className="max-w-[1100px]">Foi alguém de nós que fez</h1>
       </section>
 
       {/* ── Cases list ── */}
@@ -49,8 +47,8 @@ export default function CasesPage() {
             {/* Meta */}
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-[1.5rem] lg:text-[2rem] font-light">{c.title}</h2>
-                <p className="text-[16px] font-normal text-muted mt-1">{c.client}</p>
+                <h2>{c.title}</h2>
+                <p className="font-normal text-muted mt-1">{c.client}</p>
               </div>
               <Link
                 href={`/cases/${c.slug}`}

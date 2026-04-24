@@ -33,7 +33,7 @@ export default function SobrePage() {
 
       {/* ── Hero ── */}
       <section className="min-h-[80vh] flex flex-col justify-center px-4 lg:px-6 py-20 lg:py-32">
-        <h1 className="text-[3rem] sm:text-[5rem] lg:text-display font-light leading-display tracking-display text-black max-w-[1100px]">
+        <h1 className="max-w-[1100px]">
           Não existe experiência sem crescimento
         </h1>
       </section>
@@ -41,7 +41,7 @@ export default function SobrePage() {
       {/* ── Manifesto ── */}
       <section className="px-4 lg:px-6 pb-20">
         <div className="max-w-[620px]">
-          <p className="text-[18px] lg:text-body-lg font-normal leading-body-lg">
+          <p className="text-[18px]">
             A Floux foi fundada para suprir a necessidade de times de design orientados não somente
             à entrega de valor para o usuário, mas também para o crescimento do negócio, colocando
             ambas as métricas no mesmo processo de design.{' '}
@@ -54,19 +54,15 @@ export default function SobrePage() {
 
       {/* ── Como atuamos ── */}
       <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-        <h2 className="text-[2.5rem] lg:text-h2 font-light tracking-h2 leading-h2 mb-4">
-          Formas de atuação
-        </h2>
-        <p className="text-[18px] lg:text-body-lg font-normal leading-body-lg text-black/80 mb-12 max-w-[500px]">
+        <h2 className="mb-4">Formas de atuação</h2>
+        <p className="text-[18px] text-black/80 mb-12 max-w-[500px]">
           Projetos, Outsourcing, Hunting e Treinamento.
         </p>
 
         {/* Team — Conselheiros */}
         <div className="mb-16">
-          <h3 className="text-[2rem] lg:text-[3rem] font-light tracking-tight mb-4">
-            Conselheiros
-          </h3>
-          <p className="text-[18px] lg:text-body-lg font-normal leading-body-lg text-black/80 max-w-[500px]">
+          <h3 className="mb-4">Conselheiros</h3>
+          <p className="text-[18px] text-black/80 max-w-[500px]">
             Profissionais renomados que podem atuar de forma reduzida e pontual, fornecendo visão
             estratégica e insights para projetos.
           </p>
@@ -76,17 +72,15 @@ export default function SobrePage() {
 
       {/* ── Fundador ── */}
       <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-        <h2 className="text-[2rem] lg:text-[3rem] font-light tracking-tight mb-8">
-          Fundador &amp; CEO
-        </h2>
+        <h2 className="mb-8">Fundador &amp; CEO</h2>
         <div className="flex flex-col lg:flex-row gap-12 max-w-[900px]">
           <div className="w-full lg:w-[400px] aspect-square rounded-3xl bg-card shrink-0" />
           <div className="flex flex-col justify-center">
             <div className="bg-card-dark rounded-2xl px-4 py-4 mb-6">
               <p className="font-medium text-[20px]">{team[0].name}</p>
-              <p className="text-[14px] font-light text-muted">{team[0].title}</p>
+              <p className="text-[14px] text-muted">{team[0].title}</p>
             </div>
-            <p className="text-[18px] lg:text-body-lg font-normal leading-body-lg text-black/80">
+            <p className="text-[18px] text-black/80">
               {team[0].bio}
             </p>
           </div>

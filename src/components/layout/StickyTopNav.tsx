@@ -86,7 +86,7 @@ export default function StickyTopNav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`text-[15px] font-medium transition-colors ${
+                  className={`!text-[15px] font-medium transition-colors ${
                     isActive(link.href) ? 'text-white' : 'text-[#8e8e8e] hover:text-white'
                   }`}
                 >

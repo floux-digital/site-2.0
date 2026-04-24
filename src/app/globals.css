@@ -8,23 +8,25 @@
   --color-card: #e2e2e2;
   --color-card-dark: #e8e8e8;
 
-  --font-size-display: 8rem;
+  /* Typography tokens — mantidos como utility classes de fallback */
+  --font-size-display: 4.75rem;
   --line-height-display: 1;
   --letter-spacing-display: -0.05em;
 
-  --font-size-h2: 4.75rem;
+  --font-size-h2: 3.375rem;
   --line-height-h2: 1;
   --letter-spacing-h2: -0.05em;
 
-  --font-size-h3: 2.5rem;
-  --line-height-h3: 1.1;
+  --font-size-h3: 2rem;
+  --line-height-h3: 1;
 
-  --font-size-body-lg: 1.25rem;
+  --font-size-body-lg: 1rem;
   --line-height-body-lg: 2rem;
 }
 
 :root {
-  --sidebar-width: 240px;
+  --sidebar-width: 335px;
+  --page-padding: 44px;
 }
 
 * {
@@ -43,29 +45,62 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── Escala tipográfica — 3 breakpoints ── */
+
 h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
   line-height: 1;
+}
+
+h1, h2 {
+  letter-spacing: -0.05em;
+}
+
+h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+/* até 980px */
+h1 { font-size: 4rem; }
+h2 { font-size: 3rem; }
+h3 { font-size: 2rem; }
+h4, h5, h6 { font-size: 1.125rem; }
+
+
+/* 980px – 1600px */
+@media (min-width: 980px) {
+  h1 { font-size: 4.75rem; }
+  h2 { font-size: 3.375rem; }
+  h3 { font-size: 2rem; }
+  h4, h5, h6 { font-size: 1.5rem; }
+  p, a { font-size: 1.25rem}
+}
+
+/* acima de 1600px */
+@media (min-width: 1600px) {
+  h1 { font-size: 6rem; }
+  h2 { font-size: 4.5rem; }
+  h3 { font-size: 2.75rem; }
+  h4, h5, h6 { font-size: 1.875rem; }
+  p, a { font-size: 1.25rem}
 }
 
 p {
   line-height: 2;
 }
 
-@media (max-width: 1023px) {
-  :root {
-    --sidebar-width: 0px;
-  }
-}
-
-/* Scrollbar utilities */
+/* ── Scrollbar ── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Logo marquee */
+/* ── Marquee (logo strip) ── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 .marquee-track {
-  animation: marquee 20s linear infinite;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
 }

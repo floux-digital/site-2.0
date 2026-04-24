@@ -19,12 +19,12 @@ export default function ServiceAccordion({ items }: ServiceAccordionProps) {
         <div key={i} className="border-t border-black/10 first:border-t-0">
           <button
             onClick={() => setOpen(open === i ? null : i)}
-            className="w-full flex items-center justify-between py-5 text-left group"
+            className="w-full flex items-center justify-between py-8 text-left group"
             aria-expanded={open === i}
           >
-            <span className="text-[1.5rem] lg:text-[2.5rem] font-light leading-tight">
+            <h3 className="">
               {item.title}
-            </span>
+            </h3>
             <span className="shrink-0 ml-4 transition-transform duration-200">
               {open === i ? (
                 <ChevronUp size={20} className="text-muted" />

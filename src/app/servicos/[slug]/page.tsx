@@ -76,17 +76,13 @@ export default async function ServiceDetailPage({
           </Link>{' '}
           / {parent?.title}
         </p>
-        <h1 className="text-[3rem] sm:text-[5rem] lg:text-display font-light leading-display tracking-display text-black max-w-[1100px]">
-          {sub.headline}
-        </h1>
+        <h1 className="max-w-[1100px]">{sub.headline}</h1>
       </section>
 
       {/* ── Intro ── */}
       <section className="px-4 lg:px-6 pb-20">
         <div className="max-w-[780px]">
-          <p className="text-[18px] lg:text-body-lg font-light leading-body-lg text-black/80">
-            {sub.intro}
-          </p>
+          <p className="text-[18px] text-black/80">{sub.intro}</p>
         </div>
       </section>
 
@@ -99,12 +95,10 @@ export default async function ServiceDetailPage({
       <section className="px-4 lg:px-6 py-16 border-t border-black/5">
         <div className="flex flex-col lg:flex-row lg:gap-16">
           <div className="lg:w-[480px] shrink-0">
-            <h2 className="text-[2rem] lg:text-[3rem] font-light tracking-tight leading-tight mb-6 max-w-[500px]">
+            <h2 className="mb-6 max-w-[500px]">
               Vamos descobrir tudo que for possível
             </h2>
-            <p className="text-[18px] lg:text-body-lg font-light leading-body-lg text-black/80">
-              {sub.body}
-            </p>
+            <p className="text-[18px] text-black/80">{sub.body}</p>
           </div>
 
           <div className="flex-1 mt-10 lg:mt-0">
@@ -116,7 +110,7 @@ export default async function ServiceDetailPage({
                     i === 0 ? 'border-t border-black/10' : ''
                   }`}
                 >
-                  <span className="text-[1.25rem] lg:text-[1.5rem] font-light">{method}</span>
+                  <span className="text-[1.25rem] lg:text-[1.5rem]">{method}</span>
                   <ArrowUpRight size={16} className="text-muted shrink-0" />
                 </div>
               ))}
@@ -128,7 +122,7 @@ export default async function ServiceDetailPage({
       {/* ── CTA ── */}
       <section className="px-4 lg:px-6 py-16 border-t border-black/5">
         <div className="max-w-[780px]">
-          <h2 className="text-[2rem] lg:text-[3rem] font-light tracking-tight leading-tight mb-6">
+          <h2 className="mb-6">
             Vamos te ajudar a alinhar sua oferta de valor e expectativa dos clientes
           </h2>
           <Button href="mailto:contato@floux.com.br" withArrow external>
@@ -140,7 +134,7 @@ export default async function ServiceDetailPage({
       {/* ── Related services ── */}
       {parent && parent.subservices.filter((s) => s.slug !== slug).length > 0 && (
         <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-          <h3 className="text-[18px] font-medium text-muted mb-6">Outros serviços</h3>
+          <h4 className="font-medium text-muted mb-6">Outros serviços</h4>
           <div className="flex flex-col gap-2">
             {parent.subservices
               .filter((s) => s.slug !== slug)
@@ -150,7 +144,7 @@ export default async function ServiceDetailPage({
                   href={`/servicos/${s.slug}`}
                   className="group flex items-center justify-between py-4 border-b border-black/10 first:border-t first:border-black/10"
                 >
-                  <span className="text-[1.25rem] lg:text-[1.5rem] font-light hover:opacity-60 transition-opacity">
+                  <span className="text-[1.25rem] lg:text-[1.5rem] hover:opacity-60 transition-opacity">
                     {s.title}
                   </span>
                   <ArrowUpRight

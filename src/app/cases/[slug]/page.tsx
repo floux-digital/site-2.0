@@ -64,9 +64,7 @@ export default async function CaseDetailPage({
             Cases
           </Link>
         </p>
-        <h1 className="text-[2.5rem] sm:text-[4rem] lg:text-display font-light leading-display tracking-display text-black max-w-[1100px]">
-          {c.title}
-        </h1>
+        <h1 className="max-w-[1100px]">{c.title}</h1>
         <p className="text-[18px] font-normal text-muted mt-4">{c.client}</p>
       </section>
 
@@ -79,30 +77,18 @@ export default async function CaseDetailPage({
       <section className="px-4 lg:px-6 pb-20">
         <div className="flex flex-col gap-16 max-w-[780px]">
           <div>
-            <h2 className="text-[1.75rem] lg:text-[3rem] font-light tracking-tight mb-4">
-              Desafio
-            </h2>
-            <p className="text-[18px] lg:text-body-lg font-light leading-body-lg text-black/80">
-              {c.challenge}
-            </p>
+            <h2 className="mb-4">Desafio</h2>
+            <p className="text-[18px] text-black/80">{c.challenge}</p>
           </div>
 
           <div>
-            <h2 className="text-[1.75rem] lg:text-[3rem] font-light tracking-tight mb-4">
-              Hipóteses
-            </h2>
-            <p className="text-[18px] lg:text-body-lg font-light leading-body-lg text-black/80">
-              {c.hypothesis}
-            </p>
+            <h2 className="mb-4">Hipóteses</h2>
+            <p className="text-[18px] text-black/80">{c.hypothesis}</p>
           </div>
 
           <div>
-            <h2 className="text-[1.75rem] lg:text-[3rem] font-light tracking-tight mb-4">
-              Resultados
-            </h2>
-            <p className="text-[18px] lg:text-body-lg font-light leading-body-lg text-black/80">
-              {c.results}
-            </p>
+            <h2 className="mb-4">Resultados</h2>
+            <p className="text-[18px] text-black/80">{c.results}</p>
           </div>
         </div>
       </section>
@@ -133,7 +119,7 @@ export default async function CaseDetailPage({
 
       {/* ── Other cases ── */}
       <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-        <p className="text-[16px] font-medium text-muted mb-8 uppercase tracking-widest text-sm">
+        <p className="font-medium text-muted mb-8 uppercase tracking-widest text-sm">
           Outros Cases
         </p>
         <div className="flex gap-6 overflow-x-auto no-scrollbar pb-4">
@@ -146,9 +132,7 @@ export default async function CaseDetailPage({
               <div className="w-full aspect-[4/3] rounded-3xl bg-card mb-4 overflow-hidden">
                 <div className="w-full h-full opacity-0 group-hover:opacity-100 bg-black/5 transition-opacity" />
               </div>
-              <h3 className="text-[20px] font-light group-hover:opacity-60 transition-opacity">
-                {oc.title}
-              </h3>
+              <h3 className="group-hover:opacity-60 transition-opacity">{oc.title}</h3>
               <p className="text-[14px] font-normal text-muted mt-1">{oc.client}</p>
             </Link>
           ))}

@@ -23,12 +23,14 @@ export default function Button({
   external = false,
 }: ButtonProps) {
   const base =
-    'inline-flex items-center gap-3 rounded-full font-medium text-[20px] leading-none transition-opacity hover:opacity-80 cursor-pointer'
+    'inline-flex items-center gap-4 font-medium text-[18px] leading-none transition-opacity hover:opacity-80 cursor-pointer w-fit'
 
   const variants = {
-    primary: 'bg-black text-white px-6 py-3.5',
-    accent: 'bg-accent text-black border border-black/20 px-5 py-2.5 text-base',
-    ghost: 'bg-transparent text-black px-5 py-2.5 text-base',
+    primary:
+      'bg-black text-white h-14 rounded-[28px] pl-6 pr-[10px] py-[6px] border border-black/25',
+    accent:
+      'bg-accent text-black border border-black/20 px-5 py-2.5 text-base rounded-full',
+    ghost: 'bg-transparent text-black px-5 py-2.5 text-base rounded-full',
   }
 
   const classes = `${base} ${variants[variant]} ${className}`
@@ -37,7 +39,7 @@ export default function Button({
     <>
       <span>{children}</span>
       {withArrow && (
-        <span className="flex items-center justify-center w-11 h-11 rounded-full bg-accent shrink-0">
+        <span className="flex items-center justify-center w-10 h-10 rounded-[20px] bg-accent border border-black/25 shrink-0">
           <ArrowUpRight size={18} strokeWidth={2} className="text-black" />
         </span>
       )}

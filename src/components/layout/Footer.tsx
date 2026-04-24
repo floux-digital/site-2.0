@@ -13,54 +13,52 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer id="contato" className="border-t border-black/5 pt-16 pb-10 px-6 lg:px-0">
-      <div className="max-w-[1920px] mx-auto lg:pl-[240px]">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 px-4 lg:px-6">
-          {/* CTA left */}
-          <div className="flex-1">
-            <h2 className="text-[3rem] lg:text-h2 font-light tracking-h2 leading-h2 mb-10">
+    <footer id="contato" className="px-4 lg:px-[44px] py-[88px]">
+      <div className="flex flex-col lg:flex-row lg:items-start">
+        <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+        <div className="w-full max-w-[900px] flex flex-col gap-[44px]">
+          {/* Heading + CTA inline */}
+          <div className="flex flex-col lg:flex-row lg:items-center gap-6 pb-[44px] border-b border-black/10">
+            <h2 className="flex-1">
               Vamos juntos?
             </h2>
-            <ul className="flex flex-col gap-1">
+            <a
+              href="mailto:contato@floux.com.br"
+              className="w-fit inline-flex items-center gap-4 bg-black text-white font-medium text-[18px] h-14 rounded-[28px] pl-6 pr-[10px] py-[6px] border border-black/25 hover:opacity-80 transition-opacity shrink-0"
+            >
+              <span>Entre em contato</span>
+              <span className="flex items-center justify-center w-10 h-10 rounded-[20px] bg-accent border border-black/25 shrink-0">
+                <ArrowUpRight size={18} strokeWidth={2} className="text-black" />
+              </span>
+            </a>
+          </div>
+
+          {/* Nav links */}
+          <nav aria-label="Rodapé">
+            <ul className="flex flex-col gap-[22px]">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[20px] lg:text-[24px] font-light tracking-tight leading-12 hover:opacity-60 transition-opacity"
+                    className="hover:opacity-60 transition-opacity"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contact button right */}
-          <div className="shrink-0">
-            <a
-              href="mailto:contato@floux.com.br"
-              className="inline-flex items-center gap-3 bg-black text-white font-medium text-[20px] pl-6 pr-1 py-1 rounded-full hover:opacity-80 transition-opacity"
-            >
-              <span>Entre em contato</span>
-              <span className="flex items-center justify-center w-11 h-11 rounded-full bg-accent">
-                <ArrowUpRight size={18} strokeWidth={2} className="text-black" />
-              </span>
-            </a>
+          {/* Logo + copyright */}
+          <div className="flex items-center gap-6 pt-[88px]">
+            <Image
+              src="/floux-black.svg"
+              alt="Floux"
+              width={100}
+              height={25}
+            />
+            <span className="text-[18px] font-light text-black">©2003-{year}</span>
           </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="mt-16 flex items-end justify-between px-4 lg:px-6">
-          <Image
-            src="/floux-black.svg"
-            alt="Floux"
-            width={100}
-            height={41}
-            className="opacity-80"
-          />
-          <p className="text-[14px] font-light text-muted">
-            ©2003-{year}
-          </p>
         </div>
       </div>
     </footer>

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import MobileNav from '@/components/layout/MobileNav'
 import StickyTopNav from '@/components/layout/StickyTopNav'
 import Footer from '@/components/layout/Footer'
@@ -92,29 +91,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Mobile fixed top bar */}
         <MobileNav />
 
-        {/* Desktop: flex layout — sidebar scrolls with page */}
-        <div className="lg:flex">
-          {/* Sidebar — not fixed, part of the flow */}
-          <DesktopSidebar />
-
-          {/* Content column */}
-          <div className="flex-1 min-w-0 pt-[60px] lg:pt-0">
-            {/* Desktop contact button — in flow, top-right, scrolls with page */}
-            <div className="hidden lg:flex justify-end px-6 pt-[18px]">
-              <a
-                href="mailto:contato@floux.com.br"
-                className="inline-block bg-accent border border-black/20 text-black text-[14px] font-medium px-5 py-2 rounded-full hover:opacity-80 transition-opacity"
-              >
-                Entre em contato
-              </a>
-            </div>
-
-            <main id="main-content">{children}</main>
-            <Footer />
-          </div>
+        {/*
+          Desktop contact button — full-width row, top-right.
+          Sits above <main> so it's outside any flex/sidebar layout.
+        */}
+        <div className="hidden lg:flex justify-end px-[44px] pt-[44px]">
+          <a
+            href="mailto:contato@floux.com.br"
+            className="inline-block bg-accent border border-black/20 text-black text-[14px] font-medium px-5 py-2 rounded-full hover:opacity-80 transition-opacity"
+          >
+            Entre em contato
+          </a>
         </div>
 
-        {/* Sticky top nav — fixed, black, appears only when sidebar is off-screen + scroll up */}
+        {/* Main content — full-width, no sidebar wrapper */}
+        <div className="pt-[60px] lg:pt-0">
+          <main id="main-content">{children}</main>
+          <Footer />
+        </div>
+
+        {/* Sticky top nav — black pill, appears on scroll-up after sidebar exits viewport */}
         <StickyTopNav />
       </body>
     </html>

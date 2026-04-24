@@ -9,7 +9,8 @@
       "Bash(cp /tmp/floux-black.svg /home/jeff/floux/web/public/)",
       "Bash(cp /tmp/floux-white.svg /home/jeff/floux/web/public/)",
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "mcp__plugin_figma_figma__get_screenshot"
     ]
   }
 }

@@ -22,6 +22,62 @@ export const cases = [
     tags: ['UX Research', 'Product Design', 'Service Design'],
   },
   {
+    slug: 'aquisicao-e-onboarding-santande',
+    title: 'Aquisição e Onboarding',
+    client: '@Santander',
+    description:
+      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
+    challenge:
+      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
+    hypothesis:
+      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
+    results:
+      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    tags: ['UX Research', 'Product Design', 'Service Design'],
+  },
+    {
+    slug: 'aquisicao-e-onboarding-santand',
+    title: 'Aquisição e Onboarding',
+    client: '@Santander',
+    description:
+      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
+    challenge:
+      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
+    hypothesis:
+      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
+    results:
+      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    tags: ['UX Research', 'Product Design', 'Service Design'],
+  },
+    {
+    slug: 'aquisicao-e-onboarding-santan',
+    title: 'Aquisição e Onboarding',
+    client: '@Santander',
+    description:
+      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
+    challenge:
+      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
+    hypothesis:
+      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
+    results:
+      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    tags: ['UX Research', 'Product Design', 'Service Design'],
+  },
+    {
+    slug: 'aquisicao-e-onboarding-santa',
+    title: 'Aquisição e Onboarding',
+    client: '@Santander',
+    description:
+      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
+    challenge:
+      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
+    hypothesis:
+      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
+    results:
+      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    tags: ['UX Research', 'Product Design', 'Service Design'],
+  },
+  {
     slug: 'id-santander',
     title: 'ID Santander',
     client: '@Santander',
@@ -151,6 +207,36 @@ export const testimonials = [
     company: 'HauzForYou',
   },
   {
+    text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
+    name: 'Cliente da Silva',
+    role: 'CEO',
+    company: 'Startup',
+  },
+   {
+    text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
+    name: 'Cliente da Silva',
+    role: 'CEO',
+    company: 'Startup',
+  },
+   {
+    text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
+    name: 'Cliente da Silva',
+    role: 'CEO',
+    company: 'Startup',
+  },
+   {
+    text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
+    name: 'Cliente da Silva',
+    role: 'CEO',
+    company: 'Startup',
+  },
+   {
+    text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
+    name: 'Cliente da Silva',
+    role: 'CEO',
+    company: 'Startup',
+  },
+   {
     text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
     name: 'Cliente da Silva',
     role: 'CEO',

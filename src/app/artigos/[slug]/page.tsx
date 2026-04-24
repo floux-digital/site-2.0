@@ -44,16 +44,14 @@ export default async function ArtigoPage({ params }: { params: Promise<Params> }
             Início
           </Link>
         </p>
-        <h1 className="text-[2.5rem] sm:text-[4rem] lg:text-display font-light leading-display tracking-display text-black mb-6">
-          Artigo
-        </h1>
-        <h2 className="text-[1.5rem] lg:text-[2rem] font-light text-muted mb-4">Subtitle</h2>
+        <h1 className="mb-6">Artigo</h1>
+        <h2 className="text-muted mb-4">Subtitle</h2>
         <p className="text-[18px] font-normal text-muted">Text body</p>
       </section>
 
       {/* ── Body ── */}
       <section className="px-4 lg:px-6 pb-20 max-w-[780px]">
-        <p className="text-[18px] lg:text-body-lg font-light leading-body-lg text-black/80">
+        <p className="text-[18px] text-black/80">
           Conteúdo do artigo virá aqui. Este é um template para artigos da Floux.
         </p>
       </section>
