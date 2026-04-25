@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ChevronDown, ChevronUp } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import LogoCarousel from '@/components/sections/LogoCarousel'
 import TestimonialCarousel from '@/components/sections/TestimonialCarousel'
 import CaseCarousel from '@/components/sections/CaseCarousel'
+import Accordion from '@/components/sections/ServiceAccordion'
 import { services } from '@/lib/data'
 import { webPageSchema } from '@/lib/schema'
 
@@ -86,27 +86,15 @@ export default function HomePage() {
       <section className="px-4 lg:px-[44px] py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
-          <div className="flex-1">
+          <div className="flex-1 max-w-[900px]">
             <p className="font-semibold mb-[22px]">Serviços</p>
-            <div className="flex flex-col max-w-[900px]">
-              {services.map((s, i) => (
-                <details key={s.slug} open={i === 0} className="group border-b border-black/25">
-                  <summary className="flex items-center justify-between py-10 cursor-pointer list-none">
-                    <h3>{s.title}</h3>
-                    <span className="shrink-0 ml-4">
-                      <ChevronUp size={24} className="hidden group-open:block" />
-                      <ChevronDown size={24} className="group-open:hidden" />
-                    </span>
-                  </summary>
-                  <div className="pb-[44px] flex flex-col gap-[44px]">
-                    <p className="text-black/80">{s.description}</p>
-                    <Button href={`/servicos`} withArrow>
-                      Saiba Mais
-                    </Button>
-                  </div>
-                </details>
-              ))}
-            </div>
+            <Accordion
+              items={services.map((s) => ({
+                title: s.title,
+                body: s.description,
+                href: '/servicos',
+              }))}
+            />
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ChevronDown, ChevronUp } from 'lucide-react'
 import DesktopSidebar from '@/components/layout/DesktopSidebar'
+import Accordion from '@/components/sections/ServiceAccordion'
 import { services } from '@/lib/data'
 import { webPageSchema, serviceSchema } from '@/lib/schema'
 
@@ -106,26 +106,10 @@ export default async function ServiceDetailPage({
             <div className="w-full flex flex-col gap-[44px] lg:max-w-[800px] 2xl:max-w-[980px]">
               <h2>{sub.methodsHeading}</h2>
               <p>{sub.body}</p>
-
-              <div className="flex flex-col py-[66px]">
-                {sub.methods.map((method, i) => (
-                  <details
-                    key={method.title}
-                    open={i === 0}
-                    className="group border-b border-black/25"
-                  >
-                    <summary className="flex items-center justify-between py-8 cursor-pointer list-none">
-                      <h3>{method.title}</h3>
-                      <span className="shrink-0 ml-4">
-                        <ChevronUp size={24} className="hidden group-open:block" />
-                        <ChevronDown size={24} className="group-open:hidden" />
-                      </span>
-                    </summary>
-                    <div className="pb-[44px] flex flex-col gap-[44px]">
-                      <p className="max-w-[500px]">{method.description}</p>
-                    </div>
-                  </details>
-                ))}
+              <div className="py-[66px]">
+                <Accordion
+                  items={sub.methods.map((m) => ({ title: m.title, body: m.description }))}
+                />
               </div>
             </div>
           </div>
@@ -140,27 +124,11 @@ export default async function ServiceDetailPage({
             <div className="w-full flex flex-col gap-[44px] lg:max-w-[800px] 2xl:max-w-[980px]">
               <h2>{sub.section2Heading}</h2>
               <p>{sub.section2Body}</p>
-
               {sub.methods2 && sub.methods2.length > 0 && (
-                <div className="flex flex-col py-[66px]">
-                  {sub.methods2.map((item, i) => (
-                    <details
-                      key={item.title}
-                      open={i === 0}
-                      className="group border-b border-black/25"
-                    >
-                      <summary className="flex items-center justify-between py-8 cursor-pointer list-none">
-                        <h3>{item.title}</h3>
-                        <span className="shrink-0 ml-4">
-                          <ChevronUp size={24} className="hidden group-open:block" />
-                          <ChevronDown size={24} className="group-open:hidden" />
-                        </span>
-                      </summary>
-                      <div className="pb-[44px] flex flex-col gap-[44px]">
-                        <p className="max-w-[500px]">{item.description}</p>
-                      </div>
-                    </details>
-                  ))}
+                <div className="py-[66px]">
+                  <Accordion
+                    items={sub.methods2.map((m) => ({ title: m.title, body: m.description }))}
+                  />
                 </div>
               )}
             </div>

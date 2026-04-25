@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react'],
   },
   compress: true,
-  allowedDevOrigins: ['192.168.15.6'],
+  allowedDevOrigins: ['192.168.15.3'],
 }
 
 export default nextConfig

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ChevronDown, ChevronUp } from 'lucide-react'
-import Button from '@/components/ui/Button'
 import DesktopSidebar from '@/components/layout/DesktopSidebar'
+import Accordion from '@/components/sections/ServiceAccordion'
 import { services } from '@/lib/data'
 import { webPageSchema, serviceSchema } from '@/lib/schema'
 
@@ -95,27 +94,13 @@ export default function ServicosPage() {
               <div className="flex flex-col lg:flex-row lg:items-start">
                 <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
                 <div className="flex-1 max-w-[900px]">
-                  {service.subservices.map((sub, i) => (
-                    <details
-                      key={sub.slug}
-                      open={i === 0}
-                      className="group border-b border-black/25"
-                    >
-                      <summary className="flex items-center justify-between py-8 cursor-pointer list-none">
-                        <h3>{sub.title}</h3>
-                        <span className="shrink-0 ml-4">
-                          <ChevronUp size={24} className="hidden group-open:block" />
-                          <ChevronDown size={24} className="group-open:hidden" />
-                        </span>
-                      </summary>
-                      <div className="pb-[44px] flex flex-col gap-[44px]">
-                        <p className="max-w-[500px]">{sub.intro}</p>
-                        <Button href={`/servicos/${sub.slug}`} withArrow>
-                          Saiba Mais
-                        </Button>
-                      </div>
-                    </details>
-                  ))}
+                  <Accordion
+                    items={service.subservices.map((sub) => ({
+                      title: sub.title,
+                      body: sub.intro,
+                      href: `/servicos/${sub.slug}`,
+                    }))}
+                  />
                 </div>
               </div>
             </section>
