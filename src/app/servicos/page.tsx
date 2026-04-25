@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import { services } from '@/lib/data'
 import { webPageSchema, serviceSchema } from '@/lib/schema'
 
@@ -40,88 +41,86 @@ export default function ServicosPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── Hero ── */}
-      <section className="min-h-[70vh] flex flex-col justify-center px-4 lg:px-6 py-20 lg:py-32">
-        <h1 className="max-w-[1100px]">Conheça nossos serviços</h1>
+      {/* ── Hero — sidebar lives here ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <DesktopSidebar />
 
-        {/* Quick nav */}
-        <div className="mt-12 max-w-xs">
-          <p className="text-[18px] font-semibold mb-2">Escolha ou role para baixo</p>
-          <ul className="flex flex-col gap-1">
-            {services.map((s) => (
-              <li key={s.slug}>
-                <a
-                  href={`#${s.slug}`}
-                  className="text-[18px] hover:opacity-60 transition-opacity"
-                >
-                  {s.number} {s.title}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="flex-1 flex flex-col gap-[44px]">
+            <div className="pb-[44px]">
+              <h1 className="max-w-[800px]">Conheça nossos serviços</h1>
+            </div>
+
+            <p className="font-semibold max-w-[285px]">Escolha um ou role para baixo</p>
+
+            <ul className="flex flex-col gap-1">
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`#${s.slug}`}
+                    className="hover:opacity-60 transition-opacity"
+                  >
+                    {s.number} {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* ── Service sections ── */}
       {services.map((service) => (
-        <section
-          key={service.slug}
-          id={service.slug}
-          className="border-t border-black/5 py-20 lg:py-28 px-4 lg:px-6 scroll-mt-20"
-        >
-          <div className="flex flex-col lg:flex-row lg:gap-16">
-            {/* Left: Title + sub-list */}
-            <div className="lg:w-[480px] shrink-0">
-              <h2 className="mb-10">{service.number} {service.title}</h2>
+        <div key={service.slug} id={service.slug} className="scroll-mt-[88px]">
 
-              {/* Subservices list */}
-              {service.subservices && service.subservices.length > 0 && (
-                <div className="flex flex-col">
+          {/* Intro */}
+          <section className="px-4 lg:px-[44px] py-[66px]">
+            <div className="flex flex-col lg:flex-row lg:items-start">
+              <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+              <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
+                <h2>{service.number} {service.title}</h2>
+                <p className="max-w-[400px]">{service.description}</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Image placeholder — full-width on mobile, right-aligned on desktop */}
+          <section className="px-4 lg:px-[44px] py-[66px] flex justify-end">
+            <div className="w-full lg:max-w-[827px] aspect-[16/9] rounded-3xl bg-card" />
+          </section>
+
+          {/* Subservices accordion */}
+          {service.subservices.length > 0 && (
+            <section className="px-4 lg:px-[44px] py-[66px]">
+              <div className="flex flex-col lg:flex-row lg:items-start">
+                <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+                <div className="flex-1 max-w-[900px]">
                   {service.subservices.map((sub, i) => (
-                    <div key={sub.slug}>
-                      <div className={`border-b border-black/10 ${i === 0 ? 'border-t border-black/10' : ''}`}>
-                        <Link
-                          href={`/servicos/${sub.slug}`}
-                          className="group flex items-center justify-between py-4 text-[1.25rem] lg:text-[1.5rem] hover:opacity-60 transition-opacity"
-                        >
-                          <span>{sub.title}</span>
-                          <ArrowUpRight
-                            size={16}
-                            className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-                          />
-                        </Link>
+                    <details
+                      key={sub.slug}
+                      open={i === 0}
+                      className="group border-b border-black/25"
+                    >
+                      <summary className="flex items-center justify-between py-8 cursor-pointer list-none">
+                        <h3>{sub.title}</h3>
+                        <span className="shrink-0 ml-4">
+                          <ChevronUp size={24} className="hidden group-open:block" />
+                          <ChevronDown size={24} className="group-open:hidden" />
+                        </span>
+                      </summary>
+                      <div className="pb-[44px] flex flex-col gap-[44px]">
+                        <p className="max-w-[500px]">{sub.intro}</p>
+                        <Button href={`/servicos/${sub.slug}`} withArrow>
+                          Saiba Mais
+                        </Button>
                       </div>
-                    </div>
+                    </details>
                   ))}
                 </div>
-              )}
-
-              {/* Roles for Outsourcing */}
-              {'roles' in service && Array.isArray(service.roles) && (
-                <ul className="flex flex-col gap-1 mt-4">
-                  {service.roles.map((role) => (
-                    <li key={role} className="text-[18px] font-medium">
-                      - {role}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-
-            {/* Right: Image placeholder + description + CTA */}
-            <div className="flex-1 mt-10 lg:mt-0">
-              <div className="w-full aspect-[16/9] rounded-3xl bg-card mb-8" />
-              <p className="text-[18px] text-black/80 mb-8 max-w-[600px]">
-                {service.description}
-              </p>
-              {service.subservices && service.subservices.length > 0 && (
-                <Button href={`/servicos/${service.subservices[0].slug}`} withArrow>
-                  Saiba mais
-                </Button>
-              )}
-            </div>
-          </div>
-        </section>
+              </div>
+            </section>
+          )}
+        </div>
       ))}
     </>
   )
