@@ -50,7 +50,7 @@ export default function HomePage() {
             <p className="font-semibold lg:max-w-[285px]">
               O que fazemos
             </p>
-            <p className="lg:max-w-[360px]">
+            <p className="max-w-[320px] lg:max-w-[360px]">
               Criamos experiências que entregam valor para seus clientes e crescimento para o
               seu negócio.
             </p>
@@ -67,7 +67,7 @@ export default function HomePage() {
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
             <h2>Pessoas, valor e crescimento</h2>
-            <p className="text-black/80">
+            <p className="max-w-[320px] lg:max-w-[360px]">
               A Floux nasceu da dificuldade que times de design têm para enxergar a
               importância do crescimento do negócio para financiar a oferta de valor para
               seus clientes.

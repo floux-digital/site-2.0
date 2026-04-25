@@ -1,20 +1,45 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '@/lib/data'
-import Button from '@/components/ui/Button'
 
 const CONTACT_HREF = 'mailto:contato@floux.com.br'
 
 export default function MobileNav() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [rendered, setRendered] = useState(false)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  useEffect(() => setOpen(false), [pathname])
+  const openMenu = useCallback(() => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current)
+      closeTimer.current = null
+    }
+    setRendered(true)
+    // 50ms garante a renderização em dispositivos móveis mais lentos (Android) antes da transição
+    setTimeout(() => setOpen(true), 50)
+  }, [])
+
+  const closeMenu = useCallback(() => {
+    setOpen(false)
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => {
+      setRendered(false)
+      closeTimer.current = null
+    }, 350)
+  }, [])
+
+  useEffect(() => { closeMenu() }, [pathname, closeMenu])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/'
@@ -25,9 +50,9 @@ export default function MobileNav() {
   return (
     <>
       {/* Fixed top bar — mobile only */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 h-[60px] bg-white border-b border-black/5">
-        <Link href="/" aria-label="Floux — página inicial">
-          <Image src="/floux-black.svg" alt="Floux" width={90} height={37} priority />
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-5 py-[22px] bg-white border-b border-black/5">
+        <Link href="/" aria-label="Floux — página inicial" className="shrink-0">
+          <Image src="/floux-black.svg" alt="Floux" width={110} height={40} priority />
         </Link>
         <div className="flex items-center gap-3">
           <Link
@@ -37,28 +62,57 @@ export default function MobileNav() {
             Contato
           </Link>
           <button
-            onClick={() => setOpen((o) => !o)}
-            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            type="button"
+            onClick={openMenu}
+            aria-label="Abrir menu"
             aria-expanded={open}
-            className="p-1 -mr-1"
+            className="w-10 h-10 rounded-full border border-black/25 flex items-center justify-center shrink-0 transition-opacity hover:opacity-70 [&>svg]:pointer-events-none"
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            <Menu size={18} />
           </button>
         </div>
       </header>
 
-      {/* Mobile drawer */}
-      {open && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-white flex flex-col pt-[72px] px-6 pb-8">
-          <nav aria-label="Menu móvel">
-            <ul className="flex flex-col gap-8 mt-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+      {/* Full-screen drawer — mounted only when needed, unmounted after exit animation */}
+      {rendered && (
+        <div
+          className={`lg:hidden fixed inset-0 z-50 flex flex-col bg-black transition-[opacity,transform] duration-300 ease-in-out ${open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
+            }`}
+          aria-hidden={!open}
+        >
+          {/* Header: logo + close button */}
+          <div className="flex items-center justify-between px-[22px] py-[22px] shrink-0">
+            <Link href="/" onClick={closeMenu} aria-label="Floux — página inicial" className="shrink-0">
+              <Image src="/floux-white.svg" alt="Floux" width={110} height={40} priority />
+            </Link>
+            <button
+              type="button"
+              onClick={closeMenu}
+              aria-label="Fechar menu"
+              className="w-10 h-10 rounded-full bg-white border border-black/25 flex items-center justify-center shrink-0 transition-opacity hover:opacity-70 [&>svg]:pointer-events-none"
+            >
+              <X size={18} className="text-black" />
+            </button>
+          </div>
+
+          {/* Spacer pushes nav links toward center/bottom */}
+          <div className="flex-1" />
+
+          {/* Nav links */}
+          <nav aria-label="Menu móvel" className="px-[22px] pb-[44px]">
+            <ul className="flex flex-col gap-[44px]">
+              {navLinks.map((link, i) => (
+                <li
+                  key={link.href}
+                  className={`transition-[opacity,transform] duration-300 ease-out ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+                    }`}
+                  style={{ transitionDelay: open ? `${60 + i * 50}ms` : '0ms' }}
+                >
                   <Link
                     href={link.href}
-                    className={`text-[2rem] font-light tracking-tight transition-colors ${
-                      isActive(link.href) ? 'text-black' : 'text-[#8e8e8e]'
-                    }`}
+                    onClick={closeMenu}
+                    className={`block text-[16px] font-light leading-[32px] tracking-[0.05em] uppercase transition-colors ${isActive(link.href) ? 'text-white' : 'text-muted'
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -66,10 +120,15 @@ export default function MobileNav() {
               ))}
             </ul>
           </nav>
-          <div className="mt-auto">
-            <Button href={CONTACT_HREF} withArrow external>
+
+          {/* CTA */}
+          <div className="px-[22px] pb-[22px] shrink-0">
+            <a
+              href={CONTACT_HREF}
+              className="block w-full text-center bg-accent border border-black/25 text-black text-[16px] font-medium py-[10px] rounded-[22px] transition-opacity hover:opacity-80"
+            >
               Entre em contato
-            </Button>
+            </a>
           </div>
         </div>
       )}
