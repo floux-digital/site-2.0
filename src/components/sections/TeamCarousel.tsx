@@ -13,25 +13,26 @@ export default function TeamCarousel() {
   }
 
   return (
-    <section className="py-10">
+    <section className="py-[66px]">
       <div
         ref={ref}
-        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 px-4 lg:px-6 no-scrollbar"
+        className="flex gap-6 overflow-x-auto no-scrollbar px-4 lg:px-[44px] py-6"
       >
         {team.map((member) => (
           <div key={member.name} className="shrink-0 snap-start w-[280px] lg:w-[380px]">
             {/* Photo placeholder */}
             <div className="w-full aspect-square rounded-3xl bg-card mb-4" />
             {/* Name card */}
-            <div className="bg-card-dark rounded-2xl px-4 py-4">
-              <p className="font-medium text-[18px]">{member.name}</p>
-              <p className="text-[13px] font-light text-muted mt-0.5">{member.title}</p>
+            <div className="bg-card-dark rounded-2xl px-[24px] py-[24px] flex flex-col">
+              <span className="font-medium leading-none">{member.name}</span>
+              <span className="text-[13px] font-light">{member.title}</span>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="flex gap-3 mt-4 px-4 lg:px-6">
+      <div className="flex gap-3 mt-4 px-[22px] lg:px-[44px]">
+        <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
         <button
           onClick={() => scroll('left')}
           aria-label="Membro anterior"

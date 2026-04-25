@@ -191,6 +191,78 @@ export const team = [
     title: 'Service Designer, Professor',
     bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
   },
+    {
+    name: 'Jeff Monteiro',
+    role: 'Fundador & CEO',
+    title: 'Product Designer, Mentor, CEO',
+    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
+  },
+  {
+    name: 'Rafael Toledo',
+    role: 'Conselheiro',
+    title: 'Service Designer, Professor',
+    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
+  },
+    {
+    name: 'Jeff Monteiro',
+    role: 'Fundador & CEO',
+    title: 'Product Designer, Mentor, CEO',
+    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
+  },
+  {
+    name: 'Rafael Toledo',
+    role: 'Conselheiro',
+    title: 'Service Designer, Professor',
+    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
+  },
+    {
+    name: 'Jeff Monteiro',
+    role: 'Fundador & CEO',
+    title: 'Product Designer, Mentor, CEO',
+    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
+  },
+  {
+    name: 'Rafael Toledo',
+    role: 'Conselheiro',
+    title: 'Service Designer, Professor',
+    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
+  },
+    {
+    name: 'Jeff Monteiro',
+    role: 'Fundador & CEO',
+    title: 'Product Designer, Mentor, CEO',
+    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
+  },
+  {
+    name: 'Rafael Toledo',
+    role: 'Conselheiro',
+    title: 'Service Designer, Professor',
+    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
+  },
+    {
+    name: 'Jeff Monteiro',
+    role: 'Fundador & CEO',
+    title: 'Product Designer, Mentor, CEO',
+    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
+  },
+  {
+    name: 'Rafael Toledo',
+    role: 'Conselheiro',
+    title: 'Service Designer, Professor',
+    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
+  },
+    {
+    name: 'Jeff Monteiro',
+    role: 'Fundador & CEO',
+    title: 'Product Designer, Mentor, CEO',
+    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
+  },
+  {
+    name: 'Rafael Toledo',
+    role: 'Conselheiro',
+    title: 'Service Designer, Professor',
+    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
+  }
 ]
 
 export const testimonials = [

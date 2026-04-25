@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
+import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import TeamCarousel from '@/components/sections/TeamCarousel'
-import Button from '@/components/ui/Button'
 import { team } from '@/lib/data'
 import { webPageSchema } from '@/lib/schema'
 
@@ -31,64 +31,42 @@ export default function SobrePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── Hero ── */}
-      <section className="min-h-[80vh] flex flex-col justify-center px-4 lg:px-6 py-20 lg:py-32">
-        <h1 className="max-w-[1100px]">
-          Não existe experiência sem crescimento
-        </h1>
-      </section>
+      {/* ── Hero — sidebar lives here ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <DesktopSidebar />
 
-      {/* ── Manifesto ── */}
-      <section className="px-4 lg:px-6 pb-20">
-        <div className="max-w-[620px]">
-          <p className="text-[18px]">
-            A Floux foi fundada para suprir a necessidade de times de design orientados não somente
-            à entrega de valor para o usuário, mas também para o crescimento do negócio, colocando
-            ambas as métricas no mesmo processo de design.{' '}
-            <span className="font-semibold">
-              Você pode conhecer nossa metodologia clicando aqui.
-            </span>
-          </p>
-        </div>
-      </section>
-
-      {/* ── Como atuamos ── */}
-      <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-        <h2 className="mb-4">Formas de atuação</h2>
-        <p className="text-[18px] text-black/80 mb-12 max-w-[500px]">
-          Projetos, Outsourcing, Hunting e Treinamento.
-        </p>
-
-        {/* Team — Conselheiros */}
-        <div className="mb-16">
-          <h3 className="mb-4">Conselheiros</h3>
-          <p className="text-[18px] text-black/80 max-w-[500px]">
-            Profissionais renomados que podem atuar de forma reduzida e pontual, fornecendo visão
-            estratégica e insights para projetos.
-          </p>
-        </div>
-        <TeamCarousel />
-      </section>
-
-      {/* ── Fundador ── */}
-      <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-        <h2 className="mb-8">Fundador &amp; CEO</h2>
-        <div className="flex flex-col lg:flex-row gap-12 max-w-[900px]">
-          <div className="w-full lg:w-[400px] aspect-square rounded-3xl bg-card shrink-0" />
-          <div className="flex flex-col justify-center">
-            <div className="bg-card-dark rounded-2xl px-4 py-4 mb-6">
-              <p className="font-medium text-[20px]">{team[0].name}</p>
-              <p className="text-[14px] text-muted">{team[0].title}</p>
+          <div className="flex-1 flex flex-col gap-[44px]">
+            <div className="pb-[44px]">
+              <h1 className="max-w-[800px]">
+                Não existe experiência sem crescimento
+              </h1>
             </div>
-            <p className="text-[18px] text-black/80">
-              {team[0].bio}
+
+            <p className="max-w-[400px]">
+              A Floux foi fundada para suprir a necessidade de times de design orientados não
+              somente à entrega de valor para o usuário, mas também para o crescimento do
+              negócio, colocando ambas as métricas no mesmo processo de design, que você pode
+              conhecer{' '}
+              <span className="font-semibold">clicando aqui.</span>
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── Video placeholder ── */}
-      <section className="px-4 lg:px-6 py-16 border-t border-black/5">
+      {/* ── Fundador & CEO ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+          <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
+            <h2>Fundador &amp; CEO</h2>
+            <p className="max-w-[400px]">{team[0].bio}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Foto / vídeo placeholder ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
         <div className="w-full aspect-video rounded-3xl bg-card flex items-center justify-center">
           <div className="w-14 h-14 rounded-full bg-black/10 flex items-center justify-center">
             <svg
@@ -100,6 +78,36 @@ export default function SobrePage() {
             >
               <polygon points="5,3 19,12 5,21" fill="black" />
             </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Conselheiros ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+          <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
+            <h2>Conselheiros</h2>
+            <p className="max-w-[360px]">
+              Profissionais renomados que podem atuar de forma reduzida e pontual, fornecendo
+              visão estratégica e insights para projetos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Team carousel — naturally full-width ── */}
+      <TeamCarousel />
+
+      {/* ── Formas de atuação ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+          <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
+            <h2>Formas de Atuação</h2>
+            <p className="max-w-[360px]">
+              Projetos, Outsourcing, Hunting e Treinamento.
+            </p>
           </div>
         </div>
       </section>

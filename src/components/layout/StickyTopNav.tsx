@@ -22,13 +22,13 @@ export default function StickyTopNav() {
   }
 
   useEffect(() => {
-    // Initialize lastY with current scroll position
+    setVisible(false)
+    sidebarInView.current = true
     lastY.current = window.scrollY
 
     const sidebar = document.getElementById('main-sidebar')
     if (!sidebar) return
 
-    // IntersectionObserver detects when the sidebar content (self-start height) leaves viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
         sidebarInView.current = entry.isIntersecting
@@ -60,9 +60,7 @@ export default function StickyTopNav() {
       window.removeEventListener('scroll', onScroll)
       if (rafId.current) cancelAnimationFrame(rafId.current)
     }
-  }, [])
-
-  useEffect(() => setVisible(false), [pathname])
+  }, [pathname])
 
   return (
     // Outer wrapper: fixed full-width, provides the 30px lateral margins and 27px top offset
