@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
+import DesktopSidebar from '@/components/layout/DesktopSidebar'
+import CaseCarousel from '@/components/sections/CaseCarousel'
 import { cases } from '@/lib/data'
 import { webPageSchema } from '@/lib/schema'
 
@@ -57,87 +58,71 @@ export default async function CaseDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── Hero ── */}
-      <section className="px-4 lg:px-6 py-16 lg:py-24">
-        <p className="text-[16px] font-medium text-muted mb-4">
-          <Link href="/cases" className="hover:text-black transition-colors">
-            Cases
-          </Link>
-        </p>
-        <h1 className="max-w-[1100px]">{c.title}</h1>
-        <p className="text-[18px] font-normal text-muted mt-4">{c.client}</p>
-      </section>
+      {/* ── Hero — sidebar lives here ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <DesktopSidebar />
 
-      {/* ── Cover image ── */}
-      <section className="px-2 lg:px-4 pb-16">
-        <div className="w-full aspect-[16/8] rounded-3xl bg-card" />
-      </section>
-
-      {/* ── Content ── */}
-      <section className="px-4 lg:px-6 pb-20">
-        <div className="flex flex-col gap-16 max-w-[780px]">
-          <div>
-            <h2 className="mb-4">Desafio</h2>
-            <p className="text-[18px] text-black/80">{c.challenge}</p>
-          </div>
-
-          <div>
-            <h2 className="mb-4">Hipóteses</h2>
-            <p className="text-[18px] text-black/80">{c.hypothesis}</p>
-          </div>
-
-          <div>
-            <h2 className="mb-4">Resultados</h2>
-            <p className="text-[18px] text-black/80">{c.results}</p>
+          <div className="flex-1 flex flex-col gap-[44px]">
+            <h1>{c.title}</h1>
+            <p className="font-medium uppercase">{c.client}</p>
           </div>
         </div>
       </section>
 
-      {/* ── Additional images ── */}
-      <section className="px-4 lg:px-6 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="aspect-[4/3] rounded-3xl bg-card" />
-          <div className="aspect-[4/3] rounded-3xl bg-card" />
-          <div className="aspect-[4/3] rounded-3xl bg-card" />
-          <div className="aspect-[4/3] rounded-3xl bg-card" />
+      {/* ── Cover image — full-width within section padding ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="w-full aspect-[16/7] rounded-3xl bg-card" />
+      </section>
+
+      {/* ── Desafios ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+          <div className="flex-1 flex flex-col gap-[44px] max-w-[500px]">
+            <h2>Desafios</h2>
+            <p>{c.challenge}</p>
+          </div>
         </div>
       </section>
 
-      {/* ── Tags ── */}
-      <section className="px-4 lg:px-6 pb-16 border-t border-black/5 pt-8">
-        <div className="flex flex-wrap gap-2">
-          {c.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-[14px] font-medium text-muted border border-black/10 rounded-full px-4 py-1.5"
-            >
-              {tag}
-            </span>
-          ))}
+      {/* ── Hipóteses ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+          <div className="flex-1 flex flex-col gap-[44px] max-w-[500px]">
+            <h2>Hipóteses</h2>
+            <p>{c.hypothesis}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Resultados ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+          <div className="flex-1 flex flex-col gap-[44px] max-w-[500px]">
+            <h2>Resultados</h2>
+            <p>{c.results}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Gallery — 2-col grid, no sidebar offset ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-wrap gap-[22px]">
+          <div className="w-full lg:w-[calc(50%-11px)] aspect-[4/3] rounded-3xl bg-card" />
+          <div className="w-full lg:w-[calc(50%-11px)] aspect-[4/3] rounded-3xl bg-card" />
+          <div className="w-full lg:w-[calc(50%-11px)] aspect-[4/3] rounded-3xl bg-card" />
+          <div className="w-full lg:w-[calc(50%-11px)] aspect-[4/3] rounded-3xl bg-card" />
         </div>
       </section>
 
       {/* ── Other cases ── */}
-      <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-        <p className="font-medium text-muted mb-8 uppercase tracking-widest text-sm">
-          Outros Cases
-        </p>
-        <div className="flex gap-6 overflow-x-auto no-scrollbar pb-4">
-          {otherCases.map((oc) => (
-            <Link
-              key={oc.slug}
-              href={`/cases/${oc.slug}`}
-              className="shrink-0 w-[300px] lg:w-[380px] group"
-            >
-              <div className="w-full aspect-[4/3] rounded-3xl bg-card mb-4 overflow-hidden">
-                <div className="w-full h-full opacity-0 group-hover:opacity-100 bg-black/5 transition-opacity" />
-              </div>
-              <h3 className="group-hover:opacity-60 transition-opacity">{oc.title}</h3>
-              <p className="text-[14px] font-normal text-muted mt-1">{oc.client}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <p className="px-4 lg:px-[44px] pt-[66px] font-medium text-[20px] uppercase">
+        Outros Cases
+      </p>
+      <CaseCarousel cases={otherCases} />
     </>
   )
 }

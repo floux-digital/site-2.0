@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import { cases } from '@/lib/data'
 import { webPageSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: 'Cases',
   description:
-    'Projetos realizados pela Floux para empresas como Santander e HauzForYou. Design strategy e produto em ação.',
+    'Conheça alguns dos cases mais inspiradores em que algum de nós tivemos a oportunidade de liderar ou fazer parte.',
   alternates: { canonical: 'https://floux.com.br/cases' },
   openGraph: { url: 'https://floux.com.br/cases', title: 'Cases | Floux' },
 }
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function CasesPage() {
   const jsonLd = webPageSchema({
     title: 'Cases da Floux',
-    description: 'Foi alguém de nós que fez.',
+    description: 'Foi alguém de nós quem fez.',
     url: 'https://floux.com.br/cases',
     breadcrumbs: [
       { name: 'Início', url: 'https://floux.com.br' },
@@ -30,40 +30,42 @@ export default function CasesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── Hero ── */}
-      <section className="min-h-[60vh] flex flex-col justify-center px-4 lg:px-6 py-20 lg:py-32">
-        <h1 className="max-w-[1100px]">Foi alguém de nós que fez</h1>
+      {/* ── Hero — sidebar lives here ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <DesktopSidebar />
+
+          <div className="flex-1 flex flex-col gap-[44px]">
+            <div className="pb-[44px]">
+              <h1 className="max-w-[800px]">Foi alguém de nós quem fez</h1>
+            </div>
+
+            <p className="max-w-[285px]">
+              Conheça alguns dos cases mais inspiradores em que algum de nós tivemos a
+              oportunidade de liderar ou fazer parte
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* ── Cases list ── */}
-      <section className="px-4 lg:px-6 pb-20 flex flex-col gap-20">
-        {cases.map((c) => (
-          <article key={c.slug} className="flex flex-col gap-4">
-            {/* Cover image */}
-            <div className="w-full aspect-[16/7] rounded-3xl bg-card overflow-hidden relative group">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+      {cases.map((c) => (
+        <section key={c.slug} className="px-4 lg:px-[44px] py-[66px]">
+          <div className="flex flex-col lg:flex-row lg:items-start">
+            <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
 
-            {/* Meta */}
-            <div className="flex items-center justify-between">
-              <div>
-                <h2>{c.title}</h2>
-                <p className="font-normal text-muted mt-1">{c.client}</p>
-              </div>
-              <Link
-                href={`/cases/${c.slug}`}
-                className="inline-flex items-center gap-3 bg-black text-white font-medium text-[16px] pl-5 pr-1 py-1 rounded-full hover:opacity-80 transition-opacity shrink-0 ml-4"
-                aria-label={`Ver detalhes de ${c.title}`}
-              >
-                <span>Detalhes</span>
-                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-accent">
-                  <ArrowUpRight size={16} strokeWidth={2} className="text-black" />
-                </span>
-              </Link>
-            </div>
-          </article>
-        ))}
-      </section>
+            <Link
+              href={`/cases/${c.slug}`}
+              className="flex-1 flex flex-col gap-[22px] group"
+            >
+              <div className="w-full h-[446px] rounded-3xl bg-card group-hover:opacity-90 transition-opacity" />
+              <p className="px-[22px]">
+                {c.title} {c.client}
+              </p>
+            </Link>
+          </div>
+        </section>
+      ))}
     </>
   )
 }

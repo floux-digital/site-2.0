@@ -3,9 +3,11 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { cases } from '@/lib/data'
+import { cases as allCases } from '@/lib/data'
 
-export default function CaseCarousel() {
+type Case = typeof allCases[number]
+
+export default function CaseCarousel({ cases = allCases }: { cases?: Case[] }) {
   const ref = useRef<HTMLDivElement>(null)
 
   const scroll = (dir: 'left' | 'right') => {

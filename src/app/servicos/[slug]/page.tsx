@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
-import Button from '@/components/ui/Button'
+import { ChevronDown, ChevronUp } from 'lucide-react'
+import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import { services } from '@/lib/data'
 import { webPageSchema, serviceSchema } from '@/lib/schema'
 
@@ -32,13 +31,23 @@ export async function generateMetadata({
   }
 }
 
+type MethodItem = { title: string; description: string }
+type SubWithExtras = typeof allSubservices[number] & {
+  pageIntro?: string
+  methodsHeading?: string
+  section2Heading?: string
+  section2Body?: string
+  methods: MethodItem[]
+  methods2?: MethodItem[]
+}
+
 export default async function ServiceDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const sub = allSubservices.find((s) => s.slug === slug)
+  const sub = allSubservices.find((s) => s.slug === slug) as SubWithExtras | undefined
   if (!sub) notFound()
 
   const parent = services.find((s) => s.subservices.some((ss) => ss.slug === slug))
@@ -68,91 +77,93 @@ export default async function ServiceDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── Hero ── */}
-      <section className="min-h-[70vh] flex flex-col justify-center px-4 lg:px-6 py-20 lg:py-32">
-        <p className="text-[16px] font-medium text-muted mb-4">
-          <Link href="/servicos" className="hover:text-black transition-colors">
-            Serviços
-          </Link>{' '}
-          / {parent?.title}
-        </p>
-        <h1 className="max-w-[1100px]">{sub.headline}</h1>
-      </section>
+      {/* ── Hero — sidebar + title + image + intro ── */}
+      <section className="px-4 lg:px-[44px] py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <DesktopSidebar />
 
-      {/* ── Intro ── */}
-      <section className="px-4 lg:px-6 pb-20">
-        <div className="max-w-[780px]">
-          <p className="text-[18px] text-black/80">{sub.intro}</p>
+          <div className="w-full flex flex-col gap-[44px] lg:max-w-[800px] 2xl:max-w-[980px]">
+            <h1>
+              {parent?.title}: {sub.headline}
+            </h1>
+
+            {/* Image placeholder + caption */}
+            <div className="flex flex-col gap-[22px]">
+              <div className="w-full h-[446px] rounded-3xl bg-card" />
+              <p className="px-[22px] text-muted">Image Alt Text</p>
+            </div>
+
+            <p>{sub.pageIntro ?? sub.intro}</p>
+          </div>
         </div>
       </section>
 
-      {/* ── Image placeholder ── */}
-      <section className="px-4 lg:px-6 pb-16">
-        <div className="w-full aspect-[16/9] rounded-3xl bg-card" />
-      </section>
+      {/* ── Methods section ── */}
+      {sub.methodsHeading && (
+        <section className="px-4 lg:px-[44px] py-[66px]">
+          <div className="flex flex-col lg:flex-row lg:items-start">
+            <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+            <div className="w-full flex flex-col gap-[44px] lg:max-w-[800px] 2xl:max-w-[980px]">
+              <h2>{sub.methodsHeading}</h2>
+              <p>{sub.body}</p>
 
-      {/* ── Methods ── */}
-      <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-        <div className="flex flex-col lg:flex-row lg:gap-16">
-          <div className="lg:w-[480px] shrink-0">
-            <h2 className="mb-6 max-w-[500px]">
-              Vamos descobrir tudo que for possível
-            </h2>
-            <p className="text-[18px] text-black/80">{sub.body}</p>
-          </div>
-
-          <div className="flex-1 mt-10 lg:mt-0">
-            <div className="flex flex-col">
-              {sub.methods.map((method, i) => (
-                <div
-                  key={method}
-                  className={`flex items-center justify-between py-4 border-b border-black/10 ${
-                    i === 0 ? 'border-t border-black/10' : ''
-                  }`}
-                >
-                  <span className="text-[1.25rem] lg:text-[1.5rem]">{method}</span>
-                  <ArrowUpRight size={16} className="text-muted shrink-0" />
-                </div>
-              ))}
+              <div className="flex flex-col py-[66px]">
+                {sub.methods.map((method, i) => (
+                  <details
+                    key={method.title}
+                    open={i === 0}
+                    className="group border-b border-black/25"
+                  >
+                    <summary className="flex items-center justify-between py-8 cursor-pointer list-none">
+                      <h3>{method.title}</h3>
+                      <span className="shrink-0 ml-4">
+                        <ChevronUp size={24} className="hidden group-open:block" />
+                        <ChevronDown size={24} className="group-open:hidden" />
+                      </span>
+                    </summary>
+                    <div className="pb-[44px] flex flex-col gap-[44px]">
+                      <p className="max-w-[500px]">{method.description}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* ── CTA ── */}
-      <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-        <div className="max-w-[780px]">
-          <h2 className="mb-6">
-            Vamos te ajudar a alinhar sua oferta de valor e expectativa dos clientes
-          </h2>
-          <Button href="mailto:contato@floux.com.br" withArrow external>
-            Entre em contato
-          </Button>
-        </div>
-      </section>
+      {/* ── Section 2 ── */}
+      {sub.section2Heading && (
+        <section className="px-4 lg:px-[44px] py-[66px]">
+          <div className="flex flex-col lg:flex-row lg:items-start">
+            <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+            <div className="w-full flex flex-col gap-[44px] lg:max-w-[800px] 2xl:max-w-[980px]">
+              <h2>{sub.section2Heading}</h2>
+              <p>{sub.section2Body}</p>
 
-      {/* ── Related services ── */}
-      {parent && parent.subservices.filter((s) => s.slug !== slug).length > 0 && (
-        <section className="px-4 lg:px-6 py-16 border-t border-black/5">
-          <h4 className="font-medium text-muted mb-6">Outros serviços</h4>
-          <div className="flex flex-col gap-2">
-            {parent.subservices
-              .filter((s) => s.slug !== slug)
-              .map((s) => (
-                <Link
-                  key={s.slug}
-                  href={`/servicos/${s.slug}`}
-                  className="group flex items-center justify-between py-4 border-b border-black/10 first:border-t first:border-black/10"
-                >
-                  <span className="text-[1.25rem] lg:text-[1.5rem] hover:opacity-60 transition-opacity">
-                    {s.title}
-                  </span>
-                  <ArrowUpRight
-                    size={16}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-                  />
-                </Link>
-              ))}
+              {sub.methods2 && sub.methods2.length > 0 && (
+                <div className="flex flex-col py-[66px]">
+                  {sub.methods2.map((item, i) => (
+                    <details
+                      key={item.title}
+                      open={i === 0}
+                      className="group border-b border-black/25"
+                    >
+                      <summary className="flex items-center justify-between py-8 cursor-pointer list-none">
+                        <h3>{item.title}</h3>
+                        <span className="shrink-0 ml-4">
+                          <ChevronUp size={24} className="hidden group-open:block" />
+                          <ChevronDown size={24} className="group-open:hidden" />
+                        </span>
+                      </summary>
+                      <div className="pb-[44px] flex flex-col gap-[44px]">
+                        <p className="max-w-[500px]">{item.description}</p>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </section>
       )}
