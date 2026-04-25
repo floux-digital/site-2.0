@@ -13,7 +13,7 @@ export default function TestimonialCarousel() {
   }
 
   return (
-    <section>
+    <section className='py-[66px]'>
       {/* Cards */}
       <div
         ref={ref}

@@ -100,6 +100,7 @@ p {
 }
 .marquee-track {
   animation: marquee var(--marquee-duration, 30s) linear infinite;
+  will-change: transform;
 }
 .marquee-track:hover {
   animation-play-state: paused;

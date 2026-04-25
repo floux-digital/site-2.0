@@ -3,11 +3,11 @@ import Image from 'next/image'
 const logos = [
   { name: 'mmartan',   image: '/customers/mmartan.png'   }, 
   { name: 'Santander', image: '/customers/santader.png'  },
+  { name: 'Hauz',      image: '/customers/hauz.png'      },
   { name: 'Artex',     image: '/customers/artex.png'     },
   { name: 'Ajustador', image: '/customers/ajustador.png' },
   { name: 'Criobrás',  image: '/customers/criobras.png'  },
   { name: 'Runrun.it', image: '/customers/runrunit.png'  },
-  { name: 'Hauz',      image: '/customers/hauz.png'      },
   { name: 'Zora',      image: '/customers/zora.png'      },
 ]
 
@@ -23,12 +23,12 @@ export default function LogoCarousel({ speed = 30, grayscale = false, opacity = 
 
   return (
     <div
-      className="py-[66px] overflow-hidden"
+      className="py-[88px] overflow-hidden"
       style={{ '--marquee-duration': `${speed}s` } as React.CSSProperties}
     >
-      <div className="marquee-track flex items-center gap-16 w-max">
+      <div className="marquee-track flex items-center w-max">
         {track.map((logo, i) => (
-          <div key={i} className="relative shrink-0 w-[140px] h-[40px]">
+          <div key={i} className="relative shrink-0 w-[140px] h-[48px] mr-16">
             <Image
               src={logo.image}
               alt={logo.name}

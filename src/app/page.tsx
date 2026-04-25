@@ -87,7 +87,7 @@ export default function HomePage() {
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1">
-            <p className="font-semibold mb-[22px]">SERVIÇOS</p>
+            <p className="font-semibold mb-[22px]">Serviços</p>
             <div className="flex flex-col max-w-[900px]">
               {services.map((s, i) => (
                 <details key={s.slug} open={i === 0} className="group border-b border-black/25">

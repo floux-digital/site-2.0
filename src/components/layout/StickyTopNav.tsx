@@ -100,7 +100,7 @@ export default function StickyTopNav() {
         {/* CTA button — green, right side */}
         <Link
           href={CONTACT_HREF}
-          className="shrink-0 bg-accent border border-white/20 text-black text-[14px] font-medium px-5 py-2 rounded-full hover:opacity-80 transition-opacity"
+          className="shrink-0 bg-accent border border-white/20 text-black !text-[14px] font-medium px-5 py-2 rounded-full hover:opacity-80 transition-opacity"
         >
           Entre em contato
         </Link>
