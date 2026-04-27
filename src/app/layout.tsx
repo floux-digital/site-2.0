@@ -101,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="hidden lg:flex justify-end px-[44px] pt-[44px]">
           <a
             href="mailto:contato@floux.com.br"
-            className="inline-block bg-accent border border-black/20 text-black text-[14px] font-medium px-5 py-2 rounded-full hover:opacity-80 transition-opacity"
+            className="inline-block bg-accent border border-black/20 text-black text-[14px] font-medium padding-x py-2 rounded-full hover:opacity-80 transition-opacity"
           >
             Entre em contato
           </a>

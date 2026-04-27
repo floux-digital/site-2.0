@@ -45,6 +45,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+
+
+.padding-x{
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+@media (min-width: 980px) {
+  .padding-x{
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+}
+
 /* ── Escala tipográfica — 3 breakpoints ── */
 
 h1, h2, h3, h4, h5, h6 {
@@ -96,6 +110,63 @@ button svg { pointer-events: none; }
 /* ── Scrollbar ── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Corpo de artigo (HTML gerado por remark) ── */
+.article-body { text-align: justify; }
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body h5,
+.article-body h6 { text-align: left; line-height: 1.5; }
+.article-body h2 { margin-top: 3.5rem; margin-bottom: 2.5rem; }
+.article-body h3 { margin-top: 3.5rem; margin-bottom: 2rem; }
+.article-body p  { margin-bottom: 1.25rem; }
+.article-body ul,
+.article-body ol { padding-left: 1.25rem; margin-bottom: 1.25rem; }
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+.article-body li { margin-bottom: 0.25rem; }
+.article-body strong { font-weight: 600; }
+.article-body em { font-style: italic; }
+.article-body blockquote {
+  border-left: 3px solid #00ffb2;
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: #8e8e8e;
+}
+.article-body hr {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 2.5rem 0;
+}
+.article-body pre {
+  background: #f4f4f4;
+  border-radius: 12px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+.article-body code {
+  font-family: monospace;
+  font-size: 0.875em;
+  background: #f4f4f4;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.article-body pre code {
+  background: none;
+  padding: 0;
+}
+.article-body img {
+  width: 100%;
+  border-radius: 22px;
+  margin: 1.5rem 0;
+}
+.article-body a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-body a:hover { opacity: 0.6; }
 
 /* ── Marquee (logo strip) ── */
 @keyframes marquee {

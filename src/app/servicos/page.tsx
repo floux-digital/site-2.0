@@ -42,7 +42,7 @@ export default function ServicosPage() {
       />
 
       {/* ── Hero — sidebar lives here ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <DesktopSidebar />
 
@@ -74,7 +74,7 @@ export default function ServicosPage() {
         <div key={service.slug} id={service.slug} className="scroll-mt-[88px]">
 
           {/* Intro */}
-          <section className="px-4 lg:px-[44px] py-[66px]">
+          <section className="padding-x py-[66px]">
             <div className="flex flex-col lg:flex-row lg:items-start">
               <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
               <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
@@ -85,7 +85,7 @@ export default function ServicosPage() {
           </section>
 
           {/* Service image */}
-          <section className="px-4 lg:px-[44px] py-[66px] flex justify-end">
+          <section className="padding-x py-[66px] flex justify-end">
             <FlImage
               src={service.image}
               alt={service.title}
@@ -95,7 +95,7 @@ export default function ServicosPage() {
 
           {/* Subservices accordion */}
           {service.subservices.length > 0 && (
-            <section className="px-4 lg:px-[44px] py-[66px]">
+            <section className="padding-x py-[66px]">
               <div className="flex flex-col lg:flex-row lg:items-start">
                 <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
                 <div className="flex-1 max-w-[900px]">

@@ -6,6 +6,7 @@ const footerLinks = [
   { label: 'Sobre', href: '/sobre' },
   { label: 'Serviços', href: '/servicos' },
   { label: 'Cases', href: '/cases' },
+  { label: 'Artigos', href: '/artigos' },
   { label: 'Privacidade', href: '/privacidade' },
 ]
 
@@ -13,12 +14,12 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer id="contato" className="px-4 lg:px-[44px] py-[88px]">
+    <footer id="contato" className="padding-x py-[88px]">
       <div className="flex flex-col lg:flex-row lg:items-start">
         <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
         <div className="w-full max-w-[900px] flex flex-col gap-[44px]">
           {/* Heading + CTA inline */}
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6 pb-[44px] border-b border-black/10">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-6 pb-[44px]">
             <h2 className="flex-1">
               Vamos juntos?
             </h2>

@@ -37,7 +37,7 @@ export default function HomePage() {
       />
 
       {/* ── Hero — sidebar lives here ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <DesktopSidebar />
 
@@ -63,7 +63,7 @@ export default function HomePage() {
       <CaseCarousel />
 
       {/* ── About teaser ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
@@ -84,7 +84,7 @@ export default function HomePage() {
       <LogoCarousel />
 
       {/* ── Services accordion ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 max-w-[900px]">
@@ -102,7 +102,7 @@ export default function HomePage() {
 
       {/* ── Featured cases ── */}
       <section className="py-[66px]">
-        <div className="flex gap-6 px-4 lg:px-[44px]">
+        <div className="flex gap-6 padding-x">
           <Link href={`/cases/${cases[0]?.slug}`} className="flex-1 group">
             <FlImage
               src={cases[0]?.image || undefined}
@@ -121,7 +121,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Testimonials heading ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1">

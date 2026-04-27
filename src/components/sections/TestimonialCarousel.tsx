@@ -18,7 +18,7 @@ export default function TestimonialCarousel() {
       {/* Cards */}
       <div
         ref={ref}
-        className="flex gap-6 overflow-x-auto no-scrollbar px-4 lg:px-[44px] py-6"
+        className="flex gap-6 overflow-x-auto no-scrollbar padding-x py-6"
       >
         {testimonials.map((t, i) => (
           <div
@@ -59,7 +59,7 @@ export default function TestimonialCarousel() {
       </div>
 
       {/* Controls — buttons aligned to content column start */}
-      <div className="flex items-center px-4 lg:px-[44px] py-[22px] gap-4">
+      <div className="flex items-center padding-x py-[22px] gap-4">
         <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
         <button
           onClick={() => scroll('left')}

@@ -32,7 +32,7 @@ export default function SobrePage() {
       />
 
       {/* ── Hero — sidebar lives here ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <DesktopSidebar />
 
@@ -55,7 +55,7 @@ export default function SobrePage() {
       </section>
 
       {/* ── Fundador & CEO ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
@@ -66,7 +66,7 @@ export default function SobrePage() {
       </section>
 
       {/* ── Foto / vídeo placeholder ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="w-full aspect-video rounded-3xl bg-card flex items-center justify-center">
           <div className="w-14 h-14 rounded-full bg-black/10 flex items-center justify-center">
             <svg
@@ -83,7 +83,7 @@ export default function SobrePage() {
       </section>
 
       {/* ── Conselheiros ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">
@@ -100,7 +100,7 @@ export default function SobrePage() {
       <TeamCarousel />
 
       {/* ── Formas de atuação ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col gap-[44px] max-w-[600px]">

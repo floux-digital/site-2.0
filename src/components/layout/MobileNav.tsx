@@ -50,14 +50,14 @@ export default function MobileNav() {
   return (
     <>
       {/* Fixed top bar — mobile only */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-5 py-[22px] bg-white border-b border-black/5">
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between padding-x py-[22px] bg-white border-b border-black/5">
         <Link href="/" aria-label="Floux — página inicial" className="shrink-0">
           <Image src="/floux-black.svg" alt="Floux" width={110} height={40} priority />
         </Link>
         <div className="flex items-center gap-3">
           <Link
             href={CONTACT_HREF}
-            className="bg-accent border border-black/20 text-black text-[13px] font-medium px-4 py-1.5 rounded-full"
+            className="bg-accent border border-black/20 text-black text-[13px] font-medium padding-x py-1.5 rounded-full"
           >
             Contato
           </Link>

@@ -60,7 +60,7 @@ export default async function CaseDetailPage({
       />
 
       {/* ── Hero — sidebar lives here ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <DesktopSidebar />
 
@@ -72,12 +72,12 @@ export default async function CaseDetailPage({
       </section>
 
       {/* ── Cover image ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <FlImage src={c.image || undefined} alt={c.title} />
       </section>
 
       {/* ── Desafios ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col gap-[44px] max-w-[500px]">
@@ -88,7 +88,7 @@ export default async function CaseDetailPage({
       </section>
 
       {/* ── Hipóteses ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col gap-[44px] max-w-[500px]">
@@ -99,7 +99,7 @@ export default async function CaseDetailPage({
       </section>
 
       {/* ── Resultados ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col gap-[44px] max-w-[500px]">
@@ -111,7 +111,7 @@ export default async function CaseDetailPage({
 
       {/* ── Gallery ── */}
       {c.gallery.length > 0 && (
-        <section className="px-4 lg:px-[44px] py-[66px]">
+        <section className="padding-x py-[66px]">
           <div className="flex flex-wrap gap-[22px]">
             {c.gallery.map((src, i) => (
               <div key={i} className="w-full lg:w-[calc(50%-11px)]">
@@ -123,7 +123,7 @@ export default async function CaseDetailPage({
       )}
 
       {/* ── Other cases ── */}
-      <p className="px-4 lg:px-[44px] pt-[66px] font-medium text-[20px] uppercase">
+      <p className="padding-x pt-[66px] font-medium text-[20px] uppercase">
         Outros Cases
       </p>
       <CaseCarousel cases={otherCases} />

@@ -32,7 +32,7 @@ export default function CasesPage() {
       />
 
       {/* ── Hero — sidebar lives here ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <DesktopSidebar />
 
@@ -41,7 +41,7 @@ export default function CasesPage() {
               <h1 className="max-w-[800px]">Foi alguém de nós que fez</h1>
             </div>
 
-            <p className="max-w-[285px]">
+            <p className="max-w-[340px]">
               Conheça alguns dos cases mais inspiradores em que algum de nós tivemos a
               oportunidade de liderar ou fazer parte
             </p>
@@ -51,7 +51,7 @@ export default function CasesPage() {
 
       {/* ── Cases list ── */}
       {cases.map((c) => (
-        <section key={c.slug} className="px-4 lg:px-[44px] py-[66px]">
+        <section key={c.slug} className="padding-x py-[66px]">
           <div className="flex flex-col lg:flex-row lg:items-start">
             <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
 

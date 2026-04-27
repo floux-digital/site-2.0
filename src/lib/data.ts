@@ -3,6 +3,7 @@ export const navLinks = [
   { label: 'SOBRE', href: '/sobre' },
   { label: 'SERVIÇOS', href: '/servicos' },
   { label: 'CASES', href: '/cases' },
+  { label: 'ARTIGOS', href: '/artigos' },
   { label: 'CONTATO', href: '#contato' },
 ]
 

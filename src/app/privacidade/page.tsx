@@ -28,7 +28,7 @@ export default function PrivacidadePage() {
       />
 
       {/* ── Hero ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <DesktopSidebar />
           <div className="flex-1 flex flex-col gap-[22px]">
@@ -39,7 +39,7 @@ export default function PrivacidadePage() {
       </section>
 
       {/* ── Content ── */}
-      <section className="px-4 lg:px-[44px] pb-[88px]">
+      <section className="padding-x pb-[88px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
 

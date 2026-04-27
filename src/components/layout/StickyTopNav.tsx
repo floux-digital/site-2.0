@@ -71,7 +71,7 @@ export default function StickyTopNav() {
       }`}
     >
       {/* Pill: black, rounded-[64px], 30px margin each side, 27px from top, 82px tall */}
-      <div className="mx-[30px] mt-[27px] bg-black rounded-[64px] h-[82px] flex items-center px-8 gap-4">
+      <div className="mx-[30px] mt-[27px] bg-black rounded-[64px] h-[82px] flex items-center padding-x gap-4">
         {/* Logo — white version on black background */}
         <Link href="/" aria-label="Floux" className="shrink-0">
           <Image src="/floux-white.svg" alt="Floux" width={100} height={41} />
@@ -98,7 +98,7 @@ export default function StickyTopNav() {
         {/* CTA button — green, right side */}
         <Link
           href={CONTACT_HREF}
-          className="shrink-0 bg-accent border border-white/20 text-black !text-[14px] font-medium px-5 py-2 rounded-full hover:opacity-80 transition-opacity"
+          className="shrink-0 bg-accent border border-white/20 text-black !text-[14px] font-medium padding-x py-2 rounded-full hover:opacity-80 transition-opacity"
         >
           Entre em contato
         </Link>

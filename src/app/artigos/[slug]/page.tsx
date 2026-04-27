@@ -1,32 +1,52 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import DesktopSidebar from '@/components/layout/DesktopSidebar'
+import FlImage from '@/components/ui/FlImage'
+import { getAllArticles, getArticle, formatDate } from '@/lib/artigos'
 import { webPageSchema } from '@/lib/schema'
 
-type Params = { slug: string }
+export async function generateStaticParams() {
+  return getAllArticles().map((a) => ({ slug: a.slug }))
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<Params>
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
+  const article = await getArticle(slug)
+  if (!article) return {}
   return {
-    title: 'Artigo',
-    description: 'Artigo da Floux sobre design e tecnologia.',
+    title: article.title,
+    description: article.resume,
     alternates: { canonical: `https://floux.com.br/artigos/${slug}` },
+    openGraph: {
+      url: `https://floux.com.br/artigos/${slug}`,
+      title: `${article.title} | Floux`,
+      description: article.resume,
+      ...(article.image ? { images: [{ url: article.image }] } : {}),
+    },
   }
 }
 
-export default async function ArtigoPage({ params }: { params: Promise<Params> }) {
+export default async function ArtigoPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params
+  const article = await getArticle(slug)
+  if (!article) notFound()
 
   const jsonLd = webPageSchema({
-    title: 'Artigo',
-    description: 'Artigo sobre design e tecnologia.',
+    title: `${article.title} — Floux`,
+    description: article.resume,
     url: `https://floux.com.br/artigos/${slug}`,
     breadcrumbs: [
       { name: 'Início', url: 'https://floux.com.br' },
-      { name: 'Artigo', url: `https://floux.com.br/artigos/${slug}` },
+      { name: 'Artigos', url: 'https://floux.com.br/artigos' },
+      { name: article.title, url: `https://floux.com.br/artigos/${slug}` },
     ],
   })
 
@@ -38,22 +58,43 @@ export default async function ArtigoPage({ params }: { params: Promise<Params> }
       />
 
       {/* ── Hero ── */}
-      <section className="px-4 lg:px-6 py-16 lg:py-24 max-w-[900px]">
-        <p className="text-[16px] font-medium text-muted mb-4">
-          <Link href="/" className="hover:text-black transition-colors">
-            Início
-          </Link>
-        </p>
-        <h1 className="mb-6">Artigo</h1>
-        <h2 className="text-muted mb-4">Subtitle</h2>
-        <p className="text-[18px] font-normal text-muted">Text body</p>
+      <section className="padding-x py-[66px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <DesktopSidebar />
+          <div className="flex-1 flex flex-col gap-[22px] max-w-[800px]">
+            
+            <h1>{article.title}</h1>
+            <p className="font-medium py-5">
+              {formatDate(article.date)}{article.author && <span className="text-muted"> — {article.author}</span>}
+            </p>
+            <h4 className="text-muted !leading-[1.5]">
+              {article.resume}
+            </h4>
+          </div>
+        </div>
       </section>
 
-      {/* ── Body ── */}
-      <section className="px-4 lg:px-6 pb-20 max-w-[780px]">
-        <p className="text-[18px] text-black/80">
-          Conteúdo do artigo virá aqui. Este é um template para artigos da Floux.
-        </p>
+      {/* ── Cover image (opcional) ── */}
+      {article.image && (
+        <section className="padding-x pb-[44px]">
+          <div className="flex flex-col lg:flex-row lg:items-start">
+            <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+            <div className="flex-1 max-w-[800px]">
+              <FlImage src={article.image} alt={article.title} />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Content ── */}
+      <section className="padding-x pb-[88px]">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
+          <div
+            className="article-body flex-1 max-w-[800px]"
+            dangerouslySetInnerHTML={{ __html: article.content }}
+          />
+        </div>
       </section>
     </>
   )

@@ -17,7 +17,7 @@ export default function TeamCarousel() {
     <section className="py-[66px]">
       <div
         ref={ref}
-        className="flex gap-6 overflow-x-auto no-scrollbar px-4 lg:px-[44px] py-6"
+        className="flex gap-6 overflow-x-auto no-scrollbar padding-x py-6"
       >
         {team.map((member) => (
           <div key={member.name} className="shrink-0 snap-start w-[280px] lg:w-[380px]">

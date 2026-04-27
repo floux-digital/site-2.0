@@ -80,7 +80,7 @@ export default async function ServiceDetailPage({
       />
 
       {/* ── Hero — sidebar + title + image + intro ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
+      <section className="padding-x py-[66px]">
         <div className="flex flex-col lg:flex-row lg:items-start">
           <DesktopSidebar />
 
@@ -98,7 +98,7 @@ export default async function ServiceDetailPage({
 
       {/* ── Methods section ── */}
       {sub.methodsHeading && (
-        <section className="px-4 lg:px-[44px] py-[66px]">
+        <section className="padding-x py-[66px]">
           <div className="flex flex-col lg:flex-row lg:items-start">
             <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
             <div className="w-full flex flex-col gap-[44px] lg:max-w-[800px] 2xl:max-w-[980px]">
@@ -116,7 +116,7 @@ export default async function ServiceDetailPage({
 
       {/* ── Section 2 ── */}
       {sub.section2Heading && (
-        <section className="px-4 lg:px-[44px] py-[66px]">
+        <section className="padding-x py-[66px]">
           <div className="flex flex-col lg:flex-row lg:items-start">
             <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
             <div className="w-full flex flex-col gap-[44px] lg:max-w-[800px] 2xl:max-w-[980px]">
