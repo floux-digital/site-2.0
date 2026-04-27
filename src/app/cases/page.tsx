@@ -38,7 +38,7 @@ export default function CasesPage() {
 
           <div className="flex-1 flex flex-col gap-[44px]">
             <div className="pb-[44px]">
-              <h1 className="max-w-[800px]">Foi alguém de nós quem fez</h1>
+              <h1 className="max-w-[800px]">Foi alguém de nós que fez</h1>
             </div>
 
             <p className="max-w-[285px]">

@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import FlImage from '@/components/ui/FlImage'
 import { testimonials } from '@/lib/data'
 
 export default function TestimonialCarousel() {
@@ -26,10 +27,18 @@ export default function TestimonialCarousel() {
           >
             {/* Logo + review text */}
             <div className="flex-1 flex-col gap-4">
-              {/* Client logo placeholder */}
-              <div className="h-[50px] w-[137px] bg-card rounded-lg flex items-center mb-4 px-3">
-                <span className="text-[13px] font-medium text-muted">{t.company}</span>
-              </div>
+              {t.companyLogo ? (
+                <img
+                  src={t.companyLogo}
+                  alt={t.company}
+                  loading="lazy"
+                  className="h-[50px] w-[137px] object-contain mb-4"
+                />
+              ) : (
+                <div className="h-[50px] w-[137px] bg-card rounded-lg flex items-center mb-4 px-3">
+                  <span className="text-[13px] font-medium text-muted">{t.company}</span>
+                </div>
+              )}
               <p className="text-[16px] font-light leading-8 text-black">
                 &ldquo;{t.text}&rdquo;
               </p>
@@ -37,7 +46,9 @@ export default function TestimonialCarousel() {
 
             {/* Profile */}
             <div className="flex items-center gap-[22px]">
-              <div className="w-[63px] h-[63px] rounded-full bg-black shrink-0" />
+              <div className="relative w-[63px] h-[63px] rounded-full overflow-hidden shrink-0">
+                <FlImage src={t.avatar || undefined} alt={t.name} fill />
+              </div>
               <div className="flex flex-col">
                 <span className="text-[16px] font-semibold leading-8">{t.name}</span>
                 <span className="text-[14px] font-light text-muted">{t.role}</span>

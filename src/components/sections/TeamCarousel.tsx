@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import FlImage from '@/components/ui/FlImage'
 import { team } from '@/lib/data'
 
 export default function TeamCarousel() {
@@ -20,8 +21,9 @@ export default function TeamCarousel() {
       >
         {team.map((member) => (
           <div key={member.name} className="shrink-0 snap-start w-[280px] lg:w-[380px]">
-            {/* Photo placeholder */}
-            <div className="w-full aspect-square rounded-3xl bg-card mb-4" />
+            <div className="relative w-full aspect-square mb-4">
+              <FlImage src={member.pic || undefined} alt={member.name} fill />
+            </div>
             {/* Name card */}
             <div className="bg-card-dark rounded-2xl px-[24px] py-[24px] flex flex-col">
               <span className="font-medium leading-none">{member.name}</span>

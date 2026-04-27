@@ -103,21 +103,19 @@ export default function HomePage() {
       {/* ── Featured cases ── */}
       <section className="py-[66px]">
         <div className="flex gap-6 px-4 lg:px-[44px]">
-          <div className="flex-1">
-            <FlImage src={cases[0]?.image || undefined} alt={cases[0]?.title} />
-          </div>
-          <div className="flex-1 hidden lg:block">
-            <FlImage src={cases[1]?.image || undefined} alt={cases[1]?.title} />
-          </div>
-        </div>
-        <div className="flex items-center px-4 lg:px-[44px] py-[22px] gap-4">
-          <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
-          <Link
-            href="/cases"
-            className="w-10 h-10 rounded-[20px] border border-black/25 flex items-center justify-center hover:bg-black hover:text-white transition-colors shrink-0 text-[12px] font-medium"
-            aria-label="Ver todos os cases"
-          >
-            →
+          <Link href={`/cases/${cases[0]?.slug}`} className="flex-1 group">
+            <FlImage
+              src={cases[0]?.image || undefined}
+              alt={cases[0]?.title}
+              className="group-hover:opacity-90 transition-opacity"
+            />
+          </Link>
+          <Link href={`/cases/${cases[1]?.slug}`} className="flex-1 hidden lg:block group">
+            <FlImage
+              src={cases[1]?.image || undefined}
+              alt={cases[1]?.title}
+              className="group-hover:opacity-90 transition-opacity"
+            />
           </Link>
         </div>
       </section>
