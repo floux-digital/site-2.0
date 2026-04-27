@@ -330,7 +330,7 @@ export default function NotFound() {
               transition-opacity duration-700
               ${phase === 'goal' && compScored ? 'opacity-20' : 'opacity-100'}
             `}>
-              YOU
+              VOCÊ
             </div>
           )}
         </div>
