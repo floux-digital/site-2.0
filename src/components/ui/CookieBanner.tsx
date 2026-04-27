@@ -88,6 +88,7 @@ export default function CookieBanner() {
 
   const handle = (value: CookieConsent) => {
     localStorage.setItem(COOKIE_CONSENT_KEY, value)
+    window.dispatchEvent(new CustomEvent('cookieConsent', { detail: value }))
     setVisible(false)
   }
 

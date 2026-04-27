@@ -5,6 +5,8 @@ import MobileNav from '@/components/layout/MobileNav'
 import StickyTopNav from '@/components/layout/StickyTopNav'
 import Footer from '@/components/layout/Footer'
 import CookieBanner from '@/components/ui/CookieBanner'
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
+import MetaPixel from '@/components/analytics/MetaPixel'
 import { organizationSchema, webSiteSchema } from '@/lib/schema'
 
 const poppins = Poppins({
@@ -114,6 +116,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Sticky top nav — black pill, appears on scroll-up after sidebar exits viewport */}
         <StickyTopNav />
         <CookieBanner />
+        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_GA_ID} />}
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID && <MetaPixel id={process.env.NEXT_PUBLIC_META_PIXEL_ID} />}
       </body>
     </html>
   )
