@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import CaseCarousel from '@/components/sections/CaseCarousel'
+import FlImage from '@/components/ui/FlImage'
 import { cases } from '@/lib/data'
 import { webPageSchema } from '@/lib/schema'
 
@@ -70,9 +71,9 @@ export default async function CaseDetailPage({
         </div>
       </section>
 
-      {/* ── Cover image — full-width within section padding ── */}
+      {/* ── Cover image ── */}
       <section className="px-4 lg:px-[44px] py-[66px]">
-        <div className="w-full aspect-[16/7] rounded-3xl bg-card" />
+        <FlImage src={c.image || undefined} alt={c.title} />
       </section>
 
       {/* ── Desafios ── */}
@@ -108,15 +109,18 @@ export default async function CaseDetailPage({
         </div>
       </section>
 
-      {/* ── Gallery — 2-col grid, no sidebar offset ── */}
-      <section className="px-4 lg:px-[44px] py-[66px]">
-        <div className="flex flex-wrap gap-[22px]">
-          <div className="w-full lg:w-[calc(50%-11px)] aspect-[4/3] rounded-3xl bg-card" />
-          <div className="w-full lg:w-[calc(50%-11px)] aspect-[4/3] rounded-3xl bg-card" />
-          <div className="w-full lg:w-[calc(50%-11px)] aspect-[4/3] rounded-3xl bg-card" />
-          <div className="w-full lg:w-[calc(50%-11px)] aspect-[4/3] rounded-3xl bg-card" />
-        </div>
-      </section>
+      {/* ── Gallery ── */}
+      {c.gallery.length > 0 && (
+        <section className="px-4 lg:px-[44px] py-[66px]">
+          <div className="flex flex-wrap gap-[22px]">
+            {c.gallery.map((src, i) => (
+              <div key={i} className="w-full lg:w-[calc(50%-11px)]">
+                <FlImage src={src} alt={`${c.title} ${i + 1}`} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── Other cases ── */}
       <p className="px-4 lg:px-[44px] pt-[66px] font-medium text-[20px] uppercase">

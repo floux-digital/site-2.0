@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import DesktopSidebar from '@/components/layout/DesktopSidebar'
+import FlImage from '@/components/ui/FlImage'
 import { cases } from '@/lib/data'
 import { webPageSchema } from '@/lib/schema'
 
@@ -58,7 +59,11 @@ export default function CasesPage() {
               href={`/cases/${c.slug}`}
               className="flex-1 flex flex-col gap-[22px] group"
             >
-              <div className="w-full h-[446px] rounded-3xl bg-card group-hover:opacity-90 transition-opacity" />
+              <FlImage
+                src={c.image || undefined}
+                alt={c.title}
+                className="group-hover:opacity-90 transition-opacity"
+              />
               <p className="px-[22px]">
                 {c.title} {c.client}
               </p>

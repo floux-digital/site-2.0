@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import Accordion from '@/components/sections/ServiceAccordion'
+import FlImage from '@/components/ui/FlImage'
 import { services } from '@/lib/data'
 import { webPageSchema, serviceSchema } from '@/lib/schema'
 
@@ -83,9 +84,13 @@ export default function ServicosPage() {
             </div>
           </section>
 
-          {/* Image placeholder — full-width on mobile, right-aligned on desktop */}
+          {/* Service image */}
           <section className="px-4 lg:px-[44px] py-[66px] flex justify-end">
-            <div className="w-full lg:max-w-[827px] aspect-[16/9] rounded-3xl bg-card" />
+            <FlImage
+              src={service.image}
+              alt={service.title}
+              className="lg:max-w-[827px]"
+            />
           </section>
 
           {/* Subservices accordion */}

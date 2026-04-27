@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import DesktopSidebar from '@/components/layout/DesktopSidebar'
 import Accordion from '@/components/sections/ServiceAccordion'
+import FlImage from '@/components/ui/FlImage'
 import { services } from '@/lib/data'
 import { webPageSchema, serviceSchema } from '@/lib/schema'
 
@@ -33,6 +34,7 @@ export async function generateMetadata({
 
 type MethodItem = { title: string; description: string }
 type SubWithExtras = typeof allSubservices[number] & {
+  image?: string
   pageIntro?: string
   methodsHeading?: string
   section2Heading?: string
@@ -87,11 +89,7 @@ export default async function ServiceDetailPage({
               {parent?.title}: {sub.headline}
             </h1>
 
-            {/* Image placeholder + caption */}
-            <div className="flex flex-col gap-[22px]">
-              <div className="w-full h-[446px] rounded-3xl bg-card" />
-              <p className="px-[22px] text-muted">Image Alt Text</p>
-            </div>
+            <FlImage src={sub.image || undefined} alt={sub.headline} />
 
             <p>{sub.pageIntro ?? sub.intro}</p>
           </div>

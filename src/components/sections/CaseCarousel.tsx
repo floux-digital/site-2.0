@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import FlImage from '@/components/ui/FlImage'
 import { cases as allCases } from '@/lib/data'
 
 type Case = typeof allCases[number]
@@ -28,6 +29,7 @@ export default function CaseCarousel({ cases = allCases }: { cases?: Case[] }) {
             href={`/cases/${c.slug}`}
             className="shrink-0 w-[280px] lg:w-[320px] h-[388px] rounded-3xl bg-card relative group overflow-hidden"
           >
+            <FlImage src={c.image || undefined} alt={c.title} fill />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <span className="absolute bottom-6 left-6 text-muted text-sm font-medium">
               {c.client}

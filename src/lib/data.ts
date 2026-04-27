@@ -9,6 +9,7 @@ export const navLinks = [
 export const cases = [
   {
     slug: 'aquisicao-e-onboarding-santander',
+    image: '/cases/image.png',
     title: 'Aquisição e Onboarding',
     client: '@Santander',
     description:
@@ -19,10 +20,12 @@ export const cases = [
       'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
     results:
       'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    gallery: ['/cases/image.png'] as string[],
     tags: ['UX Research', 'Product Design', 'Service Design'],
   },
   {
     slug: 'aquisicao-e-onboarding-santande',
+    image: '',
     title: 'Aquisição e Onboarding',
     client: '@Santander',
     description:
@@ -33,10 +36,12 @@ export const cases = [
       'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
     results:
       'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    gallery: [] as string[],
     tags: ['UX Research', 'Product Design', 'Service Design'],
   },
     {
     slug: 'aquisicao-e-onboarding-santand',
+    image: '',
     title: 'Aquisição e Onboarding',
     client: '@Santander',
     description:
@@ -47,10 +52,12 @@ export const cases = [
       'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
     results:
       'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    gallery: [] as string[],
     tags: ['UX Research', 'Product Design', 'Service Design'],
   },
     {
     slug: 'aquisicao-e-onboarding-santan',
+    image: '',
     title: 'Aquisição e Onboarding',
     client: '@Santander',
     description:
@@ -61,10 +68,12 @@ export const cases = [
       'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
     results:
       'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    gallery: [] as string[],
     tags: ['UX Research', 'Product Design', 'Service Design'],
   },
     {
     slug: 'aquisicao-e-onboarding-santa',
+    image: '',
     title: 'Aquisição e Onboarding',
     client: '@Santander',
     description:
@@ -75,10 +84,12 @@ export const cases = [
       'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
     results:
       'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
+    gallery: [] as string[],
     tags: ['UX Research', 'Product Design', 'Service Design'],
   },
   {
     slug: 'id-santander',
+    image: '',
     title: 'ID Santander',
     client: '@Santander',
     description:
@@ -89,10 +100,12 @@ export const cases = [
       'Uma identidade digital coesa e um sistema de design compartilhado reduziria a carga cognitiva dos usuários e aceleraria o desenvolvimento de novos produtos.',
     results:
       'Sistema de design adotado por 8 times de produto, redução de 40% no tempo de design de novas features.',
+    gallery: [] as string[],
     tags: ['Design System', 'Product Design', 'Strategy'],
   },
   {
     slug: 'mobile-app-hauzforyou',
+    image: '',
     title: 'Mobile App',
     client: '@HauzForYou',
     description:
@@ -103,6 +116,7 @@ export const cases = [
       'Aplicando princípios de design conversacional e reduzindo etapas no funil, seria possível aumentar o volume de contratos fechados pelo app.',
     results:
       'App lançado em 4 meses, com 4.7 de avaliação na App Store e 35% das locações fechadas pelo canal mobile nos primeiros 60 dias.',
+    gallery: [] as string[],
     tags: ['Mobile Design', 'UX Research', 'Product Design'],
   },
 ]
@@ -110,6 +124,7 @@ export const cases = [
 export const services = [
   {
     slug: 'projetos',
+    image: '',
     number: '1.',
     title: 'Projetos',
     description:
@@ -117,6 +132,7 @@ export const services = [
     subservices: [
       {
         slug: 'pesquisa-e-estrategia',
+        image: '',
         title: '1.1 Pesquisa e Estratégia',
         headline: 'Pesquisa e Estratégia',
         intro:
@@ -162,6 +178,7 @@ export const services = [
       },
       {
         slug: 'design-de-produto',
+        image: '',
         title: '1.2 Design de Produto',
         headline: 'Design de Produto',
         intro: 'Transformamos insights em interfaces que entregam valor real para seus usuários.',
@@ -212,6 +229,7 @@ export const services = [
       },
       {
         slug: 'design-de-servico',
+        image: '',
         title: '1.3 Design de Serviço',
         headline: 'Design de Serviço',
         intro: 'Projetamos experiências completas que vão além das telas.',
@@ -254,6 +272,7 @@ export const services = [
   },
   {
     slug: 'outsourcing',
+    image: '',
     number: '2.',
     title: 'Outsourcing',
     description:
@@ -269,6 +288,7 @@ export const services = [
   },
   {
     slug: 'hunting-e-treinamento',
+    image: '',
     number: '3.',
     title: 'Hunting e Treinamento',
     description:

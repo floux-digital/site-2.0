@@ -6,7 +6,8 @@ import LogoCarousel from '@/components/sections/LogoCarousel'
 import TestimonialCarousel from '@/components/sections/TestimonialCarousel'
 import CaseCarousel from '@/components/sections/CaseCarousel'
 import Accordion from '@/components/sections/ServiceAccordion'
-import { services } from '@/lib/data'
+import FlImage from '@/components/ui/FlImage'
+import { services, cases } from '@/lib/data'
 import { webPageSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
@@ -99,11 +100,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Featured cases — two large image placeholders ── */}
+      {/* ── Featured cases ── */}
       <section className="py-[66px]">
         <div className="flex gap-6 px-4 lg:px-[44px]">
-          <div className="flex-1 aspect-[4/3] rounded-3xl bg-card" />
-          <div className="flex-1 aspect-[4/3] rounded-3xl bg-card hidden lg:block" />
+          <div className="flex-1">
+            <FlImage src={cases[0]?.image || undefined} alt={cases[0]?.title} />
+          </div>
+          <div className="flex-1 hidden lg:block">
+            <FlImage src={cases[1]?.image || undefined} alt={cases[1]?.title} />
+          </div>
         </div>
         <div className="flex items-center px-4 lg:px-[44px] py-[22px] gap-4">
           <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
