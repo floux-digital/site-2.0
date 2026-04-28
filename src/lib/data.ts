@@ -272,12 +272,12 @@ export const services = [
     ],
   },
   {
-    slug: 'outsourcing',
+    slug: 'treinamentos',
     image: '',
     number: '2.',
-    title: 'Outsourcing',
+    title: 'Treinamentos',
     description:
-      'Integramos profissionais que apresentam de bom a excelente nível técnico em áreas do design, e os treinamos com a nossa metodologia focada em negócios, preparando o profissional para uma visão estratégica, incluindo conhecimentos de CX, Growth e Ciclo de Produto e Desenvolvimento.',
+      'Oferecemos treinamentos individuais ou para equipes do nosso método Twin Diamonds, focada em negócios para designers, preparando o profissional para uma visão mais estratégica, incluindo conhecimentos em CX, Growth e Ciclo de Produto e Desenvolvimento.',
     roles: [
       'DESIGN LEAD',
       'PRODUCT DESIGNER',
@@ -288,12 +288,12 @@ export const services = [
     subservices: [],
   },
   {
-    slug: 'hunting-e-treinamento',
+    slug: 'hunting',
     image: '',
     number: '3.',
-    title: 'Hunting e Treinamento',
+    title: 'Hunting',
     description:
-      'Buscamos no mercado o profissional desejado para a sua posição em design, validamos o perfil do candidato de acordo com a sua cultura e opcionalmente, o treinamos com nossa metodologia focada em negócios.',
+      'Buscamos no mercado o profissional desejado para a sua posição em design, validamos o perfil do candidato de acordo com a sua cultura e opcionalmente, o treinamos com nossa metodologia focada em negócios, preparando o profissional para uma visão mais estratégica, incluindo conhecimentos em CX, Growth, Ciclo de Produto e Desenvolvimento.',
     subservices: [],
   },
 ]

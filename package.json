@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "embeddings": "npx tsx scripts/generate-embeddings.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.4",
