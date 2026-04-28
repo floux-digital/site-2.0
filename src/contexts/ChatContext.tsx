@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useRef } from 'react'
 
 export type Message = {
   id: string
@@ -13,10 +13,8 @@ type ChatContextType = {
   isOpen: boolean
   isLoading: boolean
   leadSaved: boolean
-  addMessage: (message: Omit<Message, 'id'>) => void
   setIsOpen: (open: boolean) => void
-  setIsLoading: (loading: boolean) => void
-  setLeadSaved: (saved: boolean) => void
+  sendMessage: (text: string) => Promise<void>
 }
 
 const ChatContext = createContext<ChatContextType | null>(null)
@@ -29,6 +27,13 @@ export function ChatContextProvider({ children }: { children: React.ReactNode })
   const [isLoading, setIsLoading] = useState(false)
   const [leadSaved, setLeadSaved] = useState(false)
 
+  // Ref keeps latest messages accessible inside async sendMessage without stale closure
+  const messagesRef = useRef(messages)
+  messagesRef.current = messages
+
+  const isLoadingRef = useRef(isLoading)
+  isLoadingRef.current = isLoading
+
   function addMessage(message: Omit<Message, 'id'>) {
     setMessages((prev) => [
       ...prev,
@@ -36,9 +41,36 @@ export function ChatContextProvider({ children }: { children: React.ReactNode })
     ])
   }
 
+  async function sendMessage(text: string) {
+    const trimmed = text.trim()
+    if (!trimmed || isLoadingRef.current) return
+
+    addMessage({ role: 'user', content: trimmed })
+    setIsLoading(true)
+
+    try {
+      const history = [
+        ...messagesRef.current,
+        { role: 'user' as const, content: trimmed },
+      ]
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
+      })
+      const data = await res.json()
+      addMessage({ role: 'assistant', content: data.message })
+      if (data.leadSaved) setLeadSaved(true)
+    } catch {
+      addMessage({ role: 'assistant', content: 'Ops, algo deu errado. Tente novamente.' })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <ChatContext.Provider
-      value={{ messages, isOpen, isLoading, leadSaved, addMessage, setIsOpen, setIsLoading, setLeadSaved }}
+      value={{ messages, isOpen, isLoading, leadSaved, setIsOpen, sendMessage }}
     >
       {children}
     </ChatContext.Provider>

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowUpRight } from 'lucide-react'
-import ChatOpenButton from '@/components/chat/ChatOpenButton'
+import FooterInput from '@/components/chat/FooterInput'
 
 const footerLinks = [
   { label: 'Sobre', href: '/sobre' },
@@ -19,27 +18,26 @@ export default function Footer() {
       <div className="flex flex-col lg:flex-row lg:items-start">
         <div className="hidden lg:block w-[335px] shrink-0" aria-hidden />
         <div className="w-full max-w-[900px] flex flex-col gap-[44px]">
-          {/* Heading + CTA inline */}
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6 pb-[44px]">
-            <h2 className="flex-1">
-              Vamos juntos?
+
+          <div className="flex-1">
+            <h2 className="max-w-[300px] lg:max-w-[400px] xl:max-w-[900px]">
+              Tudo bem?
             </h2>
-            <ChatOpenButton className="w-fit inline-flex items-center gap-4 bg-black text-white font-medium text-[18px] h-14 rounded-[28px] pl-6 pr-[10px] py-[6px] border border-black/25 hover:opacity-80 transition-opacity shrink-0 cursor-pointer">
-              <span>Entre em contato</span>
-              <span className="flex items-center justify-center w-10 h-10 rounded-[20px] bg-accent border border-black/25 shrink-0">
-                <ArrowUpRight size={18} strokeWidth={2} className="text-black" />
-              </span>
-            </ChatOpenButton>
+          </div>
+
+          {/* Footer input — opens chat with question pre-sent */}
+          <div className="pb-[44px]">
+            <FooterInput />
           </div>
 
           {/* Nav links */}
           <nav aria-label="Rodapé">
-            <ul className="flex flex-col gap-[22px]">
+            <ul className="flex flex-col gap-[22px] pl-[24px]">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:opacity-60 transition-opacity"
+                    className="font-light text-base leading-8 hover:opacity-60 transition-opacity"
                   >
                     {link.label}
                   </Link>
@@ -56,8 +54,9 @@ export default function Footer() {
               width={100}
               height={25}
             />
-            <span className="text-[18px] font-light text-black">©2003-{year}</span>
+            <span className="font-light text-[18px] text-black">©2023-{year}</span>
           </div>
+
         </div>
       </div>
     </footer>

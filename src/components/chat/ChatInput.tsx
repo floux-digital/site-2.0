@@ -5,7 +5,7 @@ import { ArrowUp } from 'lucide-react'
 import { useChatContext } from '@/contexts/ChatContext'
 
 export default function ChatInput() {
-  const { messages, isLoading, leadSaved, addMessage, setIsLoading, setLeadSaved } = useChatContext()
+  const { sendMessage, isLoading, leadSaved } = useChatContext()
   const [input, setInput] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -18,29 +18,10 @@ export default function ChatInput() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const text = input.trim()
-    if (!text || isLoading) return
-
+    if (!input.trim() || isLoading) return
+    const text = input
     setInput('')
-    addMessage({ role: 'user', content: text })
-    setIsLoading(true)
-
-    try {
-      const history = [...messages, { role: 'user' as const, content: text }]
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history }),
-      })
-
-      const data = await res.json()
-      addMessage({ role: 'assistant', content: data.message })
-      if (data.leadSaved) setLeadSaved(true)
-    } catch {
-      addMessage({ role: 'assistant', content: 'Ops, algo deu errado. Tente novamente.' })
-    } finally {
-      setIsLoading(false)
-    }
+    await sendMessage(text)
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
