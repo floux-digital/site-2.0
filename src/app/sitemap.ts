@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { cases, services } from '@/lib/data'
 
-const BASE = 'https://floux.com.br'
+const BASE = 'https://flouxdigital.com.br'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

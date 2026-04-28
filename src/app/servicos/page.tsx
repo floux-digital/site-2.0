@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title: 'Serviços',
   description:
     'Projetos, Outsourcing e Hunting e Treinamento. Conheça como a Floux pode ajudar o seu negócio com design estratégico.',
-  alternates: { canonical: 'https://floux.com.br/servicos' },
-  openGraph: { url: 'https://floux.com.br/servicos', title: 'Serviços | Floux' },
+  alternates: { canonical: 'https://flouxdigital.com.br/servicos' },
+  openGraph: { url: 'https://flouxdigital.com.br/servicos', title: 'Serviços | Floux' },
 }
 
 export default function ServicosPage() {
@@ -19,17 +19,17 @@ export default function ServicosPage() {
     webPageSchema({
       title: 'Serviços da Floux',
       description: 'Projetos, Outsourcing e Hunting e Treinamento.',
-      url: 'https://floux.com.br/servicos',
+      url: 'https://flouxdigital.com.br/servicos',
       breadcrumbs: [
-        { name: 'Início', url: 'https://floux.com.br' },
-        { name: 'Serviços', url: 'https://floux.com.br/servicos' },
+        { name: 'Início', url: 'https://flouxdigital.com.br' },
+        { name: 'Serviços', url: 'https://flouxdigital.com.br/servicos' },
       ],
     }),
     ...services.map((s) =>
       serviceSchema({
         name: s.title,
         description: s.description,
-        url: `https://floux.com.br/servicos#${s.slug}`,
+        url: `https://flouxdigital.com.br/servicos#${s.slug}`,
       })
     ),
   ]

@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   title: 'Floux — Consultoria de design e tecnologia para negócios',
   description:
     'Criamos experiências que entregam valor para seus clientes e crescimento para o seu negócio. Consultoria de design strategy, UX research e product design.',
-  alternates: { canonical: 'https://floux.com.br' },
+  alternates: { canonical: 'https://flouxdigital.com.br' },
   openGraph: {
-    url: 'https://floux.com.br',
+    url: 'https://flouxdigital.com.br',
     title: 'Floux — Consultoria de design e tecnologia para negócios',
   },
 }
@@ -26,7 +26,7 @@ export default function HomePage() {
     title: 'Floux — Consultoria de design e tecnologia para negócios',
     description:
       'Criamos experiências que entregam valor para seus clientes e crescimento para o seu negócio.',
-    url: 'https://floux.com.br',
+    url: 'https://flouxdigital.com.br',
   })
 
   return (

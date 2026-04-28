@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: 'Sobre',
   description:
     'A Floux foi fundada para suprir a necessidade de times de design orientados ao crescimento do negócio e à entrega de valor para o usuário.',
-  alternates: { canonical: 'https://floux.com.br/sobre' },
-  openGraph: { url: 'https://floux.com.br/sobre', title: 'Sobre | Floux' },
+  alternates: { canonical: 'https://flouxdigital.com.br/sobre' },
+  openGraph: { url: 'https://flouxdigital.com.br/sobre', title: 'Sobre | Floux' },
 }
 
 export default function SobrePage() {
@@ -17,10 +17,10 @@ export default function SobrePage() {
     title: 'Sobre a Floux',
     description:
       'A Floux foi fundada para suprir a necessidade de times de design orientados ao crescimento do negócio.',
-    url: 'https://floux.com.br/sobre',
+    url: 'https://flouxdigital.com.br/sobre',
     breadcrumbs: [
-      { name: 'Início', url: 'https://floux.com.br' },
-      { name: 'Sobre', url: 'https://floux.com.br/sobre' },
+      { name: 'Início', url: 'https://flouxdigital.com.br' },
+      { name: 'Sobre', url: 'https://flouxdigital.com.br/sobre' },
     ],
   })
 

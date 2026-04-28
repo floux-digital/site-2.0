@@ -5,18 +5,18 @@ import { webPageSchema } from '@/lib/schema'
 export const metadata: Metadata = {
   title: 'Política de Privacidade',
   description: 'Aviso de privacidade da Floux Digital — como coletamos, usamos e protegemos seus dados pessoais.',
-  alternates: { canonical: 'https://floux.com.br/privacidade' },
-  openGraph: { url: 'https://floux.com.br/privacidade', title: 'Política de Privacidade | Floux' },
+  alternates: { canonical: 'https://flouxdigital.com.br/privacidade' },
+  openGraph: { url: 'https://flouxdigital.com.br/privacidade', title: 'Política de Privacidade | Floux' },
 }
 
 export default function PrivacidadePage() {
   const jsonLd = webPageSchema({
     title: 'Política de Privacidade — Floux Digital',
     description: 'Aviso de privacidade da Floux Digital.',
-    url: 'https://floux.com.br/privacidade',
+    url: 'https://flouxdigital.com.br/privacidade',
     breadcrumbs: [
-      { name: 'Início', url: 'https://floux.com.br' },
-      { name: 'Privacidade', url: 'https://floux.com.br/privacidade' },
+      { name: 'Início', url: 'https://flouxdigital.com.br' },
+      { name: 'Privacidade', url: 'https://flouxdigital.com.br/privacidade' },
     ],
   })
 

@@ -49,7 +49,7 @@ export default function Footer() {
           {/* Logo + copyright */}
           <div className="flex items-center gap-6 pt-[88px]">
             <Image
-              src="/floux-black.svg"
+              src="/floux-by-jeff-bk.svg"
               alt="Floux"
               width={100}
               height={25}

@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   title: 'Cases',
   description:
     'Conheça alguns dos cases mais inspiradores em que algum de nós tivemos a oportunidade de liderar ou fazer parte.',
-  alternates: { canonical: 'https://floux.com.br/cases' },
-  openGraph: { url: 'https://floux.com.br/cases', title: 'Cases | Floux' },
+  alternates: { canonical: 'https://flouxdigital.com.br/cases' },
+  openGraph: { url: 'https://flouxdigital.com.br/cases', title: 'Cases | Floux' },
 }
 
 export default function CasesPage() {
   const jsonLd = webPageSchema({
     title: 'Cases da Floux',
     description: 'Foi alguém de nós quem fez.',
-    url: 'https://floux.com.br/cases',
+    url: 'https://flouxdigital.com.br/cases',
     breadcrumbs: [
-      { name: 'Início', url: 'https://floux.com.br' },
-      { name: 'Cases', url: 'https://floux.com.br/cases' },
+      { name: 'Início', url: 'https://flouxdigital.com.br' },
+      { name: 'Cases', url: 'https://flouxdigital.com.br/cases' },
     ],
   })
 

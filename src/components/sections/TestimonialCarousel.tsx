@@ -23,7 +23,7 @@ export default function TestimonialCarousel() {
         {testimonials.map((t, i) => (
           <div
             key={i}
-            className="shrink-0 w-[320px] lg:w-[460px] border border-black/25 rounded-3xl px-6 py-[22px] flex flex-col gap-[44px]"
+            className="shrink-0 w-[320px] lg:w-[460px] border border-black/25 rounded-3xl px-[44px] py-[44px] flex flex-col gap-[44px]"
           >
             {/* Logo + review text */}
             <div className="flex-1 flex-col gap-4">

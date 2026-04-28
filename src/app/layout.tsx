@@ -26,7 +26,7 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://floux.com.br'),
+  metadataBase: new URL('https://flouxdigital.com.br'),
   title: {
     default: 'Floux — Consultoria de design e tecnologia para negócios',
     template: '%s | Floux',
@@ -44,12 +44,12 @@ export const metadata: Metadata = {
     'crescimento de negócios',
     'design São Paulo',
   ],
-  authors: [{ name: 'Floux', url: 'https://floux.com.br' }],
+  authors: [{ name: 'Floux', url: 'https://flouxdigital.com.br' }],
   creator: 'Floux',
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://floux.com.br',
+    url: 'https://flouxdigital.com.br',
     siteName: 'Floux',
     title: 'Floux — Consultoria de design e tecnologia para negócios',
     description:
@@ -81,8 +81,8 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://floux.com.br',
-    languages: { 'pt-BR': 'https://floux.com.br' },
+    canonical: 'https://flouxdigital.com.br',
+    languages: { 'pt-BR': 'https://flouxdigital.com.br' },
   },
 }
 

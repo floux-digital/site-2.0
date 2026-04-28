@@ -21,7 +21,7 @@ export default function DesktopSidebar() {
     >
       <Link href="/" aria-label="Floux — página inicial" className="inline-block">
         <Image
-          src="/floux-black.svg"
+          src="/floux-by-jeff-bk.svg"
           alt="Floux"
           width={160}
           height={40}

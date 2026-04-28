@@ -20,9 +20,9 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.resume,
-    alternates: { canonical: `https://floux.com.br/artigos/${slug}` },
+    alternates: { canonical: `https://flouxdigital.com.br/artigos/${slug}` },
     openGraph: {
-      url: `https://floux.com.br/artigos/${slug}`,
+      url: `https://flouxdigital.com.br/artigos/${slug}`,
       title: `${article.title} | Floux`,
       description: article.resume,
       ...(article.image ? { images: [{ url: article.image }] } : {}),
@@ -42,11 +42,11 @@ export default async function ArtigoPage({
   const jsonLd = webPageSchema({
     title: `${article.title} — Floux`,
     description: article.resume,
-    url: `https://floux.com.br/artigos/${slug}`,
+    url: `https://flouxdigital.com.br/artigos/${slug}`,
     breadcrumbs: [
-      { name: 'Início', url: 'https://floux.com.br' },
-      { name: 'Artigos', url: 'https://floux.com.br/artigos' },
-      { name: article.title, url: `https://floux.com.br/artigos/${slug}` },
+      { name: 'Início', url: 'https://flouxdigital.com.br' },
+      { name: 'Artigos', url: 'https://flouxdigital.com.br/artigos' },
+      { name: article.title, url: `https://flouxdigital.com.br/artigos/${slug}` },
     ],
   })
 

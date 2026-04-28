@@ -22,9 +22,9 @@ export async function generateMetadata({
   return {
     title: c.title,
     description: c.description,
-    alternates: { canonical: `https://floux.com.br/cases/${slug}` },
+    alternates: { canonical: `https://flouxdigital.com.br/cases/${slug}` },
     openGraph: {
-      url: `https://floux.com.br/cases/${slug}`,
+      url: `https://flouxdigital.com.br/cases/${slug}`,
       title: `${c.title} | Floux`,
     },
   }
@@ -44,11 +44,11 @@ export default async function CaseDetailPage({
   const jsonLd = webPageSchema({
     title: c.title,
     description: c.description,
-    url: `https://floux.com.br/cases/${slug}`,
+    url: `https://flouxdigital.com.br/cases/${slug}`,
     breadcrumbs: [
-      { name: 'Início', url: 'https://floux.com.br' },
-      { name: 'Cases', url: 'https://floux.com.br/cases' },
-      { name: c.title, url: `https://floux.com.br/cases/${slug}` },
+      { name: 'Início', url: 'https://flouxdigital.com.br' },
+      { name: 'Cases', url: 'https://flouxdigital.com.br/cases' },
+      { name: c.title, url: `https://flouxdigital.com.br/cases/${slug}` },
     ],
   })
 

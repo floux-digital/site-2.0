@@ -52,7 +52,7 @@ export default function MobileNav() {
       {/* Fixed top bar — mobile only */}
       <header className="lg:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between padding-x py-[22px] bg-white border-b border-black/5">
         <Link href="/" aria-label="Floux — página inicial" className="shrink-0">
-          <Image src="/floux-black.svg" alt="Floux" width={110} height={40} priority />
+          <Image src="/floux-by-jeff-bk.svg" alt="Floux" width={110} height={40} priority />
         </Link>
         <div className="flex items-center gap-3">
           <button

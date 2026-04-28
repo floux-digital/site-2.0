@@ -24,9 +24,9 @@ export async function generateMetadata({
   return {
     title: sub.headline,
     description: sub.intro,
-    alternates: { canonical: `https://floux.com.br/servicos/${slug}` },
+    alternates: { canonical: `https://flouxdigital.com.br/servicos/${slug}` },
     openGraph: {
-      url: `https://floux.com.br/servicos/${slug}`,
+      url: `https://flouxdigital.com.br/servicos/${slug}`,
       title: `${sub.headline} | Floux`,
     },
   }
@@ -58,17 +58,17 @@ export default async function ServiceDetailPage({
     webPageSchema({
       title: sub.headline,
       description: sub.intro,
-      url: `https://floux.com.br/servicos/${slug}`,
+      url: `https://flouxdigital.com.br/servicos/${slug}`,
       breadcrumbs: [
-        { name: 'Início', url: 'https://floux.com.br' },
-        { name: 'Serviços', url: 'https://floux.com.br/servicos' },
-        { name: sub.headline, url: `https://floux.com.br/servicos/${slug}` },
+        { name: 'Início', url: 'https://flouxdigital.com.br' },
+        { name: 'Serviços', url: 'https://flouxdigital.com.br/servicos' },
+        { name: sub.headline, url: `https://flouxdigital.com.br/servicos/${slug}` },
       ],
     }),
     serviceSchema({
       name: sub.headline,
       description: sub.body,
-      url: `https://floux.com.br/servicos/${slug}`,
+      url: `https://flouxdigital.com.br/servicos/${slug}`,
     }),
   ]
 

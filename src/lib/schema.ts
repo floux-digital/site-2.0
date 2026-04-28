@@ -3,8 +3,8 @@ export function organizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Floux',
-    url: 'https://floux.com.br',
-    logo: 'https://floux.com.br/floux-black.svg',
+    url: 'https://flouxdigital.com.br',
+    logo: 'https://flouxdigital.com.br/floux-by-jeff-bk.svg',
     description:
       'Consultoria de design e tecnologia para negócios. Criamos experiências que entregam valor para seus clientes e crescimento para o seu negócio.',
     foundingDate: '2003',
@@ -36,7 +36,7 @@ export function webSiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Floux',
-    url: 'https://floux.com.br',
+    url: 'https://flouxdigital.com.br',
     description: 'Consultoria de design e tecnologia para negócios.',
     inLanguage: 'pt-BR',
   }
@@ -83,7 +83,7 @@ export function serviceSchema(params: {
     provider: {
       '@type': 'Organization',
       name: 'Floux',
-      url: 'https://floux.com.br',
+      url: 'https://flouxdigital.com.br',
     },
     areaServed: {
       '@type': 'Country',
@@ -111,7 +111,7 @@ export function articleSchema(params: {
       name: 'Floux',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://floux.com.br/floux-black.svg',
+        url: 'https://flouxdigital.com.br/floux-by-jeff-bk.svg',
       },
     },
     inLanguage: 'pt-BR',

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/'],
       },
     ],
-    sitemap: 'https://floux.com.br/sitemap.xml',
-    host: 'https://floux.com.br',
+    sitemap: 'https://flouxdigital.com.br/sitemap.xml',
+    host: 'https://flouxdigital.com.br',
   }
 }

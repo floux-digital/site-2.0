@@ -38,4 +38,4 @@ Nosso processo é colaborativo: trabalhamos junto com o time do cliente, não ap
 
 Para iniciar uma conversa, basta deixar seu nome e um contato (e-mail ou telefone). Nossa equipe retorna em até 1 dia útil.
 
-Se quiser falar diretamente: contato@floux.com.br
+Se quiser falar diretamente: contato@flouxdigital.com.br

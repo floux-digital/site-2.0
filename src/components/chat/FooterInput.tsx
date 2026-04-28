@@ -19,7 +19,7 @@ export default function FooterInput() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="bg-white border-4 border-black rounded-[44px] pl-8 pr-[10px] py-[10px] flex items-center gap-3">
+      <div className="bg-white border-4 border-black rounded-[44px] pl-8 pr-[4px] py-[4px] flex items-center gap-3">
         <input
           type="text"
           value={input}

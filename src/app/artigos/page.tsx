@@ -8,8 +8,8 @@ import { webPageSchema } from '@/lib/schema'
 export const metadata: Metadata = {
   title: 'Artigos',
   description: 'Reflexões sobre design, produto e tecnologia para negócios que querem crescer com consistência.',
-  alternates: { canonical: 'https://floux.com.br/artigos' },
-  openGraph: { url: 'https://floux.com.br/artigos', title: 'Artigos | Floux' },
+  alternates: { canonical: 'https://flouxdigital.com.br/artigos' },
+  openGraph: { url: 'https://flouxdigital.com.br/artigos', title: 'Artigos | Floux' },
 }
 
 export default function ArtigosPage() {
@@ -18,10 +18,10 @@ export default function ArtigosPage() {
   const jsonLd = webPageSchema({
     title: 'Artigos — Floux',
     description: 'Reflexões sobre design, produto e tecnologia para negócios que querem crescer com consistência.',
-    url: 'https://floux.com.br/artigos',
+    url: 'https://flouxdigital.com.br/artigos',
     breadcrumbs: [
-      { name: 'Início', url: 'https://floux.com.br' },
-      { name: 'Artigos', url: 'https://floux.com.br/artigos' },
+      { name: 'Início', url: 'https://flouxdigital.com.br' },
+      { name: 'Artigos', url: 'https://flouxdigital.com.br/artigos' },
     ],
   })
 
