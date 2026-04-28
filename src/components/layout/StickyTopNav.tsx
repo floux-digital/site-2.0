@@ -5,11 +5,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { navLinks } from '@/lib/data'
-
-const CONTACT_HREF = 'mailto:contato@floux.com.br'
+import { useChatContext } from '@/contexts/ChatContext'
+import ChatOpenButton from '@/components/chat/ChatOpenButton'
 
 export default function StickyTopNav() {
   const pathname = usePathname()
+  const { setIsOpen: openChat } = useChatContext()
   const [visible, setVisible] = useState(false)
   const sidebarInView = useRef(true)
   const lastY = useRef(0)
@@ -71,7 +72,7 @@ export default function StickyTopNav() {
       }`}
     >
       {/* Pill: black, rounded-[64px], 30px margin each side, 27px from top, 82px tall */}
-      <div className="mx-[30px] mt-[27px] bg-black rounded-[64px] h-[82px] flex items-center padding-x gap-4">
+      <div className="mx-[30px] mt-[27px] bg-black rounded-[64px] h-[82px] flex items-center pr-[24px] pl-[32px] gap-4">
         {/* Logo — white version on black background */}
         <Link href="/" aria-label="Floux" className="shrink-0">
           <Image src="/floux-white.svg" alt="Floux" width={100} height={41} />
@@ -96,12 +97,11 @@ export default function StickyTopNav() {
         </nav>
 
         {/* CTA button — green, right side */}
-        <Link
-          href={CONTACT_HREF}
-          className="shrink-0 bg-accent border border-white/20 text-black !text-[14px] font-medium padding-x py-2 rounded-full hover:opacity-80 transition-opacity"
+
+        <ChatOpenButton className="shrink-0 bg-accent border border-white/20 text-black !text-[14px] font-medium padding-x py-2 rounded-full hover:opacity-80 transition-opacity cursor-pointer"
         >
-          Entre em contato
-        </Link>
+          <span>Entre em contato</span>
+        </ChatOpenButton>
       </div>
     </div>
   )

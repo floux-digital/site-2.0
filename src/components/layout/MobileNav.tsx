@@ -6,14 +6,14 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '@/lib/data'
-
-const CONTACT_HREF = 'mailto:contato@floux.com.br'
+import { useChatContext } from '@/contexts/ChatContext'
 
 export default function MobileNav() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [rendered, setRendered] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const { setIsOpen: openChat } = useChatContext()
 
   const openMenu = useCallback(() => {
     if (closeTimer.current) {
@@ -55,12 +55,13 @@ export default function MobileNav() {
           <Image src="/floux-black.svg" alt="Floux" width={110} height={40} priority />
         </Link>
         <div className="flex items-center gap-3">
-          <Link
-            href={CONTACT_HREF}
-            className="bg-accent border border-black/20 text-black text-[13px] font-medium padding-x py-1.5 rounded-full"
+          <button
+            type="button"
+            onClick={() => openChat(true)}
+            className="bg-accent border border-black/20 text-black text-[13px] font-medium padding-x py-1.5 rounded-full cursor-pointer"
           >
             Contato
-          </Link>
+          </button>
           <button
             type="button"
             onClick={openMenu}
@@ -123,12 +124,13 @@ export default function MobileNav() {
 
           {/* CTA */}
           <div className="px-[22px] pb-[22px] shrink-0">
-            <a
-              href={CONTACT_HREF}
-              className="block w-full text-center bg-accent border border-black/25 text-black text-[16px] font-medium py-[10px] rounded-[22px] transition-opacity hover:opacity-80"
+            <button
+              type="button"
+              onClick={() => { closeMenu(); setTimeout(() => openChat(true), 320) }}
+              className="block w-full text-center bg-accent border border-black/25 text-black text-[16px] font-medium py-[10px] rounded-[22px] transition-opacity hover:opacity-80 cursor-pointer"
             >
               Entre em contato
-            </a>
+            </button>
           </div>
         </div>
       )}

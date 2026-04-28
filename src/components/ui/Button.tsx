@@ -29,8 +29,8 @@ export default function Button({
     primary:
       'bg-black text-white h-14 rounded-[28px] pl-6 pr-[10px] py-[6px] border border-black/25',
     accent:
-      'bg-accent text-black border border-black/20 px-5 py-2.5 text-base rounded-full',
-    ghost: 'bg-transparent text-black px-5 py-2.5 text-base rounded-full',
+      'bg-accent text-black border border-black/20 padding-x py-2.5 text-base rounded-full',
+    ghost: 'bg-transparent text-black padding-x py-2.5 text-base rounded-full',
   }
 
   const classes = `${base} ${variants[variant]} ${className}`
