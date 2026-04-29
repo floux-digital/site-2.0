@@ -2,40 +2,27 @@
 
 ## O que é a Floux
 
-A Floux é uma consultoria especializada em design e tecnologia para negócios. Ajudamos empresas a criar experiências digitais que geram valor real: produtos mais fáceis de usar, interfaces que convertem e sistemas que escalam.
+A Floux é uma consultoria brasileira de design e tecnologia especializada em experiência do usuário, design de produto e design de serviço. Fundada por Jeff Monteiro, a Floux atua com empresas que querem crescer a partir da entrega de valor real para seus clientes.
 
-Trabalhamos com negócios que querem evoluir sua presença digital de forma estratégica, unindo design de qualidade com execução técnica sólida.
+A proposta central da Floux é unir estratégia, pesquisa e design para transformar problemas de negócio em soluções que os clientes realmente querem usar.
 
-## O que fazemos
+## Missão e Posicionamento
 
-### Design de Produto
-Criamos e refinamos produtos digitais — aplicativos, plataformas e sistemas — com foco em usabilidade e experiência do usuário. Desde pesquisa com usuários até protótipos validados e interfaces prontas para desenvolvimento.
+A Floux acredita que produtos e serviços de sucesso nascem de um entendimento profundo do usuário e do negócio. Sua abordagem é orientada a dados: decisões são tomadas com base em pesquisa, métricas e hipóteses validadas — não em achismos.
 
-### Design de Interface (UI)
-Desenvolvemos interfaces visuais coerentes, acessíveis e alinhadas à identidade da marca. Trabalhamos com design systems que garantem consistência em toda a jornada do usuário.
+O diferencial da Floux está na metodologia própria chamada Twin Diamonds, que combina descoberta estratégica com execução de design de forma estruturada e mensurável.
 
-### Consultoria Estratégica de Design
-Ajudamos líderes e times a tomar melhores decisões de produto. Mapeamos problemas, identificamos oportunidades e definimos prioridades com base em dados e nas necessidades reais dos usuários.
 
-### Desenvolvimento Front-end
-Transformamos designs em código de qualidade. Desenvolvemos interfaces web modernas com foco em performance, acessibilidade e manutenibilidade.
+## Dados de Contato
 
-## Para quem é a Floux
+- Site: https://flouxdigital.com.br
+- E-mail: contato@flouxdigital.com.br
+- Telefone: 48 99630-6956
+- Instagram: https://instagram.com/floux.digital
+- LinkedIn: https://www.linkedin.com/company/floux-digital/
 
-A Floux é ideal para:
-- Startups que precisam de um produto bem desenhado para crescer
-- Empresas em transformação digital que querem melhorar suas interfaces internas ou externas
-- Times de produto que precisam de reforço em design ou front-end
-- Negócios que querem criar ou evoluir um design system
+## Informações que não devem ser divulgadas
 
-## Como trabalhamos
-
-Trabalhamos em projetos com escopo definido ou em modelo de parceria contínua (retainer). Cada engajamento começa com um diagnóstico para entender o problema real antes de propor soluções.
-
-Nosso processo é colaborativo: trabalhamos junto com o time do cliente, não apenas para ele.
-
-## Contato e próximos passos
-
-Para iniciar uma conversa, basta deixar seu nome e um contato (e-mail ou telefone). Nossa equipe retorna em até 1 dia útil.
-
-Se quiser falar diretamente: contato@flouxdigital.com.br
+- Endereço físico do escritório
+- CNPJ
+- Número de funcionários

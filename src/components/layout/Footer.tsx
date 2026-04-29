@@ -10,6 +10,8 @@ const footerLinks = [
   { label: 'Privacidade', href: '/privacidade' },
 ]
 
+const footerChatInitializer = "Tudo bem?";
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -21,13 +23,13 @@ export default function Footer() {
 
           <div className="flex-1">
             <h2 className="max-w-[300px] lg:max-w-[400px] xl:max-w-[900px]">
-              Tudo bem?
+              {footerChatInitializer}
             </h2>
           </div>
 
           {/* Footer input — opens chat with question pre-sent */}
           <div className="pb-[44px]">
-            <FooterInput />
+            <FooterInput initializer={footerChatInitializer} />
           </div>
 
           {/* Nav links */}

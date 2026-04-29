@@ -34,7 +34,7 @@ export default function ChatSheet() {
           className="fixed bottom-0 left-0 right-0 z-50 flex flex-col bg-white rounded-tl-[24px] rounded-tr-[24px] outline-none"
           style={{ height: '85dvh', maxHeight: '85dvh' }}
         >
-          <Drawer.Title className="sr-only">Chat com a Floux</Drawer.Title>
+          <Drawer.Title className="sr-only">Floux by Jeff Monteiro</Drawer.Title>
 
           <div className="w-full justify-center mx-auto flex flex-col flex-1 overflow-hidden">
             {/* Drag handle */}
@@ -46,7 +46,6 @@ export default function ChatSheet() {
             <div className="grid grid-cols-[40px_1fr_40px] padding-x py-3">
               <div />
               <p className="text-base font-semibold leading-8 text-center text-black">
-                Assistente IA Floux
               </p>
               <div className="flex justify-end">
                 <button

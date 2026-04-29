@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 import { useChatContext } from '@/contexts/ChatContext'
 
-export default function FooterInput() {
-  const { sendMessage, setIsOpen, isLoading } = useChatContext()
+export default function FooterInput({ initializer }: { initializer?: string }) {
+  const { sendMessage, setIsOpen, setInitialMessage, isLoading } = useChatContext()
   const [input, setInput] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
@@ -13,8 +13,9 @@ export default function FooterInput() {
     if (!input.trim() || isLoading) return
     const text = input
     setInput('')
+    if (initializer) setInitialMessage(initializer)
     setIsOpen(true)
-    await sendMessage(text)
+    await sendMessage(text, initializer)
   }
 
   return (

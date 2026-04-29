@@ -20,13 +20,14 @@ export default function ChatMessages() {
   const isInitialOnly = messages.length === 1 && messages[0].id === 'initial'
 
   return (
-    <div className={`flex flex-col h-full overflow-y-auto padding-x pt-6 pb-4 space-y-3 max-w-[674px] ${isInitialOnly ? 'justify-center' : 'justify-end'}`}>
+    <div className={`flex flex-col h-full overflow-y-auto padding-x pt-6 pb-4 space-y-3 w-full max-w-[674px] ${isInitialOnly ? 'justify-center' : ''}`}>
+      {!isInitialOnly && <div className="flex-1 min-h-0" />}
       {messages.map((msg) => {
         if (msg.id === 'initial') {
           return (
             <p
               key={msg.id}
-              className="text-black mb-4"
+              className={`text-black ${isInitialOnly ? 'mb-4' : 'mb-6'}`}
               style={{
                 fontSize: '36px',
                 lineHeight: '44px',

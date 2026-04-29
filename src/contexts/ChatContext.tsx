@@ -14,7 +14,8 @@ type ChatContextType = {
   isLoading: boolean
   leadSaved: boolean
   setIsOpen: (open: boolean) => void
-  sendMessage: (text: string) => Promise<void>
+  sendMessage: (text: string, initialMessageOverride?: string) => Promise<void>
+  setInitialMessage: (content: string) => void
 }
 
 const ChatContext = createContext<ChatContextType | null>(null)
@@ -34,6 +35,12 @@ export function ChatContextProvider({ children }: { children: React.ReactNode })
   const isLoadingRef = useRef(isLoading)
   isLoadingRef.current = isLoading
 
+  function setInitialMessage(content: string) {
+    setMessages((prev) =>
+      prev.map((m) => (m.id === 'initial' ? { ...m, content } : m))
+    )
+  }
+
   function addMessage(message: Omit<Message, 'id'>) {
     setMessages((prev) => [
       ...prev,
@@ -41,7 +48,7 @@ export function ChatContextProvider({ children }: { children: React.ReactNode })
     ])
   }
 
-  async function sendMessage(text: string) {
+  async function sendMessage(text: string, initialMessageOverride?: string) {
     const trimmed = text.trim()
     if (!trimmed || isLoadingRef.current) return
 
@@ -49,8 +56,11 @@ export function ChatContextProvider({ children }: { children: React.ReactNode })
     setIsLoading(true)
 
     try {
+      const baseMessages = initialMessageOverride
+        ? messagesRef.current.map((m) => m.id === 'initial' ? { ...m, content: initialMessageOverride } : m)
+        : messagesRef.current
       const history = [
-        ...messagesRef.current,
+        ...baseMessages,
         { role: 'user' as const, content: trimmed },
       ]
       const res = await fetch('/api/chat', {
@@ -70,7 +80,7 @@ export function ChatContextProvider({ children }: { children: React.ReactNode })
 
   return (
     <ChatContext.Provider
-      value={{ messages, isOpen, isLoading, leadSaved, setIsOpen, sendMessage }}
+      value={{ messages, isOpen, isLoading, leadSaved, setIsOpen, sendMessage, setInitialMessage }}
     >
       {children}
     </ChatContext.Provider>
