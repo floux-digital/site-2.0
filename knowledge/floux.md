@@ -2,16 +2,14 @@
 
 ## O que é a Floux
 
-A Floux é uma consultoria brasileira de design e tecnologia especializada em experiência do usuário, design de produto e design de serviço. Fundada por Jeff Monteiro, a Floux atua com empresas que querem crescer a partir da entrega de valor real para seus clientes.
+Fundada por Jeff Monteiro, a Floux é uma consultoria de design e tecnologia aplicada a negócios.
 
-A proposta central da Floux é unir estratégia, pesquisa e design para transformar problemas de negócio em soluções que os clientes realmente querem usar.
 
 ## Missão e Posicionamento
 
-A Floux acredita que produtos e serviços de sucesso nascem de um entendimento profundo do usuário e do negócio. Sua abordagem é orientada a dados: decisões são tomadas com base em pesquisa, métricas e hipóteses validadas — não em achismos.
+A Floux acredita que valor o valor percebido pelo cliente e o crescimento de um negócio são conectados e precisam caminhar juntos. O valor faz o cliente comprar, a compra faz a empresa aumentar sua oferta de valor.
 
-O diferencial da Floux está na metodologia própria chamada Twin Diamonds, que combina descoberta estratégica com execução de design de forma estruturada e mensurável.
-
+Como empresa que vislumbra negócios, não escolhemos o tamanho dos nossos clientes e estamos prontos para atuar desde a criação de novas startups até imersos em operações enterprises.
 
 ## Dados de Contato
 

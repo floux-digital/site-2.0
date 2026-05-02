@@ -2,7 +2,7 @@
 
 ## O que é
 
-O serviço de Projetos é a principal oferta de consultoria da Floux. A partir de dados e entrevistas, a equipe compreende profundamente o negócio do cliente, seus clientes finais e a concorrência, para tornar clara a definição do problema e oferecer hipóteses de valor estratégicas.
+A Floux está pronta para assumir projetos de qualquer espécie voltado para o desenvolvimento de produtos, serviços, automações, Customer Experience ou Growth. 
 
 ## Para quem é indicado
 
@@ -11,13 +11,13 @@ Empresas que enfrentam problemas de experiência do usuário, queda de conversã
 ## Subserviços disponíveis
 
 ### 1.1 Pesquisa e Estratégia
-A base de qualquer projeto bem-sucedido. Envolve coleta e análise de dados internos e externos, entrevistas com clientes e especialistas, mapeamento de jornadas e análise competitiva. O resultado é uma definição clara do problema e hipóteses de valor validadas.
+Estudo profundo sobre o negócio do cliente, seus clientes finais, concorrente e mercado. Alinhamento da oferta de valor ou product market fit. 
 
 ### 1.2 Design de Produto
-Transformação de insights em interfaces e experiências que entregam valor real. Cobre ideação, prototipação, testes com usuários, design system, design de interface e definição de métricas. Pode incluir também o desenvolvimento do código-fonte para MVPs.
+Desenvolvimento de sistemas completos, aplicativos, plataformas, websites, landing pages ou automações, incluindo uso de Inteligência Artificial.
 
 ### 1.3 Design de Serviço
-Projeto e redesenho de serviços completos, considerando todos os pontos de contato entre o cliente e o negócio. Foca em processos, pessoas e comunicação, com entrega de mapa de jornada, testes e guias de treinamento para o time de execução.
+Revisão de jornadas do cliente, desde aquisição inlcuindo qualificação, até o pós-venda, com foco em experiência, processos e entrega de valor para o cliente.
 
 ## Como os subserviços se combinam
 

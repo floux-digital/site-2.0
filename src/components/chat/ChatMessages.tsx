@@ -20,7 +20,7 @@ export default function ChatMessages() {
   const isInitialOnly = messages.length === 1 && messages[0].id === 'initial'
 
   return (
-    <div className={`flex flex-col h-full overflow-y-auto padding-x pt-6 pb-4 space-y-3 w-full max-w-[674px] ${isInitialOnly ? 'justify-center' : ''}`}>
+    <div className={`flex flex-col h-full overflow-y-auto padding-x overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pt-6 pb-4 space-y-3 w-full max-w-[674px] ${isInitialOnly ? 'justify-center' : ''}`}>
       {!isInitialOnly && <div className="flex-1 min-h-0" />}
       {messages.map((msg) => {
         if (msg.id === 'initial') {

@@ -5,12 +5,37 @@ type AttioHeaders = {
   'Content-Type': string
 }
 
+export type LeadData = {
+  nome: string
+  email?: string
+  telefone?: string
+  empresa?: string
+  tamanho_time?: string
+  interesse?: string
+  urgencia?: string
+  resumo_conversa: string
+}
+
 function headers(): AttioHeaders {
   return {
     Authorization: `Bearer ${process.env.ATTIO_API_KEY}`,
     'Content-Type': 'application/json',
   }
 }
+
+async function addToVendasList(recordId: string, listId: string, objectSlug: string = 'people') {
+  await attioFetch(`/lists/${listId}/entries`, {
+    method: 'POST',
+    body: JSON.stringify({
+      data: {
+        parent_object: objectSlug,
+        parent_record_id: recordId,
+        entry_values: {},
+      },
+    }),
+  })
+}
+
 
 async function attioFetch(path: string, options: RequestInit = {}) {
   const res = await fetch(`${ATTIO_BASE}${path}`, {
@@ -34,37 +59,56 @@ async function getVendasListId(): Promise<string> {
   return list.id.list_id
 }
 
+function parseName(name: string) {
+  const parts = name.trim().split(/\s+/)
+  const first_name = parts[0] || ''
+  const last_name = parts.length > 1 ? parts.slice(1).join(' ') : '-'
+  return {
+    first_name,
+    last_name,
+    full_name: name,
+  }
+}
+
 async function findOrCreatePerson(params: {
   name: string
   email?: string
   phone?: string
+  companyId?: string
 }): Promise<string> {
-  const identifier = params.email || params.phone
-  if (!identifier) throw new Error('Email ou telefone é necessário')
+  if (!params.email && !params.phone) {
+    throw new Error('Email ou telefone é necessário')
+  }
 
+  // Use Assert (upsert) em vez de query+create — evita race conditions
+  // e respeita a unicidade de email_addresses
   if (params.email) {
-    const query = await attioFetch('/objects/people/records/query', {
-      method: 'POST',
-      body: JSON.stringify({
-        filter: { email_addresses: { email_address: { '$eq': params.email } } },
-        limit: 1,
-      }),
-    })
-    if (query.data?.length > 0) {
-      return query.data[0].id.record_id
+    const values: Record<string, unknown> = {
+      name: [parseName(params.name)],
+      email_addresses: [{ email_address: params.email }],
     }
+    if (params.phone) {
+      values.phone_numbers = [{ original_phone_number: params.phone }]
+    }
+    if (params.companyId) {
+      values.company = [{ target_object: 'companies', target_record_id: params.companyId }]
+    }
+
+    const asserted = await attioFetch(
+      '/objects/people/records?matching_attribute=email_addresses',
+      { method: 'PUT', body: JSON.stringify({ data: { values } }) }
+    )
+    return asserted.data.id.record_id
   }
 
-  const values: Record<string, unknown[]> = {
-    name: [{ full_name: params.name }],
+  // Sem email: criar direto
+  const values: Record<string, unknown> = {
+    name: [parseName(params.name)],
+    phone_numbers: [{ original_phone_number: params.phone! }],
   }
-  if (params.email) {
-    values.email_addresses = [{ email_address: params.email }]
+  if (params.companyId) {
+    values.company = [{ target_object: 'companies', target_record_id: params.companyId }]
   }
-  if (params.phone) {
-    values.phone_numbers = [{ phone_number: params.phone }]
-  }
-
   const created = await attioFetch('/objects/people/records', {
     method: 'POST',
     body: JSON.stringify({ data: { values } }),
@@ -73,19 +117,17 @@ async function findOrCreatePerson(params: {
 }
 
 async function findOrCreateCompany(name: string): Promise<string | null> {
+  // 'name' em companies é Text simples — passe string
   try {
     const query = await attioFetch('/objects/companies/records/query', {
       method: 'POST',
-      body: JSON.stringify({
-        filter: { name: { '$eq': name } },
-        limit: 1,
-      }),
+      body: JSON.stringify({ filter: { name: { '$eq': name } }, limit: 1 }),
     })
     if (query.data?.length > 0) return query.data[0].id.record_id
 
     const created = await attioFetch('/objects/companies/records', {
       method: 'POST',
-      body: JSON.stringify({ data: { values: { name: [{ value: name }] } } }),
+      body: JSON.stringify({ data: { values: { name } } }),
     })
     return created.data.id.record_id
   } catch {
@@ -93,62 +135,31 @@ async function findOrCreateCompany(name: string): Promise<string | null> {
   }
 }
 
-async function addToVendasList(personId: string, listId: string) {
-  await attioFetch(`/lists/${listId}/entries`, {
-    method: 'POST',
-    body: JSON.stringify({
-      data: {
-        record_reference: {
-          target_object: 'people',
-          target_record_id: personId,
-        },
-        values: {},
-      },
-    }),
-  })
-}
-
-async function createNote(personId: string, summary: string) {
-  await attioFetch('/notes', {
-    method: 'POST',
-    body: JSON.stringify({
-      data: {
-        parent_object: 'people',
-        parent_record_id: personId,
-        title: 'Conversa no site Floux',
-        content_plaintext: summary,
-      },
-    }),
-  })
-}
-
-export type LeadData = {
-  nome: string
-  email?: string
-  telefone?: string
-  empresa?: string
-  tamanho_time?: string
-  interesse?: string
-  urgencia?: string
-  resumo_conversa: string
-}
-
 export async function saveLead(data: LeadData): Promise<void> {
-  const [personId, listId] = await Promise.all([
-    findOrCreatePerson({ name: data.nome, email: data.email, phone: data.telefone }),
+  // 1) Resolva company PRIMEIRO para vincular à pessoa
+  const [companyId, listId] = await Promise.all([
+    data.empresa ? findOrCreateCompany(data.empresa) : Promise.resolve(null),
     getVendasListId(),
   ])
 
-  const tasks: Promise<unknown>[] = [
-    addToVendasList(personId, listId),
+  // 2) Crie/atualize pessoa já com a company vinculada
+  const personId = await findOrCreatePerson({
+    name: data.nome,
+    email: data.email,
+    phone: data.telefone,
+    companyId: companyId ?? undefined,
+  })
+
+  // 3) Lista + nota em paralelo
+  // Se a lista "Vendas" for de companies (comum em CRMs), adicione a company. 
+  // Se não tiver company ou a lista for de pessoas, o addToVendasList lidará com o ID correto.
+  const targetId = companyId || personId
+  const targetObject = companyId ? 'companies' : 'people'
+
+  await Promise.all([
+    addToVendasList(targetId, listId, targetObject),
     createNote(personId, buildNoteContent(data)),
-  ]
-
-  if (data.empresa) {
-    tasks.push(findOrCreateCompany(data.empresa))
-  }
-
-  await Promise.all(tasks)
+  ])
 }
 
 function buildNoteContent(data: LeadData): string {
@@ -166,4 +177,19 @@ function buildNoteContent(data: LeadData): string {
   ].filter((l) => l !== null)
 
   return lines.join('\n')
+}
+
+async function createNote(personId: string, summary: string) {
+  await attioFetch('/notes', {
+    method: 'POST',
+    body: JSON.stringify({
+      data: {
+        parent_object: 'people',
+        parent_record_id: personId,
+        title: 'Conversa no site Floux',
+        format: 'plaintext',
+        content: summary,
+      },
+    }),
+  })
 }
