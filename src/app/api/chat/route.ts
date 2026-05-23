@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import OpenAI from 'openai'
 import { retrieveContext } from '@/lib/rag'
-import { saveLead, type LeadData } from '@/lib/attio'
+import { saveLeadHubSpot, type LeadData } from '@/lib/hubspot'
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
@@ -109,6 +109,11 @@ const TOOLS: OpenAI.Chat.Completions.ChatCompletionTool[] = [
           interesse: { type: 'string', description: 'Principal interesse ou necessidade' },
           urgencia: { type: 'string', description: 'Urgência da decisão (ex: imediato, 1-3 meses, explorando)' },
           resumo_conversa: { type: 'string', description: 'Resumo do que foi conversado' },
+          qualificacao: { 
+            type: 'string', 
+            enum: ['MQL', 'SQL', 'NQL'],
+            description: 'Qualificação do lead baseada na conversa: SQL (decisor, tem orçamento e pressa), MQL (tem interesse e fit, mas está explorando), NQL (sem fit ou sem interesse real)' 
+          },
         },
       },
     },
@@ -201,6 +206,11 @@ export async function POST(req: NextRequest) {
       - **Qualified:** "Sounds like a great fit! I’d love to have one of our experts show you a demo. What’s your availability next week?"
       - **Unqualified:** "Thanks for sharing. Based on what you've said, we might not be the best fit right now, but I can send over some resources."
 
+    **Lead Qualification Criteria:**
+    - **SQL (Sales Qualified Lead):** Decision-maker, clear budget, immediate timeline, or very high interest in specific services.
+    - **MQL (Marketing Qualified Lead):** Good fit for Floux, has interest, but is still in the exploration phase or has a longer timeline.
+    - **NQL (Non Qualified Lead):** No fit for our services, no budget, or clearly just testing/spam.
+
     YOU CAN FIND INFOS ABOUT THE COMPANY HERE:
     ${context}
 
@@ -241,11 +251,11 @@ export async function POST(req: NextRequest) {
       let saveError: string | null = null
 
       try {
-        await saveLead(leadData)
+        await saveLeadHubSpot(leadData)
       }
       catch (err) {
         saveError = err instanceof Error ? err.message : String(err)
-        console.error('Attio save failed:', saveError)
+        console.error('HubSpot save failed:', saveError)
       }
 
       const followUp = await openai.chat.completions.create({
