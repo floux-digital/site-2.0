@@ -53,8 +53,9 @@ export default function Footer() {
             <Image
               src="/floux-by-jeff-bk.svg"
               alt="Floux"
-              width={100}
-              height={25}
+              width={240}
+              height={88}
+              style={{ width: '100px', height: 'auto' }}
             />
             <span className="font-light text-[18px] text-black">©2023-{year}</span>
           </div>

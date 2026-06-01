@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const logos = [
   { name: 'mmartan',   image: '/customers/mmartan.png'   }, 
-  { name: 'Santander', image: '/customers/santader.png'  },
+  { name: 'Santander', image: '/customers/santander.png' },
   { name: 'Hauz',      image: '/customers/hauz.png'      },
   { name: 'Artex',     image: '/customers/artex.png'     },
   { name: 'Ajustador', image: '/customers/ajustador.png' },
@@ -33,6 +33,7 @@ export default function LogoCarousel({ speed = 30, grayscale = false, opacity = 
               src={logo.image}
               alt={logo.name}
               fill
+              sizes="140px"
               className={`object-contain opacity-${grayscale} ${grayscale ? "grayscale" : null}`}
             />
           </div>

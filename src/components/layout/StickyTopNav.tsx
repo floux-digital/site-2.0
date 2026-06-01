@@ -75,7 +75,7 @@ export default function StickyTopNav() {
       <div className="mx-[30px] mt-[27px] bg-black rounded-[64px] h-[82px] flex items-center pr-[24px] pl-[32px] gap-4">
         {/* Logo — white version on black background */}
         <Link href="/" aria-label="Floux" className="shrink-0">
-          <Image src="/floux-white.svg" alt="Floux" width={100} height={41} />
+          <Image src="/floux-white.svg" alt="Floux" width={1049} height={258} style={{ width: '100px', height: 'auto' }} />
         </Link>
 
         {/* Nav links — centered */}

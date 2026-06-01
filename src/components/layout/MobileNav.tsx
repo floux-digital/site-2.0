@@ -52,7 +52,7 @@ export default function MobileNav() {
       {/* Fixed top bar — mobile only */}
       <header className="lg:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between padding-x py-[22px] bg-white border-b border-black/5">
         <Link href="/" aria-label="Floux — página inicial" className="shrink-0">
-          <Image src="/floux-by-jeff-bk.svg" alt="Floux" width={110} height={40} priority />
+          <Image src="/floux-by-jeff-bk.svg" alt="Floux" width={240} height={88} style={{ width: '110px', height: 'auto' }} />
         </Link>
         <div className="flex items-center gap-3">
           <button
@@ -84,7 +84,7 @@ export default function MobileNav() {
           {/* Header: logo + close button */}
           <div className="flex items-center justify-between px-[22px] py-[22px] shrink-0">
             <Link href="/" onClick={closeMenu} aria-label="Floux — página inicial" className="shrink-0">
-              <Image src="/floux-white.svg" alt="Floux" width={110} height={40} priority />
+              <Image src="/floux-white.svg" alt="Floux" width={1049} height={258} style={{ width: '110px', height: 'auto' }} />
             </Link>
             <button
               type="button"

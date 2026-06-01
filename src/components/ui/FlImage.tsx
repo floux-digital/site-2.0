@@ -71,9 +71,11 @@ export default function FlImage({
     img.onerror = () => setError(true)
   }, [visible, src])
 
-  if (!src) {
-    console.error('[FlImage] src não fornecido.')
-  }
+  useEffect(() => {
+    if (!src) {
+      console.warn('[FlImage] src não fornecido.')
+    }
+  }, [src])
 
   const aspectClass = fill
     ? ''

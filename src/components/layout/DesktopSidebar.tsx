@@ -23,9 +23,9 @@ export default function DesktopSidebar() {
         <Image
           src="/floux-by-jeff-bk.svg"
           alt="Floux"
-          width={160}
-          height={40}
-          priority
+          width={240}
+          height={88}
+          style={{ width: '160px', height: 'auto' }}
         />
       </Link>
 

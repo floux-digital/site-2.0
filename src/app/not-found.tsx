@@ -406,7 +406,7 @@ export default function NotFound() {
           style={{ width: PW, height: PH, transition: 'width 0.35s ease, height 0.35s ease' }}>
           <div className={`w-full h-full bg-black rounded-full flex items-center justify-center transition-opacity duration-700 ${phase === 'goal' && playerScored ? 'opacity-20' : 'opacity-100'}`}>
             {phase === 'idle' ? (
-              <Image src="/floux-white.svg" alt="Floux" width={76} height={20} priority />
+              <Image src="/floux-white.svg" alt="Floux" width={1049} height={258} style={{ width: '76px', height: 'auto' }} />
             ) : (
               <span className="text-white text-[11px] font-light tracking-[0.2em]">FLOUX</span>
             )}
