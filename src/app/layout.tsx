@@ -10,6 +10,7 @@ import MetaPixel from '@/components/analytics/MetaPixel'
 import { organizationSchema, webSiteSchema } from '@/lib/schema'
 import ChatProvider from '@/components/chat/ChatProvider'
 import ChatOpenButton from '@/components/chat/ChatOpenButton'
+import GlobalUIWrapper from '@/components/layout/GlobalUIWrapper'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -101,27 +102,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="antialiased">
         <ChatProvider>
-          {/* Mobile fixed top bar */}
-          <MobileNav />
-
-          {/*
-            Desktop contact button — full-width row, top-right.
-            Sits above <main> so it's outside any flex/sidebar layout.
-          */}
-          <div className="hidden lg:flex justify-end px-[44px] pt-[44px]">
-            <ChatOpenButton className="shrink-0 bg-accent border border-white/20 text-black !text-[14px] font-medium padding-x py-2 rounded-full hover:opacity-80 transition-opacity cursor-pointer">
-              Entre em contato
-            </ChatOpenButton>
-          </div>
-
-          {/* Main content — full-width, no sidebar wrapper */}
-          <div className="pt-[60px] lg:pt-0">
-            <main id="main-content">{children}</main>
-            <Footer />
-          </div>
-
-          {/* Sticky top nav — black pill, appears on scroll-up after sidebar exits viewport */}
-          <StickyTopNav />
+          <GlobalUIWrapper>
+            {children}
+          </GlobalUIWrapper>
           <CookieBanner />
           {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_GA_ID} />}
           {process.env.NEXT_PUBLIC_META_PIXEL_ID && <MetaPixel id={process.env.NEXT_PUBLIC_META_PIXEL_ID} />}
