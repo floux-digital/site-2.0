@@ -1,31 +1,33 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Upload, ArrowDown, Crop, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowUpFromDot, ArrowDownToDot, VectorSquare, ChevronLeft, ChevronRight } from 'lucide-react';
 import { mockupsRegistry, MockupModel } from '@/lib/mockupsConfig';
 import { getCssMatrix3D, warpImageBilinear, Point } from '@/lib/homography';
+import Image from 'next/image';
 
 export default function MockupsPage() {
   const [selectedMockup, setSelectedMockup] = useState<MockupModel>(mockupsRegistry[0]);
-  const [uploadedImage, setUploadedImage] = useState<string>('/tools/mockups/Design.png');
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+
+  const activeImage = uploadedImage || selectedMockup.designPath;
+
   const [designDimensions, setDesignDimensions] = useState<{ width: number; height: number }>({
     width: 1206,
     height: 2571,
   });
-  
+
   const [isWarping, setIsWarping] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  
+
   // Calibration mode state
   const [calibrateMode, setCalibrateMode] = useState(false);
-  
+
   // Interactive points
   const [points, setPoints] = useState<Point[]>([]);
-  const [customBorderRadius, setCustomBorderRadius] = useState<number[]>([0, 0, 0, 0]);
 
   const [draggingPoint, setDraggingPoint] = useState<number | null>(null);
 
-  // Sync state when mockup changes
   useEffect(() => {
     setPoints([
       { ...selectedMockup.targetQuad.topLeft },
@@ -33,17 +35,6 @@ export default function MockupsPage() {
       { ...selectedMockup.targetQuad.bottomRight },
       { ...selectedMockup.targetQuad.bottomLeft },
     ]);
-    
-    if (selectedMockup.borderRadius) {
-      setCustomBorderRadius([
-        selectedMockup.borderRadius.topLeft,
-        selectedMockup.borderRadius.topRight,
-        selectedMockup.borderRadius.bottomRight,
-        selectedMockup.borderRadius.bottomLeft
-      ]);
-    } else {
-      setCustomBorderRadius([0, 0, 0, 0]);
-    }
   }, [selectedMockup]);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -64,28 +55,28 @@ export default function MockupsPage() {
   // Handle Dragging of calibration points
   useEffect(() => {
     if (draggingPoint === null) return;
-    
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
-      
+
       const containerRatio = rect.width / rect.height;
       const mockupRatio = selectedMockup.width / selectedMockup.height;
-      
+
       let scale = 1;
       if (containerRatio > mockupRatio) {
         scale = rect.height / selectedMockup.height;
       } else {
         scale = rect.width / selectedMockup.width;
       }
-      
+
       const imageWidth = selectedMockup.width * scale;
       const imageHeight = selectedMockup.height * scale;
-      
+
       // Calculate offset of the image within the container (flex items-center justify-center)
       const offsetX = rect.left + (rect.width - imageWidth) / 2;
       const offsetY = rect.top + (rect.height - imageHeight) / 2;
-      
+
       let x = (e.clientX - offsetX) / scale;
       let y = (e.clientY - offsetY) / scale;
 
@@ -118,7 +109,7 @@ export default function MockupsPage() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const result = e.target?.result as string;
-      const img = new Image();
+      const img = new window.Image();
       img.onload = () => {
         setDesignDimensions({ width: img.naturalWidth, height: img.naturalHeight });
         setUploadedImage(result);
@@ -136,7 +127,7 @@ export default function MockupsPage() {
 
   const loadImageElement = (src: string): Promise<HTMLImageElement> => {
     return new Promise((resolve, reject) => {
-      const img = new Image();
+      const img = new window.Image();
       img.crossOrigin = 'anonymous';
       img.onload = () => resolve(img);
       img.onerror = (err) => reject(new Error('Erro ao carregar a imagem: ' + src));
@@ -145,13 +136,13 @@ export default function MockupsPage() {
   };
 
   const handleDownload = async () => {
-    if (!uploadedImage || points.length < 4) return;
+    if (!activeImage || points.length < 4) return;
     setIsWarping(true);
     setErrorMessage(null);
     try {
       const [mockupImg, designImg] = await Promise.all([
         loadImageElement(selectedMockup.imagePath),
-        loadImageElement(uploadedImage),
+        loadImageElement(activeImage),
       ]);
 
       const mw = selectedMockup.width;
@@ -188,7 +179,7 @@ export default function MockupsPage() {
       if (!tempCtx) throw new Error('Context error');
 
       const tempImageData = tempCtx.createImageData(mw, mh);
-      warpImageBilinear(srcImageData, tempImageData, quad, customBorderRadius);
+      warpImageBilinear(srcImageData, tempImageData, quad);
       tempCtx.putImageData(tempImageData, 0, 0);
 
       if (selectedMockup.clipPath) {
@@ -237,17 +228,24 @@ export default function MockupsPage() {
     }
   }
 
-  // Update corner radius value
-  const handleRadiusChange = (index: number, val: string) => {
-    const num = parseInt(val) || 0;
-    const newRadii = [...customBorderRadius];
-    newRadii[index] = num;
-    setCustomBorderRadius(newRadii);
+  const toggleCalibrateMode = () => {
+    if (calibrateMode && points.length === 4) {
+      console.log('--- Coordenadas Atualizadas (Copie para mockupsConfig.ts) ---');
+      console.log(`
+    targetQuad: {
+      topLeft: { x: ${points[0].x}, y: ${points[0].y} },
+      topRight: { x: ${points[1].x}, y: ${points[1].y} },
+      bottomRight: { x: ${points[2].x}, y: ${points[2].y} },
+      bottomLeft: { x: ${points[3].x}, y: ${points[3].y} },
+    },
+      `.trim());
+    }
+    setCalibrateMode(!calibrateMode);
   };
 
   return (
-    <main className="w-screen h-screen bg-[#111] overflow-hidden relative flex items-center justify-center font-sans text-neutral-800">
-      
+    <main className="w-screen h-screen bg-[#111] overflow-hidden relative flex items-center justify-center">
+
       {/* Hidden file input */}
       <input type="file" id="file-upload" accept="image/*" onChange={handleFileInput} className="hidden" />
 
@@ -263,11 +261,11 @@ export default function MockupsPage() {
       </svg>
 
       {/* Main Image Area - Scaling to fit */}
-      <div 
+      <div
         ref={containerRef}
         className="w-full h-full flex items-center justify-center"
       >
-        <div 
+        <div
           className="relative select-none"
           style={{
             width: selectedMockup.width * scale,
@@ -275,15 +273,15 @@ export default function MockupsPage() {
           }}
         >
           {/* Mockup Background */}
-          <img 
-            src={selectedMockup.imagePath} 
+          <img
+            src={selectedMockup.imagePath}
             alt="Mockup"
             className="w-full h-full block pointer-events-none"
           />
 
           {/* Warped Design Preview */}
-          {uploadedImage && (
-            <div 
+          {activeImage && (
+            <div
               className="absolute pointer-events-none"
               style={{
                 left: 0,
@@ -297,8 +295,16 @@ export default function MockupsPage() {
               }}
             >
               <img
-                src={uploadedImage}
+                src={activeImage}
                 alt="Design"
+                onLoad={(e) => {
+                  if (!uploadedImage) {
+                    setDesignDimensions({
+                      width: e.currentTarget.naturalWidth,
+                      height: e.currentTarget.naturalHeight
+                    });
+                  }
+                }}
                 style={{
                   position: 'absolute',
                   top: 0,
@@ -328,11 +334,6 @@ export default function MockupsPage() {
         </div>
       </div>
 
-      {/* Top Right Badge */}
-      <div className="absolute top-6 right-6 bg-[#00FFAA] text-black font-semibold px-4 py-2 rounded-full text-sm shadow-md z-50">
-        Faça upload de imagem com {selectedMockup.width}x{selectedMockup.height} pixels ({selectedMockup.recommendedRatio || '16:9'})
-      </div>
-
       {/* Error Toast */}
       {errorMessage && (
         <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-xl z-50">
@@ -340,70 +341,32 @@ export default function MockupsPage() {
         </div>
       )}
 
-      {/* Right Widget: Border Radius Calibration */}
-      {calibrateMode && (
-        <div className="absolute top-1/2 right-12 -translate-y-1/2 w-[220px] h-[160px] border border-white/40 flex items-center justify-center z-50">
-          <span className="text-white/60 text-sm pointer-events-none">border-radius</span>
-          
-          {/* Border Radius Inputs */}
-          <input 
-            type="text" 
-            value={customBorderRadius[0]} 
-            onChange={(e) => handleRadiusChange(0, e.target.value)}
-            className="absolute -top-3 -left-3 w-8 bg-transparent text-white text-xs text-center outline-none" 
-          />
-          <input 
-            type="text" 
-            value={customBorderRadius[1]} 
-            onChange={(e) => handleRadiusChange(1, e.target.value)}
-            className="absolute -top-3 -right-3 w-8 bg-transparent text-white text-xs text-center outline-none" 
-          />
-          <input 
-            type="text" 
-            value={customBorderRadius[3]} 
-            onChange={(e) => handleRadiusChange(3, e.target.value)}
-            className="absolute -bottom-3 -left-3 w-8 bg-transparent text-white text-xs text-center outline-none" 
-          />
-          <input 
-            type="text" 
-            value={customBorderRadius[2]} 
-            onChange={(e) => handleRadiusChange(2, e.target.value)}
-            className="absolute -bottom-3 -right-3 w-8 bg-transparent text-white text-xs text-center outline-none" 
-          />
-
-          {/* Dots */}
-          <div className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-[#00FFAA] rounded-full" />
-          <div className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-[#00FFAA] rounded-full" />
-          <div className="absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-[#00FFAA] rounded-full" />
-          <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-[#00FFAA] rounded-full" />
-
-          {/* JSON copy snippet at bottom */}
-          <div className="absolute -bottom-12 right-0 bg-black/80 text-[#00FFAA] text-[9px] p-2 rounded shadow-xl whitespace-pre text-right pointer-events-none">
-            {`borderRadius: { topLeft: ${customBorderRadius[0]}, topRight: ${customBorderRadius[1]}, bottomRight: ${customBorderRadius[2]}, bottomLeft: ${customBorderRadius[3]} }`}
-          </div>
-        </div>
-      )}
-
       {/* Bottom Floating Toolbar */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-full shadow-2xl flex items-center p-2 gap-4 z-50">
-        
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-full shadow-2xl flex w-max items-center py-2 px-4 gap-4 z-50">
+
         {/* Logo */}
         <div className="flex items-center gap-1.5 pl-4 shrink-0">
-          <div className="font-bold text-2xl italic tracking-tighter">fx</div>
-          <span className="text-lg text-neutral-600 font-medium">Mockups</span>
+          <Image
+            src="/fx-black.svg"
+            alt="Floux"
+            width={34}
+            height={29}
+            style={{ width: '34px', height: 'auto' }}
+          />
+          <span className="text-lg tracking-tight font-light">Mockups</span>
         </div>
-        
+
         {/* Carousel */}
         <div className="flex items-center gap-2 px-4 border-x border-neutral-200">
           <button className="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-50 text-neutral-500">
             <ChevronLeft size={16} />
           </button>
-          
+
           <div className="flex gap-2 w-[280px] overflow-x-auto custom-scrollbar items-center py-1">
             {mockupsRegistry.map((m) => (
-              <button 
+              <button
                 key={m.id}
-                onClick={() => setSelectedMockup(m)} 
+                onClick={() => setSelectedMockup(m)}
                 className={`shrink-0 w-[50px] h-[50px] rounded-lg overflow-hidden border-2 transition-all ${selectedMockup.id === m.id ? 'border-black' : 'border-transparent opacity-80 hover:opacity-100'}`}
               >
                 <img src={m.imagePath} alt={m.name} className="w-full h-full object-cover" />
@@ -418,32 +381,32 @@ export default function MockupsPage() {
 
         {/* Actions */}
         <div className="flex items-center gap-2 pr-2 shrink-0">
-          <button 
-            onClick={() => document.getElementById('file-upload')?.click()} 
+          <button
+            onClick={() => document.getElementById('file-upload')?.click()}
             className="w-11 h-11 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-50"
             title="Fazer Upload de Design"
           >
-            <Upload size={18} className="text-neutral-700" />
+            <ArrowUpFromDot size={18} className="text-neutral-700" />
           </button>
-          
-          <button 
-            onClick={() => setCalibrateMode(!calibrateMode)} 
+
+          <button
+            onClick={toggleCalibrateMode}
             className={`w-11 h-11 flex items-center justify-center rounded-full transition-colors ${calibrateMode ? 'bg-[#00FFAA] text-black' : 'border border-neutral-200 hover:bg-neutral-50 text-neutral-700'}`}
             title="Modo Calibração"
           >
-            <Crop size={18} />
+            <VectorSquare size={18} />
           </button>
-          
-          <button 
-            onClick={isWarping ? undefined : handleDownload} 
+
+          <button
+            onClick={isWarping ? undefined : handleDownload}
             className={`w-11 h-11 flex items-center justify-center rounded-full bg-black text-white hover:bg-neutral-800 transition-colors ${isWarping ? 'opacity-50 cursor-not-allowed' : ''}`}
             title="Baixar Mockup Digital"
           >
-            <ArrowDown size={18} />
+            <ArrowDownToDot size={18} />
           </button>
         </div>
       </div>
-      
+
     </main>
   );
 }

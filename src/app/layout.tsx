@@ -1,15 +1,11 @@
 import type { Metadata } from 'next'
 import { Poppins, Open_Sans } from 'next/font/google'
 import './globals.css'
-import MobileNav from '@/components/layout/MobileNav'
-import StickyTopNav from '@/components/layout/StickyTopNav'
-import Footer from '@/components/layout/Footer'
 import CookieBanner from '@/components/ui/CookieBanner'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import MetaPixel from '@/components/analytics/MetaPixel'
 import { organizationSchema, webSiteSchema } from '@/lib/schema'
 import ChatProvider from '@/components/chat/ChatProvider'
-import ChatOpenButton from '@/components/chat/ChatOpenButton'
 import GlobalUIWrapper from '@/components/layout/GlobalUIWrapper'
 
 const poppins = Poppins({

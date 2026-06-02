@@ -158,8 +158,7 @@ export function getCssMatrix3D(srcWidth: number, srcHeight: number, dstQuad: Qua
 export function warpImageBilinear(
   srcData: ImageData,
   dstData: ImageData,
-  dstQuad: Quad,
-  borderRadius: number[] = [0, 0, 0, 0]
+  dstQuad: Quad
 ): void {
   const sw = srcData.width;
   const sh = srcData.height;
@@ -204,13 +203,6 @@ export function warpImageBilinear(
   const srcPixels = srcData.data;
   const dstPixels = dstData.data;
 
-  const [rTL, rTR, rBR, rBL] = borderRadius;
-
-  // Helper to check if a point is inside a rounded corner
-  const isInsideCorner = (u: number, v: number, cx: number, cy: number, r: number) => {
-    return (u - cx) * (u - cx) + (v - cy) * (v - cy) <= r * r;
-  };
-
   // Warp pixel-by-pixel
   for (let y = minY; y <= maxY; y++) {
     for (let x = minX; x <= maxX; x++) {
@@ -223,15 +215,6 @@ export function warpImageBilinear(
       // Inside source image check
       if (u >= 0 && u <= sw - 1 && v >= 0 && v <= sh - 1) {
         
-        // Corner clipping check
-        let clipped = false;
-        if (rTL > 0 && u < rTL && v < rTL && !isInsideCorner(u, v, rTL, rTL, rTL)) clipped = true;
-        else if (rTR > 0 && u > sw - 1 - rTR && v < rTR && !isInsideCorner(u, v, sw - 1 - rTR, rTR, rTR)) clipped = true;
-        else if (rBR > 0 && u > sw - 1 - rBR && v > sh - 1 - rBR && !isInsideCorner(u, v, sw - 1 - rBR, sh - 1 - rBR, rBR)) clipped = true;
-        else if (rBL > 0 && u < rBL && v > sh - 1 - rBL && !isInsideCorner(u, v, rBL, sh - 1 - rBL, rBL)) clipped = true;
-
-        if (clipped) continue;
-
         const uf = Math.floor(u);
         const vf = Math.floor(v);
         const uc = Math.min(sw - 1, uf + 1);
