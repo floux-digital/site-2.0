@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUpFromDot, ArrowDownToDot, VectorSquare, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowUpFromDot, ArrowDownToDot, VectorSquare, ChevronLeft, ChevronRight, TextSearch } from 'lucide-react';
 import { mockupsRegistry, MockupModel } from '@/lib/mockupsConfig';
 import { getCssMatrix3D, warpImageBilinear, Point } from '@/lib/homography';
 import Image from 'next/image';
@@ -9,6 +9,38 @@ import Image from 'next/image';
 export default function MockupsPage() {
   const [selectedMockup, setSelectedMockup] = useState<MockupModel>(mockupsRegistry[0]);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const allNames = Array.from(new Set(mockupsRegistry.map(m => m.name)));
+  const [selectedNames, setSelectedNames] = useState<string[]>(allNames);
+  const [showFilterMenu, setShowFilterMenu] = useState(false);
+
+  const filteredMockups = mockupsRegistry.filter(m => selectedNames.includes(m.name));
+
+  useEffect(() => {
+    if (filteredMockups.length > 0 && !filteredMockups.some(m => m.id === selectedMockup.id)) {
+      setSelectedMockup(filteredMockups[0]);
+    }
+  }, [selectedNames]);
+
+  const toggleNameFilter = (name: string) => {
+    setSelectedNames(prev => {
+      if (prev.includes(name)) {
+        if (prev.length === 1) return prev; // Prevent unselecting all
+        return prev.filter(n => n !== name);
+      } else {
+        return [...prev, name];
+      }
+    });
+  };
+
+  const scrollCarousel = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = 200;
+      carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const activeImage = uploadedImage || selectedMockup.designPath;
 
@@ -27,6 +59,11 @@ export default function MockupsPage() {
   const [points, setPoints] = useState<Point[]>([]);
 
   const [draggingPoint, setDraggingPoint] = useState<number | null>(null);
+
+  // Toolbar dragging state
+  const [toolbarPos, setToolbarPos] = useState({ x: 0, y: 0 });
+  const [isDraggingToolbar, setIsDraggingToolbar] = useState(false);
+  const dragStart = useRef({ x: 0, y: 0, startX: 0, startY: 0 });
 
   useEffect(() => {
     setPoints([
@@ -102,6 +139,41 @@ export default function MockupsPage() {
       window.removeEventListener('mouseup', handleMouseUp);
     };
   }, [draggingPoint, selectedMockup.width, selectedMockup.height]);
+
+  // Handle Dragging of Toolbar
+  useEffect(() => {
+    if (!isDraggingToolbar) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const dx = e.clientX - dragStart.current.x;
+      const dy = e.clientY - dragStart.current.y;
+      setToolbarPos({
+        x: dragStart.current.startX + dx,
+        y: dragStart.current.startY + dy,
+      });
+    };
+
+    const handleMouseUp = () => {
+      setIsDraggingToolbar(false);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDraggingToolbar]);
+
+  const handleToolbarDragStart = (e: React.MouseEvent) => {
+    setIsDraggingToolbar(true);
+    dragStart.current = {
+      x: e.clientX,
+      y: e.clientY,
+      startX: toolbarPos.x,
+      startY: toolbarPos.y
+    };
+  };
 
   // Handle image upload
   const processFile = (file: File) => {
@@ -342,10 +414,19 @@ export default function MockupsPage() {
       )}
 
       {/* Bottom Floating Toolbar */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-full shadow-2xl flex w-max items-center py-2 px-4 gap-4 z-50">
+      <div
+        className="absolute bottom-6 left-1/2 bg-white rounded-full shadow-2xl flex w-max items-center py-2 px-4 gap-4 z-50"
+        style={{
+          transform: `translate(calc(-50% + ${toolbarPos.x}px), ${toolbarPos.y}px)`,
+          transition: isDraggingToolbar ? 'none' : 'transform 0.1s ease-out',
+        }}
+      >
 
         {/* Logo */}
-        <div className="flex items-center gap-1.5 pl-4 shrink-0">
+        <div
+          className="flex items-center gap-1.5 pl-4 shrink-0 cursor-grab active:cursor-grabbing"
+          onMouseDown={handleToolbarDragStart}
+        >
           <Image
             src="/fx-black.svg"
             alt="Floux"
@@ -358,12 +439,15 @@ export default function MockupsPage() {
 
         {/* Carousel */}
         <div className="flex items-center gap-2 px-4 border-x border-neutral-200">
-          <button className="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-50 text-neutral-500">
+          <button
+            onClick={() => scrollCarousel('left')}
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-50 text-neutral-500"
+          >
             <ChevronLeft size={16} />
           </button>
 
-          <div className="flex gap-2 w-[280px] overflow-x-auto custom-scrollbar items-center py-1">
-            {mockupsRegistry.map((m) => (
+          <div ref={carouselRef} className="flex gap-2 w-[280px] overflow-x-auto scroll-smooth custom-scrollbar items-center py-1">
+            {filteredMockups.map((m) => (
               <button
                 key={m.id}
                 onClick={() => setSelectedMockup(m)}
@@ -374,13 +458,51 @@ export default function MockupsPage() {
             ))}
           </div>
 
-          <button className="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-50 text-neutral-500">
+          <button
+            onClick={() => scrollCarousel('right')}
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-50 text-neutral-500"
+          >
             <ChevronRight size={16} />
           </button>
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2 pr-2 shrink-0">
+        <div className="flex items-center gap-2 pr-2 shrink-0 relative">
+
+          {/* Filter Menu Popup */}
+          {showFilterMenu && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setShowFilterMenu(false)}
+              />
+              <div className="absolute bottom-[calc(100%+24px)] right-0 bg-white rounded-[24px] rounded-bl-none shadow-2xl p-2 flex flex-col w-48 z-50">
+                {allNames.map((name, idx) => {
+                  const isSelected = selectedNames.includes(name);
+                  return (
+                    <div key={name} className="flex flex-col">
+                      <button
+                        onClick={() => toggleNameFilter(name)}
+                        className="flex items-center justify-between px-4 py-3 hover:bg-neutral-50 rounded-xl transition-colors"
+                      >
+                        <span className="text-[13px] font-medium text-neutral-800">{name}</span>
+                        <div className={`w-5 h-5 rounded-full border-2 transition-colors ${isSelected ? 'bg-[#00FFAA] border-[#00FFAA]' : 'border-neutral-300'}`} />
+                      </button>
+                      {idx < allNames.length - 1 && <div className="h-px bg-neutral-100 mx-4" />}
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          <button
+            onClick={() => setShowFilterMenu(!showFilterMenu)}
+            className={`w-11 h-11 flex items-center justify-center rounded-full transition-colors ${showFilterMenu || selectedNames.length < allNames.length ? 'bg-[#00FFAA] text-black border-transparent' : 'border border-neutral-200 hover:bg-neutral-50 text-neutral-700'}`}
+            title="Filtrar Mockups"
+          >
+            <TextSearch size={18} />
+          </button>
           <button
             onClick={() => document.getElementById('file-upload')?.click()}
             className="w-11 h-11 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-50"
