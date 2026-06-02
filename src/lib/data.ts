@@ -10,116 +10,46 @@ export const navLinks = [
 export const cases = [
   {
     slug: 'aquisicao-e-onboarding-santander',
-    image: '/cases/image.png',
-    title: 'Aquisição e Onboarding',
+    image: '/cases/case-ux-santander-onboarding-01.png',
+    title: 'Nova jornada de Aquisição e Onboarding para Pessoa Jurídica',
     client: '@Santander',
     description:
-      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
+      'Revisão da jornada de aquisição de onboarding de novos clientes Pessoa Juídica, com foco em simplificação e redução de fricções.',
     challenge:
-      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
+      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital e não ativação das contas abertas, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
     hypothesis:
-      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
+      'Reduzir fricções para abertura e configuração de novas contas podem elevar a taxa de clientes que realizam o cash management nas plataformas digitais e aumentar a oferta de crédito, mesmo para clientes inicialmente sem score.',
     results:
-      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
-    gallery: ['/cases/image.png'] as string[],
-    tags: ['UX Research', 'Product Design', 'Service Design'],
-  },
-  {
-    slug: 'aquisicao-e-onboarding-santande',
-    image: '',
-    title: 'Aquisição e Onboarding',
-    client: '@Santander',
-    description:
-      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
-    challenge:
-      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
-    hypothesis:
-      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
-    results:
-      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
-    gallery: [] as string[],
-    tags: ['UX Research', 'Product Design', 'Service Design'],
-  },
-    {
-    slug: 'aquisicao-e-onboarding-santand',
-    image: '',
-    title: 'Aquisição e Onboarding',
-    client: '@Santander',
-    description:
-      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
-    challenge:
-      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
-    hypothesis:
-      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
-    results:
-      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
-    gallery: [] as string[],
-    tags: ['UX Research', 'Product Design', 'Service Design'],
-  },
-    {
-    slug: 'aquisicao-e-onboarding-santan',
-    image: '',
-    title: 'Aquisição e Onboarding',
-    client: '@Santander',
-    description:
-      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
-    challenge:
-      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
-    hypothesis:
-      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
-    results:
-      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
-    gallery: [] as string[],
-    tags: ['UX Research', 'Product Design', 'Service Design'],
-  },
-    {
-    slug: 'aquisicao-e-onboarding-santa',
-    image: '',
-    title: 'Aquisição e Onboarding',
-    client: '@Santander',
-    description:
-      'Redesenho completo do fluxo de aquisição e onboarding digital do Santander, reduzindo o tempo de ativação de conta e aumentando a conversão.',
-    challenge:
-      'O banco enfrentava altas taxas de abandono no processo de abertura de conta digital, com um fluxo fragmentado e pouco intuitivo para novos clientes.',
-    hypothesis:
-      'Simplificando o fluxo de onboarding e removendo fricções desnecessárias, seria possível aumentar a taxa de conclusão em pelo menos 30%.',
-    results:
-      'Aumento de 42% na taxa de conclusão do onboarding e redução de 60% nas chamadas ao suporte durante os primeiros 7 dias.',
-    gallery: [] as string[],
+      'A partir de extensa análise de dados, incluindo eventos de uso e funis de aquisição, identificamos oportunidades para reduzir a jornada de 56 para 18 telas, removendo fricção em momentos críticos a favor de uma jornada contendo ofertas coordenadas, relevantes e customizadas para 3 personas.',
+    gallery: [
+      '/cases/case-ux-santander-onboarding-02.png',
+      '/cases/case-ux-santander-onboarding-03.png',
+      '/cases/case-ux-santander-onboarding-04.png',
+      '/cases/case-ux-santander-onboarding-05.png',
+    ] as string[],
     tags: ['UX Research', 'Product Design', 'Service Design'],
   },
   {
     slug: 'id-santander',
-    image: '',
-    title: 'ID Santander',
+    image: '/cases/case-ux-santander-id-01.png',
+    title: 'Jornada Multicanal para Ativação do ID Santander',
     client: '@Santander',
     description:
-      'Criação de uma identidade digital unificada para o ecossistema de produtos do Santander no Brasil.',
+      'Revisão da jornada de ativação do ID Santander, ferramenta que é a chave de segurança que concede acesso ao ecossistema digital do banco, e representa intenção de cash management',
     challenge:
-      'Produtos desconexos com experiências inconsistentes geravam confusão nos clientes que transitavam entre diferentes aplicações do banco.',
+      'A jornada precisava ser revisitada para se adequar ao novo Design System do banco e incluir uma nova opção de ativação através de celulares sementes, que já possuem o ID Santander habilitado e com permissão para ativação em outros aparelhos.',
     hypothesis:
-      'Uma identidade digital coesa e um sistema de design compartilhado reduziria a carga cognitiva dos usuários e aceleraria o desenvolvimento de novos produtos.',
+      'A revisão da jornada, bem como a inclusão da nova modalidade - Ativação por outro aparelho - deve reduzir o número de reclamações sobre o tema e aumentar a taxa de conclusão do onboarding e retenção de novos clientes, reduzindo CAC e elevando LTV.',
     results:
-      'Sistema de design adotado por 8 times de produto, redução de 40% no tempo de design de novas features.',
-    gallery: [] as string[],
-    tags: ['Design System', 'Product Design', 'Strategy'],
-  },
-  {
-    slug: 'mobile-app-hauzforyou',
-    image: '',
-    title: 'Mobile App',
-    client: '@HauzForYou',
-    description:
-      'Desenvolvimento do aplicativo mobile da HauzForYou, plataforma de locação de imóveis com foco em experiência sem atrito.',
-    challenge:
-      'A plataforma precisava de um aplicativo que tornasse o processo de busca e locação de imóveis tão simples quanto pedir um delivery.',
-    hypothesis:
-      'Aplicando princípios de design conversacional e reduzindo etapas no funil, seria possível aumentar o volume de contratos fechados pelo app.',
-    results:
-      'App lançado em 4 meses, com 4.7 de avaliação na App Store e 35% das locações fechadas pelo canal mobile nos primeiros 60 dias.',
-    gallery: [] as string[],
-    tags: ['Mobile Design', 'UX Research', 'Product Design'],
-  },
+      'Nova jornada multicanal atendendo aos requisitos da jornada prévia e incluindo o novo método que pode atender até 30% dos clientes de maior porte.',
+    gallery: [
+      '/cases/case-ux-santander-id-02.png',
+      '/cases/case-ux-santander-id-03.png',
+      '/cases/case-ux-santander-id-04.png',
+      '/cases/case-ux-santander-id-05.png',
+    ] as string[],
+    tags: ['UX Research', 'Product Design', 'Service Design'],
+  }
 ]
 
 export const services = [
@@ -148,27 +78,27 @@ export const services = [
             description: 'Com a Desk Research, coleta-se todo tipo de dado preexistente disponível, por exemplo, Informações do Banco de Dados, Analytics, Redes Sociais, Meta Dados de Interações do Usuário, Dados Externos de Mercado, Conceitos Literários, Notícias e etc. Esses dados são cruzados de diversas formas com a intenção de encontrar possíveis problemas e fornecer direção para os próximos passos.'
           },
           {
-            title:'Entrevistas',
+            title: 'Entrevistas',
             description: 'As Entrevistas são utilizadas para obtenção de dados mais qualitativos. Elas podem acontecer com especialistas do negócio e clientes. Servem para validar idéias ou conceitos e eliminar dúvidas encontradas em outras pesquisas ou iniciar discussões à partir da ótica das personas especialista e usuário. O roteiro para realização dessas entrevistas será guiado por um objetivo, ou seja, é uma ferramenta que traz melhores resultados quando usada para buscar respostas para um problema claro e já definido, no entanto, é possível que seus resultados tragam novas descobertas, que inclusive podem gerar novas Hipóteses de Problema.'
           },
           {
-            title:'Surveys',
+            title: 'Surveys',
             description: 'São questionários bem elaborados que geralmente visam a obtenção de dados quantitativos para melhorar a ótica sobre um problema, idéia ou conceito. Também é possível, de forma alternativa, utilizar Surveys para coleta de dados qualitativos, porém as respostas podem não ser tão ricas quanto interações através de Entrevistas.'
           },
           {
-            title:'Análises Competitivas',
+            title: 'Análises Competitivas',
             description: 'A Análise Competitiva vai indicar quais são as fortalezas e fraquezas, suas e da sua concorrência. Também pode indicar o caminho pelo qual a concorrência está seguindo. Essa análise é bastante importante quando se tem a percepção de que seus clientes estão trocando seu negócio pelo negócio do concorrente, ou ainda, quando se tem a sensação de que apesar de todo esforço de marketing, seu negócio não consegue alavancar o crescimento.'
           },
           {
-            title:'User Journey',
+            title: 'User Journey',
             description: 'A User Journey (Jornada do Usuário) é uma ferramenta que mapeia a experiência do seu cliente com o seu produto ou serviço, detalhando os pontos de contato, pontos críticos, severidades e sentimentos do usuário em relação ao produto ou serviço. Quando bem realizada, a User Journey tem o poder de encontrar e sugerir correções para possíveis falhas sistêmicas e também não sistêmicas que impedem a experiência fluída e que podem gerar irritação acumulada ou frustração no uso de um produto ou serviço.'
           },
           {
-            title:'Service Blueprint',
+            title: 'Service Blueprint',
             description: 'Assim como a User Journey, o Service Blueprint também é uma ferramenta para mapear a experiência de um usuário com um produto ou serviço. No entanto, o Service Blueprint expande a análise relacionando aspectos externos e correlacionados, como fornecedores por exemplo. O Service Blueprint é a ferramenta mais indicada quando a experiência a ser avaliada é um serviço. Pois com ela, é possível avaliar processos, gargalos e baixa capacidade operacional de fornecedores que impactam na entrega da sua experiência para seus clientes.'
           },
           {
-            title:'Análise Heurística',
+            title: 'Análise Heurística',
             description: 'É uma técnica de pesquisa aplicada para avaliar se as coisas são como deveriam ser dentro de um olhar técnico, porém sobre a ótica dos usuários. Esse tipo de pesquisa pode ajudar a responder perguntas como: "por que será que os usuários não utilizam o meu produto como esperado?" ou "por que os usuários estão abandonando o carrinho de compras?" Problemas relacionados a questões simples são mais comuns que parecem ser. Por isso a Análise Heurística pode ser vista como uma solução poderosa, já que quando empregada no momento certo, pode evitar longas jornadas de pesquisa para encontrar problemas que na verdade são bastante simples.'
           },
         ],
@@ -213,17 +143,17 @@ export const services = [
         section2Body:
           'Os nossos consultores podem apoiar o seu time de desenvolvimento na implementação do produto ou ainda, desenvolver o produto para você. Sim, além do design também conseguimos desenvolver o código-fonte, mas aqui assumimos o compromisso apenas com aplicações criadas à partir do zero. A idéia é colocar o MVP do seu projeto para funcionar e validar suas hipóteses de negócio o mais rápido possivel, passando o bastão da tecnologia para o seu próprio time à partir do amadurecimento do negócio.',
         methods2: [
-          { 
+          {
             title: 'Gestão de Recursos',
-            description: 'Podemos ajudar seu time desenvolvimento ou até mesmo estabelecer os recursos de tecnologia necessários para implementar seu produto de forma escalável, utilizando servidores e serviços de ponta com alto nível de disponbilidade, de acordo com o tamanho do seu projeto e disponibilidade de orçamento.' 
+            description: 'Podemos ajudar seu time desenvolvimento ou até mesmo estabelecer os recursos de tecnologia necessários para implementar seu produto de forma escalável, utilizando servidores e serviços de ponta com alto nível de disponbilidade, de acordo com o tamanho do seu projeto e disponibilidade de orçamento.'
           },
-          { 
+          {
             title: 'Código-fonte',
-            description: 'Somos ágeis e utilizamos boas práticas de desenvolvimento. Nossos consultores estão prontos para escrever o código-fonte do seu projeto de maneira clara, documentada e atendendo os padrões de escrita de cada linguagem, utilizando controle de versão e fluxo adequado de lançamento.' 
+            description: 'Somos ágeis e utilizamos boas práticas de desenvolvimento. Nossos consultores estão prontos para escrever o código-fonte do seu projeto de maneira clara, documentada e atendendo os padrões de escrita de cada linguagem, utilizando controle de versão e fluxo adequado de lançamento.'
           },
-          { 
+          {
             title: 'Manutenção',
-            description: 'Da mesma forma que oferecemos o serviço para desenvolvimento do seu produto digital, também oferecemos o serviço de manutenção do código-fonte e alta disponibilidade para atuação em caso de emergências.' 
+            description: 'Da mesma forma que oferecemos o serviço para desenvolvimento do seu produto digital, também oferecemos o serviço de manutenção do código-fonte e alta disponibilidade para atuação em caso de emergências.'
           },
         ],
         cta: 'design-de-produto',
@@ -240,11 +170,11 @@ export const services = [
         methodsHeading: 'Vamos redefinir parâmetros',
         methods: [
           {
-            title: 'Mapa da Jornada', 
+            title: 'Mapa da Jornada',
             description: 'O Mapa da Jornada é o documento que detalha a experiência do cliente com o serviço prestado. Nele são considerados todos os aspectos relacionados a interação do seu cliente com o serviço. A partir de uma estratégia e entrega de valor bem definidas, os consultores da floux irão trabalhar para criar um fluxo de empatia da sua equipe com o usuário e a partir disso, criar uma experiência que seja simples, adequada e memorável para o seu cliente.'
           },
           {
-            title: 'Testes', 
+            title: 'Testes',
             description: 'Um serviço pode depender de inúmera variáveis e interações, garantir que todas elas estejam alinhadas ao propósito do negócio e expectativa do cliente é fator crítico de sucesso. Com um Mapa de Jornada bem definido, os consultores da floux podem realizar testes primários com técnicas de condução teatral e testes definitivos com clientes reais.'
           },
           {
@@ -313,7 +243,7 @@ export const team = [
     bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
     pic: '',
   },
-    {
+  {
     name: 'Jeff Monteiro',
     role: 'Fundador & CEO',
     title: 'Product Designer, Mentor, CEO',
@@ -327,35 +257,7 @@ export const team = [
     bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
     pic: '',
   },
-    {
-    name: 'Jeff Monteiro',
-    role: 'Fundador & CEO',
-    title: 'Product Designer, Mentor, CEO',
-    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
-    pic: '',
-  },
   {
-    name: 'Rafael Toledo',
-    role: 'Conselheiro',
-    title: 'Service Designer, Professor',
-    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
-    pic: '',
-  },
-    {
-    name: 'Jeff Monteiro',
-    role: 'Fundador & CEO',
-    title: 'Product Designer, Mentor, CEO',
-    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
-    pic: '',
-  },
-  {
-    name: 'Rafael Toledo',
-    role: 'Conselheiro',
-    title: 'Service Designer, Professor',
-    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
-    pic: '',
-  },
-    {
     name: 'Jeff Monteiro',
     role: 'Fundador & CEO',
     title: 'Product Designer, Mentor, CEO',
@@ -383,7 +285,35 @@ export const team = [
     bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
     pic: '',
   },
-    {
+  {
+    name: 'Jeff Monteiro',
+    role: 'Fundador & CEO',
+    title: 'Product Designer, Mentor, CEO',
+    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
+    pic: '',
+  },
+  {
+    name: 'Rafael Toledo',
+    role: 'Conselheiro',
+    title: 'Service Designer, Professor',
+    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
+    pic: '',
+  },
+  {
+    name: 'Jeff Monteiro',
+    role: 'Fundador & CEO',
+    title: 'Product Designer, Mentor, CEO',
+    bio: 'Jeff Monteiro, Paulistano, pai do Luca, apreciador da boa culinária e música, fanático por filmes baseados em fatos reais.',
+    pic: '',
+  },
+  {
+    name: 'Rafael Toledo',
+    role: 'Conselheiro',
+    title: 'Service Designer, Professor',
+    bio: 'Profissional renomado que pode atuar de forma reduzida e pontual, fornecendo visão estratégica e insights para projetos.',
+    pic: '',
+  },
+  {
     name: 'Jeff Monteiro',
     role: 'Fundador & CEO',
     title: 'Product Designer, Mentor, CEO',
@@ -424,7 +354,7 @@ export const testimonials = [
     role: 'CEO',
     company: 'Startup',
   },
-   {
+  {
     text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
     name: 'Cliente da Silva',
     role: 'CEO',
@@ -432,7 +362,7 @@ export const testimonials = [
     companyLogo: '',
     company: 'Startup',
   },
-   {
+  {
     text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
     name: 'Cliente da Silva',
     role: 'CEO',
@@ -440,7 +370,7 @@ export const testimonials = [
     companyLogo: '',
     company: 'Startup',
   },
-   {
+  {
     text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
     name: 'Cliente da Silva',
     role: 'CEO',
@@ -448,7 +378,7 @@ export const testimonials = [
     companyLogo: '',
     company: 'Startup',
   },
-   {
+  {
     text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
     name: 'Cliente da Silva',
     role: 'CEO',
@@ -456,7 +386,7 @@ export const testimonials = [
     companyLogo: '',
     company: 'Startup',
   },
-   {
+  {
     text: 'A metodologia da Floux é única. Eles não entregam só design bonito — entregam crescimento mensurável.',
     name: 'Cliente da Silva',
     role: 'CEO',
